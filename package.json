@@ -1,0 +1,50 @@
+{
+  "name": "nocms-publishing",
+  "version": "1.0.0",
+  "description": "Publisher interface for NoCMS",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch",
+    "prepare": "babel ./src --out-dir ./lib --source-maps --presets env,react",
+    "eslint": "eslint --ext .js, .jsx ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miles-no/nocms-publishing.git"
+  },
+  "keywords": [
+    "react",
+    "publishing"
+  ],
+  "author": "Wenche Tollevsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miles-no/nocms-publishing/issues"
+  },
+  "homepage": "https://github.com/miles-no/nocms-publishing#readme",
+  "dependencies": {
+    "nocms-events": "^1.2.0",
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.10.0",
+    "eslint-config-webteam": "^2.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "webpack": "^3.8.1"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0 || ^16.0.0"
+  }
+}
