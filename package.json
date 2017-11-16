@@ -24,8 +24,17 @@
   },
   "homepage": "https://github.com/miles-no/nocms-publishing#readme",
   "dependencies": {
+    "moment": "^2.19.1",
+    "nocms-ajax": "^1.0.0",
+    "nocms-atoms": "^1.0.2",
     "nocms-events": "^1.2.0",
-    "prop-types": "^15.6.0"
+    "nocms-forms": "^3.6.3",
+    "nocms-image-cropper": "^1.1.0",
+    "nocms-shortcuts": "^1.0.1",
+    "nocms-utils": "^1.0.0",
+    "prop-types": "^15.6.0",
+    "react-aria-modal": "^2.11.1",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
