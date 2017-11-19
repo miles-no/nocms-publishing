@@ -6,7 +6,6 @@
       },
       "debug": false
     }],
-    "react",
-    "stage-1"
+    "react"
   ]
 }
