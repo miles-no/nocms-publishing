@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
 import I from '../i18n/Internationalization';
 
-import templateSectionData from '../../../data/templateSectionData.js';
+// import templateSectionData from '../../../data/templateSectionData.js';
 
 export default class Section extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class Section extends Component {
   }
 
   render() {
-    const { section } = this.props;
+    const { section, templateSectionData } = this.props;
     return (
       <li className="thumbnail thumbnail__icon-and-text thumbnail--dark" onClick={this.onClick}>
         <div className="admin-button admin-button--dark thumbnail__select-button">
@@ -42,4 +42,5 @@ export default class Section extends Component {
 Section.propTypes = {
   section: PropTypes.string,
   onClick: PropTypes.func,
+  templateSectionData: PropTypes.object,
 };

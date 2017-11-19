@@ -13,7 +13,7 @@ import MenuSectionWrapper from './MenuSectionWrapper';
 import NotificationArea from './notifications/NotificationArea';
 import Applications from './Applications';
 import PublishPage from '../dialogs/PublishPage';
-import templateComponents from '../../../data/templateComponents';
+// import templateComponents from '../../../data/templateComponents';
 import AddSection from '../section/AddSection';
 import urlUtils from '../utils/url';
 
@@ -40,7 +40,8 @@ export default class AdminPanel extends Component {
   }
 
   onAddSection(type) {
-    const allowedInTemplate = (templateComponents[this.props.pageData.templateId].indexOf(type) > -1);
+    const { templateComponents, pageData } = this.props;
+    const allowedInTemplate = (templateComponents[pageData.templateId].indexOf(type) > -1);
     if (allowedInTemplate) {
       const components = this.props.pageData.components || [];
       components.push({ type, id: urlUtils.forComponent(type) });
@@ -73,8 +74,9 @@ export default class AdminPanel extends Component {
   }
 
   render() {
+    const { templateComponents, pageData } = this.props;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
-    const availableComponentList = templateComponents[this.props.pageData.templateId] || [];
+    const availableComponentList = templateComponents[pageData.templateId] || [];
     return (
       <div className="admin-menu">
         <div className="admin-menu__header">
@@ -149,6 +151,7 @@ export default class AdminPanel extends Component {
 AdminPanel.propTypes = {
   pageData: PropTypes.object,
   onAddSection: PropTypes.func,
+  templateComponents: PropTypes.object,
 };
 
 AdminPanel.contextTypes = {

@@ -78,6 +78,7 @@ export default class PublishPage extends Component {
         value: 'interval',
       },
     ];
+
     let segments = null;
     if (this.context.adminConfig.segments) {
       segments = [{ value: 0, label: dictionary('Alle segmenter', this.context.adminLang) }].concat(this.context.adminConfig.segments);

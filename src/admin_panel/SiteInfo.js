@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import I from '../i18n/Internationalization';
-import config from '../../../../nocms_config.js';
+// import config from '../../../../nocms_config.js';
 
 const SiteInfo = (props) => {
-  const { templateId, createdBy, published, publishedDate, revision } = props;
-  const template = config.templates
+  const { templateId, createdBy, published, publishedDate, revision, nocmsConfig } = props;
+  const template = nocmsConfig.templates
     .filter((obj) => { return obj.id === templateId; });
   return (
     <div className="admin-menu__site-info">
@@ -35,6 +35,7 @@ SiteInfo.propTypes = {
   published: PropTypes.bool,
   publishedDate: PropTypes.string,
   revision: PropTypes.number,
+  nocmsConfig: PropTypes.object,
 };
 
 module.exports = SiteInfo;

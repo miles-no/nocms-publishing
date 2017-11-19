@@ -5,7 +5,7 @@ import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
 import I, { dictionary } from '../i18n/Internationalization';
-import nocmsConfig from '../../../../nocms_config';
+// import nocmsConfig from '../../../../nocms_config';
 
 const store = 'nocms-create-page-dialog';
 
@@ -83,6 +83,7 @@ export default class CreatePage extends Component {
   }
 
   render() {
+    const { nocmsConfig } = this.props;
     const lang = this.context.lang;
     const site = this.context.adminConfig.site;
     const templateOptions = nocmsConfig.templates.map((tmpl) => { return { label: tmpl.name, value: tmpl.id }; });
@@ -152,5 +153,5 @@ CreatePage.contextTypes = {
 };
 
 CreatePage.propTypes = {
-
+  nocmsConfig: PropTypes.object,
 };

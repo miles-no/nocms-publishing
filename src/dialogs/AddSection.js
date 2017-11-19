@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SectionFolderList from '../section/SectionFolderList';
-import templateSectionCategories from '../../../data/templateSectionCategories';
+// import templateSectionCategories from '../../../data/templateSectionCategories';
 
-const filter = function filter(sections) {
+const filter = function filter(sections, templateSectionCategories) {
   const tmpData = {};
   for (const section of sections) {
     tmpData[section] = true;
@@ -30,8 +30,8 @@ const filter = function filter(sections) {
 };
 
 const AddSection = (props) => {
-  const { sections, onClick } = props;
-  const list = filter(sections);
+  const { sections, onClick, templateSectionCategories } = props;
+  const list = filter(sections, templateSectionCategories);
 
   return (
     <SectionFolderList list={list} onClick={onClick} />
@@ -41,6 +41,7 @@ const AddSection = (props) => {
 AddSection.propTypes = {
   onClick: PropTypes.func.isRequired,
   sections: PropTypes.array,
+  templateSectionCategories: PropTypes.object,
 };
 
 module.exports = AddSection;

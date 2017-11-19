@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
-import ImageFolderArchive from './ImageFolderArchive.jsx';
+import ImageFolderArchive from './ImageFolderArchive';
 
 class ImageFolders extends Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import { Form, Field } from 'nocms-forms';
 import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
-import I, { dictionary } from '../i18n/Internationalization';
+import { dictionary } from '../i18n/Internationalization';
 
 const store = 'nocms-move-page-dialog';
 
