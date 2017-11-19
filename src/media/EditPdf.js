@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import { dictionary } from '../i18n/Internationalization';
 import IconButton from '../atoms/IconButton';
 import Pdf from '../dialogs/media/Pdf';
@@ -25,7 +25,7 @@ export default class EditPdf extends Component {
   }
 
   onPdfClick(publicId) {
-    events.trigger('nocms.value-changed', this.props.scope, { publicId, format: 'pdf' });
+    triggerGlobal('nocms.value-changed', this.props.scope, { publicId, format: 'pdf' });
     this.setState({ dialogOpen: false });
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'nocms-forms';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import { dictionary } from '../i18n/Internationalization';
 
 const storeName = 'nocms-update-page-settings';
@@ -18,7 +18,7 @@ export default class PageSettings extends Component {
   }
 
   handleUpdatePageSettings(formData) {
-    events.trigger('nocms.store-page-values', formData);
+    triggerGlobal('nocms.store-page-values', formData);
     this.props.onClose();
   }
 

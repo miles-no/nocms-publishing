@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'nocms-forms';
 import ajax from 'nocms-ajax';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import { dictionary } from '../i18n/Internationalization';
 
 const storeName = 'nocms-publish-page-dialog';
@@ -54,7 +54,7 @@ export default class PublishPage extends Component {
         cb(err.message);
         return;
       }
-      events.trigger('nocms.new-page-version', res.newPageId, res.newPageRevision);
+      triggerGlobal('nocms.new-page-version', res.newPageId, res.newPageRevision);
       onClose();
     });
   }

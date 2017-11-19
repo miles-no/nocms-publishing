@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { listenToGlobal, stopListenToGlobal, triggerGlobal } from 'nocms-events';
 import I, { dictionary } from '../../i18n/Internationalization';
 
 import Button from '../../atoms/Button';
@@ -23,15 +23,15 @@ export default class SimpleImage extends Component {
   }
 
   componentDidMount() {
-    events.listenTo('nocms.image-selected', this.onImageSelect);
+    listenToGlobal('nocms.image-selected', this.onImageSelect);
   }
 
   componentWillUnmount() {
-    events.stopListenTo('nocms.image-selected', this.onImageSelect);
+    stopListenToGlobal('nocms.image-selected', this.onImageSelect);
   }
 
   onFinish() {
-    events.trigger('nocms.value-changed', `${this.props.scope}`, this.state.image);
+    triggerGlobal('nocms.value-changed', `${this.props.scope}`, this.state.image);
     this.props.onClose();
   }
 

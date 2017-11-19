@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import { dictionary } from './i18n/Internationalization';
 import IconButton from './atoms/IconButton';
 
@@ -21,9 +21,9 @@ export default class SectionMenuSticky extends Component {
     const scope = 'components';
     const components = this.props.components;
     components.splice(this.props.componentIndex, 1);
-    events.trigger('nocms.component-removed');
-    events.trigger('nocms.value-changed', scope, components);
-    events.trigger('nocms.history-save', scope, components);
+    triggerGlobal('nocms.component-removed');
+    triggerGlobal('nocms.value-changed', scope, components);
+    triggerGlobal('nocms.history-save', scope, components);
   }
 
   onComponentMove(direction) {
@@ -43,9 +43,9 @@ export default class SectionMenuSticky extends Component {
     const tmp = newComponents[componentIndex];
     newComponents[componentIndex] = newComponents[newIndex];
     newComponents[newIndex] = tmp;
-    events.trigger('nocms.value-changed', 'components', newComponents);
-    events.trigger('nocms.history-save');
-    events.trigger('navigate_in_page', `s${newIndex}`);
+    triggerGlobal('nocms.value-changed', 'components', newComponents);
+    triggerGlobal('nocms.history-save');
+    triggerGlobal('navigate_in_page', `s${newIndex}`);
   }
 
   onMoreDropdown() {

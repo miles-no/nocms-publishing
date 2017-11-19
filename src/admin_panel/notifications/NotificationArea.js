@@ -1,7 +1,7 @@
 /* eslint no-param-reassign: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { listenToGlobal } from 'nocms-events';
 import { Icon } from 'nocms-atoms';
 import Notification from './Notification';
 
@@ -18,13 +18,13 @@ export default class NotificationArea extends Component {
   }
 
   componentDidMount() {
-    events.listenTo('nocms.error', (errorMsg) => {
+    listenToGlobal('nocms.error', (errorMsg) => {
       this.addNotification({
         content: <div><Icon type="error" size="small" />{errorMsg}</div>,
         id: 'nocms.error',
       });
     });
-    events.listenTo('nocms.value-changed', () => {
+    listenToGlobal('nocms.value-changed', () => {
       const notification = {
         text: dictionary('Lagrer', this.context.adminLang),
         icon: 'save-changes',
@@ -33,7 +33,7 @@ export default class NotificationArea extends Component {
       };
       this.addNotification(notification);
     });
-    events.listenTo('nocms.page-saved', () => {
+    listenToGlobal('nocms.page-saved', () => {
       const notification = {
         text: dictionary('Lagret', this.context.adminLang),
         icon: 'check',

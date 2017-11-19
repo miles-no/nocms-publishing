@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'nocms-forms';
 import ajax from 'nocms-ajax';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
 import I, { dictionary } from '../i18n/Internationalization';
 
@@ -44,8 +44,8 @@ export default class MovePage extends Component {
         this.setState({ error: 'Flytting av side feilet.' });
         return;
       }
-      events.trigger('notify', { duration: 4, message: `Siden er flyttet fra ${originalUri} til ${newUri}` });
-      events.trigger('navigate', res.newPageUri);
+      triggerGlobal('notify', { duration: 4, message: `Siden er flyttet fra ${originalUri} til ${newUri}` });
+      triggerGlobal('navigate', res.newPageUri);
     });
   }
 

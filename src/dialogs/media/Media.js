@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { listenToGlobal, stopListenToGlobal, triggerGlobal } from 'nocms-events';
 import ImageFolders from '../../media/ImageFolders';
 import I, { dictionary } from '../../i18n/Internationalization';
 import Button from '../../atoms/Button';
@@ -35,11 +35,11 @@ export default class Media extends Component {
   }
 
   componentDidMount() {
-    events.listenTo('nocms.image-selected', this.onImageSelect);
+    listenToGlobal('nocms.image-selected', this.onImageSelect);
   }
 
   componentWillUnmount() {
-    events.stopListenTo('nocms.image-selected', this.onImageSelect);
+    stopListenToGlobal('nocms.image-selected', this.onImageSelect);
   }
 
   onFinish() {
@@ -72,7 +72,7 @@ export default class Media extends Component {
         large: this.state.largeDevice,
       };
     }
-    events.trigger('nocms.value-changed', `${this.props.scope}`, image);
+    triggerGlobal('nocms.value-changed', `${this.props.scope}`, image);
     this.props.onClose();
   }
 

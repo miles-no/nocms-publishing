@@ -1,7 +1,7 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import cloudinary from '../utils/cloudinary';
 import I from '../i18n/Internationalization';
 
@@ -13,7 +13,7 @@ export default class ImageThumbnail extends Component {
   }
 
   onClick() {
-    events.trigger('nocms.image-selected', { publicId: this.props.publicId, format: this.props.format });
+    triggerGlobal('nocms.image-selected', { publicId: this.props.publicId, format: this.props.format });
   }
 
   render() {

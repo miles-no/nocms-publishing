@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'nocms-forms';
 import ajax from 'nocms-ajax';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
 import I, { dictionary } from '../i18n/Internationalization';
 import nocmsConfig from '../../../../nocms_config';
@@ -73,7 +73,7 @@ export default class CreatePage extends Component {
         return;
       }
 
-      events.trigger('navigate', res.pageData.uri, res.pageData);
+      triggerGlobal('navigate', res.pageData.uri, res.pageData);
       cb();
     });
   }

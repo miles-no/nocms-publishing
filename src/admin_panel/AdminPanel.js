@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import CreatePage from '../dialogs/CreatePage';
 import { dictionary } from '../i18n/Internationalization';
 import IconButton from '../atoms/IconButton';
@@ -44,7 +44,7 @@ export default class AdminPanel extends Component {
     if (allowedInTemplate) {
       const components = this.props.pageData.components || [];
       components.push({ type, id: urlUtils.forComponent(type) });
-      events.trigger('nocms.value-changed', 'components', components);
+      triggerGlobal('nocms.value-changed', 'components', components);
       const componentId = `s${(components.length - 1)}`;
       setTimeout(() => {
         const elem = document.getElementById(componentId);

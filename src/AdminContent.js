@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import events from 'nocms-events';
+import { listenToGlobal, triggerGlobal } from 'nocms-events';
 import moment from 'moment';
 import { Icon } from 'nocms-atoms';
 import shortcuts from 'nocms-shortcuts';
@@ -33,20 +33,20 @@ export default class AdminContent extends Component {
     this.togglePanel = this.togglePanel.bind(this);
     this.onAddSection = this.onAddSection.bind(this);
 
-    events.listenToGlobal('edit-mode-changed', (editMode) => {
+    listenToGlobal('edit-mode-changed', (editMode) => {
       this.setState({ editMode });
     });
-    events.listenToGlobal('nocms.page-changed', (e) => {
+    listenToGlobal('nocms.page-changed', (e) => {
       const notFoundUri = e.pageData.exception && e.pageData.exception.statusCode === 404 ? e.pageData.exception.uri || '/' : null;
       this.setState({ pageData: e.pageData, notFoundUri, showCreateNotFound: notFoundUri !== null });
     });
-    events.listenToGlobal('nocms.pagedata-updated', (pageData) => {
+    listenToGlobal('nocms.pagedata-updated', (pageData) => {
       this.setState({ pageData });
     });
-    events.listenToGlobal('page_not_found', (url) => {
+    listenToGlobal('page_not_found', (url) => {
       this.setState({ showCreateNotFound: true, notFoundUri: url });
     });
-    events.listenToGlobal('nocms.client-loaded', (url, pageData) => {
+    listenToGlobal('nocms.client-loaded', (url, pageData) => {
       this.setState({ showCreateNotFound: false, notFoundUri: null, pageData });
     });
 
@@ -65,7 +65,7 @@ export default class AdminContent extends Component {
   componentDidMount() {
     const isIdUrl = (window.location.pathname + window.location.search).match(/^\/\?pageId=[a-f0-9-]+&rev=([\d]+)$/);
     if (isIdUrl) {
-      events.triggerGlobal('notify', { message: `Viser versjon ${isIdUrl[1]} av denne siden.` });
+      triggerGlobal('notify', { message: `Viser versjon ${isIdUrl[1]} av denne siden.` });
     }
   }
 
@@ -98,7 +98,7 @@ export default class AdminContent extends Component {
     this.setState({ editMode, hidePanel: false }, () => {
       document.documentElement.classList.toggle(menuOpenClass);
     });
-    events.triggerGlobal('nocms.toggle-edit', editMode);
+    triggerGlobal('nocms.toggle-edit', editMode);
   }
 
   togglePanel() {

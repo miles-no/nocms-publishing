@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AriaModal from 'react-aria-modal';
 import { Icon } from 'nocms-atoms';
-import events from 'nocms-events';
+import { listenToGlobal, stopListenToGlobal } from 'nocms-events';
 import IconButton from './IconButton';
 import { dictionary } from '../i18n/Internationalization';
 
@@ -18,7 +18,7 @@ export default class ModalDialog extends Component {
       modalActive: props.modalActive,
       instructionsOpen: false,
     };
-    events.listenTo('nocms.close-modal', this.closeModal);
+    listenToGlobal('nocms.close-modal', this.closeModal);
   }
 
   componentWillReceiveProps(newProps) {
@@ -26,7 +26,7 @@ export default class ModalDialog extends Component {
   }
 
   componentWillUnmount() {
-    events.stopListenTo('nocms.close-modal', this.closeModal);
+    stopListenToGlobal('nocms.close-modal', this.closeModal);
   }
 
   onModalEnter() {

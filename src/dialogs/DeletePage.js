@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
-import events from 'nocms-events';
+import { triggerGlobal } from 'nocms-events';
 import I, { dictionary } from '../i18n/Internationalization';
 import Button from '../atoms/Button';
 
@@ -31,8 +31,8 @@ export default class DeletePage extends Component {
         return;
       }
 
-      events.trigger('notify', `Siden på ${this.props.uri} ble slettet`);
-      events.trigger('navigate', '/');
+      triggerGlobal('notify', `Siden på ${this.props.uri} ble slettet`);
+      triggerGlobal('navigate', '/');
     });
   }
 
