@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --watch",
     "prepare": "babel ./src --out-dir ./lib --source-maps --presets env,react",
     "eslint": "eslint --ext .js, .jsx .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -54,8 +53,7 @@
     "eslint-plugin-react": "^7.4.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "semantic-release": "^8.2.0",
-    "webpack": "^3.8.1"
+    "semantic-release": "^8.2.0"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
