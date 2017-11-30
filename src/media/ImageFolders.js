@@ -64,4 +64,4 @@ ImageFolders.contextTypes = {
   config: PropTypes.object,
 };
 
-module.exports = ImageFolders;
+export default ImageFolders;

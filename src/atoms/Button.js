@@ -41,4 +41,4 @@ Button.defaultProps = {
   className: '',
 };
 
-module.exports = Button;
+export default Button;

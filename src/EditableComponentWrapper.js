@@ -27,4 +27,4 @@ EditableComponentWrapper.propTypes = {
   components: PropTypes.array,
 };
 
-module.exports = EditableComponentWrapper;
+export default EditableComponentWrapper;

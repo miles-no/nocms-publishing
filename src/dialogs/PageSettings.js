@@ -74,5 +74,3 @@ PageSettings.defaultProps = {
   lang: 'no',
   metaDescription: '',
 };
-
-module.exports = PageSettings;

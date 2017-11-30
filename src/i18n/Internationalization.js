@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const dictionary = require('./dictionary');
+import dictionary from './index';
 
 const Internationalization = (props, context) => {
   return <span>{dictionary(props.children, context.lang)}</span>;
@@ -15,6 +14,6 @@ Internationalization.propTypes = {
   children: PropTypes.node,
 };
 
-Internationalization.dictionary = dictionary;
-
-module.exports = Internationalization;
+// Internationalization.dictionary = dictionary;
+export { dictionary };
+export default Internationalization;

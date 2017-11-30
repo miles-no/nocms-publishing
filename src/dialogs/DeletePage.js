@@ -76,5 +76,3 @@ DeletePage.defaultProps = {
   pageTitle: '',
   lang: 'no',
 };
-
-module.exports = DeletePage;

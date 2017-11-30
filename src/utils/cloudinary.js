@@ -63,7 +63,7 @@ const getResponsiveImgUrl = (cloudName, transformation, image, aspectRatio) => {
   return imgUrl;
 };
 
-module.exports = {
+export default {
   url,
   getImageUrl,
   getImageOptions,

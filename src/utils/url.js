@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 
-module.exports = {
+export default {
   forComponent: (componentType) => {
     const id = uuid.v4();
     return `https://nocms/${componentType}/${id}`;

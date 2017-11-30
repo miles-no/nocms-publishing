@@ -13,7 +13,6 @@ import MenuSectionWrapper from './MenuSectionWrapper';
 import NotificationArea from './notifications/NotificationArea';
 import Applications from './Applications';
 import PublishPage from '../dialogs/PublishPage';
-// import templateComponents from '../../../data/templateComponents';
 import AddSection from '../section/AddSection';
 import urlUtils from '../utils/url';
 
@@ -25,9 +24,6 @@ const logout = (e) => {
 export default class AdminPanel extends Component {
   constructor(props) {
     super(props);
-    this.viewPages = this.viewPages.bind(this);
-    this.createPage = this.createPage.bind(this);
-    this.viewSettings = this.viewSettings.bind(this);
     this.onAdminDropdown = this.onAdminDropdown.bind(this);
     this.onAddSection = this.onAddSection.bind(this);
     this.state = {
@@ -40,43 +36,45 @@ export default class AdminPanel extends Component {
   }
 
   onAddSection(type) {
-    const { templateComponents, pageData } = this.props;
-    const allowedInTemplate = (templateComponents[pageData.templateId].indexOf(type) > -1);
-    if (allowedInTemplate) {
-      const components = this.props.pageData.components || [];
-      components.push({ type, id: urlUtils.forComponent(type) });
-      triggerGlobal('nocms.value-changed', 'components', components);
-      const componentId = `s${(components.length - 1)}`;
-      setTimeout(() => {
-        const elem = document.getElementById(componentId);
-        // @TODO: Finn en erstatning for smoothscroll, den er altfor inngripende
-        // smoothscroll(elem);
-        elem.classList.add('fade-in');
-        elem.click();
-      }, 0);
+    const { pageData, onAddSection } = this.props;
+    const components = pageData.components || [];
+    const name = type.name;
+    components.push({ name, id: urlUtils.forComponent(type) });
+    triggerGlobal('nocms.value-changed', 'components', components);
+    const componentId = `s${(components.length - 1)}`;
+    setTimeout(() => {
+      const elem = document.getElementById(componentId);
+      // @TODO: Finn en erstatning for smoothscroll, den er altfor inngripende
+      // smoothscroll(elem);
+      elem.classList.add('fade-in');
+      elem.click();
+    }, 0);
 
-      if (typeof this.props.onAddSection === 'function') {
-        this.props.onAddSection(type);
-      }
+    if (typeof onAddSection === 'function') {
+      onAddSection(type);
     }
   }
 
   getAdminRoles(publisher) {
+    const { lang } = this.context;
     const claims = publisher.claims;
     const roles = [];
     if (claims.publisher) {
-      roles.push(dictionary('publiserer', this.context.lang));
+      roles.push(dictionary('publiserer', lang));
     }
     if (claims.admin) {
-      roles.push(dictionary('administrator', this.context.lang));
+      roles.push(dictionary('administrator', lang));
     }
     return roles.join(', ');
   }
 
   render() {
-    const { templateComponents, pageData } = this.props;
+    const { templates, sections, languages, pageData, folders } = this.props;
+    const { lang } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
-    const availableComponentList = templateComponents[pageData.templateId] || [];
+    const template = templates.find((obj) => {
+      return obj.id === pageData.templateId;
+    });
     return (
       <div className="admin-menu">
         <div className="admin-menu__header">
@@ -95,50 +93,56 @@ export default class AdminPanel extends Component {
               {this.state.adminDropdownOpen ?
                 <ul className="unstyled-list">
                   <li className="admin-menu__admin-dropdown-item">Språk: Norsk</li>
-                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary('Logg ut', this.context.lang)}</a></li>
+                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary('Logg ut', lang)}</a></li>
                 </ul> : null}
             </nav>
           </div>
         </div>
         <div className="admin-menu__toolbar-top">
           <div className="button-container button-container--center">
-            <IconButton transparent noBorder vertical text={dictionary('Alle sider', this.context.lang)} iconType="content_copy" iconSize="large" onClick={this.viewPages} />
             <AdminMenuDialog
-              instructionTitle={dictionary('Opprett en ny side', this.context.lang)}
-              instructionContent={dictionary('Opprett ny side-instruksjoner', this.context.lang)}
-              vertical iconSize="large" text={dictionary('Opprett ny side', this.context.lang)} icon="note_add"
+              instructionTitle={dictionary('Opprett en ny side', lang)}
+              instructionContent={dictionary('Opprett ny side-instruksjoner', lang)}
+              vertical iconSize="large" text={dictionary('Opprett ny side', lang)} icon="note_add"
             >
-              <CreatePage />
+              <CreatePage templates={templates} languages={languages} />
             </AdminMenuDialog>
           </div>
           <div className="admin-menu__about-page">
             <div className="admin-menu__page-info-wrapper">
               <Icon type="star_border" className="admin-menu__favourite" />
               <span className="admin-menu__page-info">
-                <div>{this.props.pageData.title}</div>
-                <div className="admin-menu__page-info-uri">{this.props.pageData.uri}</div>
+                <div>{pageData.title}</div>
+                <div className="admin-menu__page-info-uri">{pageData.uri}</div>
                 <div className="admin-menu__content-status" />
               </span>
             </div>
             <AdminMenuDialog
-              icon="publish" instructionTitle={dictionary('Publisér side', this.context.lang)}
-              instructionContent={dictionary('Publisér side-instruksjoner', this.context.lang)}
-              vertical noBorder green text={dictionary('Publiser', this.context.lang)}
+              icon="publish" instructionTitle={dictionary('Publisér side', lang)}
+              instructionContent={dictionary('Publisér side-instruksjoner', lang)}
+              vertical noBorder green text={dictionary('Publiser', lang)}
             >
-              <PublishPage {...this.props.pageData} />
+              <PublishPage {...pageData} />
             </AdminMenuDialog>
           </div>
         </div>
-        <MenuSectionWrapper folderName={dictionary('Rediger side', this.context.lang)}><EditPage pageData={this.props.pageData} /></MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary('Sideinformasjon', this.context.lang)}>
-          <SiteInfo {...this.props.pageData} />
+        <MenuSectionWrapper folderName={dictionary('Rediger side', lang)}>
+          <EditPage pageData={pageData} />
         </MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary('Forhåndsvis', this.context.lang)}><PreviewPage pageData={this.props.pageData} /></MenuSectionWrapper>
+        <MenuSectionWrapper folderName={dictionary('Sideinformasjon', lang)}>
+          <SiteInfo {...pageData} templates={templates} />
+        </MenuSectionWrapper>
+        <MenuSectionWrapper folderName={dictionary('Forhåndsvis', lang)}><PreviewPage pageData={pageData} /></MenuSectionWrapper>
         <Applications claims={publisherInfo.claims} />
         <div className="button-container button-container--center">
           <div className="admin_menu__add-section-container">
-            {availableComponentList.length > 0 ?
-              <AddSection sections={availableComponentList} onClick={this.onAddSection} />
+            {template.sections.length > 0 ?
+              <AddSection
+                sections={template.sections}
+                onClick={this.onAddSection}
+                template={template}
+                folders={folders}
+              />
               : null}
           </div>
         </div>
@@ -151,7 +155,10 @@ export default class AdminPanel extends Component {
 AdminPanel.propTypes = {
   pageData: PropTypes.object,
   onAddSection: PropTypes.func,
-  templateComponents: PropTypes.object,
+  templates: PropTypes.array,
+  sections: PropTypes.array,
+  languages: PropTypes.array,
+  folders: PropTypes.array,
 };
 
 AdminPanel.contextTypes = {

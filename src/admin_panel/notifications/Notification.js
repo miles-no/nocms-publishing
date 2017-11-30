@@ -16,4 +16,4 @@ Notification.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-module.exports = Notification;
+export default Notification;

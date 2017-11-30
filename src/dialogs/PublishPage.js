@@ -139,5 +139,3 @@ PublishPage.defaultProps = {
   lang: 'no',
   metaDescription: '',
 };
-
-module.exports = PublishPage;

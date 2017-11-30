@@ -1,7 +1,7 @@
-const dictionary = require('./dictionary');
+import dictionary from './dictionary';
 
 // @TODO Dictionary should get lang from global scope
-module.exports = (phraseKey, lang) => {
+export default (phraseKey, lang) => {
   if (!dictionary[phraseKey] || !dictionary[phraseKey][lang]) {
     return phraseKey;
   }

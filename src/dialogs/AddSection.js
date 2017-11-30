@@ -1,47 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SectionFolderList from '../section/SectionFolderList';
-// import templateSectionCategories from '../../../data/templateSectionCategories';
-
-const filter = function filter(sections, templateSectionCategories) {
-  const tmpData = {};
-  for (const section of sections) {
-    tmpData[section] = true;
-  }
-
-  const list = [];
-  for (const category of templateSectionCategories) {
-    const filteredSections = [];
-    for (const section of category.sections) {
-      if (tmpData[section]) {
-        filteredSections.push(section);
-      }
-    }
-
-    if (filteredSections.length > 0) {
-      list.push({
-        name: category.name,
-        sections: filteredSections,
-      });
-    }
-  }
-
-  return list;
-};
 
 const AddSection = (props) => {
-  const { sections, onClick, templateSectionCategories } = props;
-  const list = filter(sections, templateSectionCategories);
+  console.log(props);
+  const { onClick, template, folders } = props;
 
   return (
-    <SectionFolderList list={list} onClick={onClick} />
+    <SectionFolderList
+      onClick={onClick}
+      list={template.sections}
+      folders={folders}
+    />
   );
 };
 
 AddSection.propTypes = {
   onClick: PropTypes.func.isRequired,
-  sections: PropTypes.array,
-  templateSectionCategories: PropTypes.object,
+  template: PropTypes.object,
+  folders: PropTypes.array,
 };
 
-module.exports = AddSection;
+export default AddSection;

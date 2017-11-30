@@ -30,6 +30,7 @@ export default class AddSection extends Component {
   }
 
   render() {
+    const { sections, template, folders } = this.props;
     // @TODO: How should we represent instructions
     const instructionTitle = dictionary('Legg til en ny seksjon på siden', this.context.lang);
     const instructionContent = dictionary('Legg til en ny seksjon på siden-instruksjoner', this.context.lang);
@@ -50,7 +51,9 @@ export default class AddSection extends Component {
         >
           <AddSectionDialog
             onClick={this.onSectionClick}
-            sections={this.props.sections}
+            sections={sections}
+            template={template}
+            folders={folders}
           />
         </ModalDialog>
       </span>
@@ -61,6 +64,8 @@ export default class AddSection extends Component {
 AddSection.propTypes = {
   onClick: PropTypes.func.isRequired,
   sections: PropTypes.array,
+  template: PropTypes.object,
+  folders: PropTypes.array,
 };
 
 AddSection.contextTypes = {

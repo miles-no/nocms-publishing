@@ -90,5 +90,3 @@ MovePage.propTypes = {
 
 MovePage.defaultProps = {
 };
-
-module.exports = MovePage;

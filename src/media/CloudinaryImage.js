@@ -34,4 +34,4 @@ CloudinaryImage.contextTypes = {
   config: PropTypes.object,
 };
 
-module.exports = CloudinaryImage;
+export default CloudinaryImage;

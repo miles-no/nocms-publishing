@@ -6,7 +6,7 @@ import { Icon } from 'nocms-atoms';
 import shortcuts from 'nocms-shortcuts';
 import utils from 'nocms-utils';
 import ToolBarIcon from './atoms/ToolBarIcon';
-import { dictionary } from './i18n/Internationalization';
+import dictionary from './i18n/Internationalization';
 import AdminPanel from './admin_panel/AdminPanel';
 
 const menuOpenClass = 'admin-menu--open';
@@ -118,6 +118,7 @@ export default class AdminContent extends Component {
   }
 
   render() {
+    const { templates, sections, languages, folders } = this.props;
     const togglePanelMarkup = this.getTogglePanelButton();
     const className = this.state.hidePanel ? 'closed' : 'open';
 
@@ -125,11 +126,25 @@ export default class AdminContent extends Component {
       <div key="admin-panel" className={`admin-panel admin-panel--${className}`}>
         {togglePanelMarkup}
         <ToolBarIcon pageData={this.state.pageData} toggleEdit={this.toggleEdit} />
-        <AdminPanel pageData={this.state.pageData} onAddSection={this.onAddSection} />
+        <AdminPanel
+          pageData={this.state.pageData}
+          templates={templates}
+          sections={sections}
+          languages={languages}
+          onAddSection={this.onAddSection}
+          folders={folders}
+        />
       </div>
     );
   }
 }
+
+AdminContent.propTypes = {
+  templates: PropTypes.array,
+  sections: PropTypes.array,
+  languages: PropTypes.array,
+  folders: PropTypes.array,
+};
 
 AdminContent.childContextTypes = {
   editMode: PropTypes.bool,

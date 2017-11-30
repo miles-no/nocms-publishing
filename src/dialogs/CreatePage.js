@@ -5,7 +5,6 @@ import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
 import I, { dictionary } from '../i18n/Internationalization';
-// import nocmsConfig from '../../../../nocms_config';
 
 const store = 'nocms-create-page-dialog';
 
@@ -83,10 +82,11 @@ export default class CreatePage extends Component {
   }
 
   render() {
-    const { nocmsConfig } = this.props;
-    const lang = this.context.lang;
-    const site = this.context.adminConfig.site;
-    const templateOptions = nocmsConfig.templates.map((tmpl) => { return { label: tmpl.name, value: tmpl.id }; });
+    const { templates, languages } = this.props;
+    // lang is undefined
+    const { lang, adminConfig } = this.context;
+    const site = adminConfig.site;
+    const templateOptions = templates.map((tmpl) => { return { label: tmpl.name.no, value: tmpl.id }; });
     return (
       <div className="modal__content modal__content--centered">
         <div className="nocms-admin-form">
@@ -136,7 +136,7 @@ export default class CreatePage extends Component {
               name="lang"
               emptyLabel={dictionary('Velg språk', this.context.lang)}
               label={dictionary('Sidespråk', this.context.lang)}
-              options={nocmsConfig.languages}
+              options={languages}
               errorText={dictionary('Du må angi språk', this.context.lang)}
             />
           </Form>
@@ -153,5 +153,6 @@ CreatePage.contextTypes = {
 };
 
 CreatePage.propTypes = {
-  nocmsConfig: PropTypes.object,
+  templates: PropTypes.array,
+  languages: PropTypes.array,
 };

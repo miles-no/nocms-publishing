@@ -53,4 +53,4 @@ ImageTags.contextTypes = {
   config: PropTypes.object,
 };
 
-module.exports = ImageTags;
+export default ImageTags;

@@ -86,4 +86,4 @@ IconButton.defaultProps = {
   noBorder: false,
 };
 
-module.exports = IconButton;
+export default IconButton;

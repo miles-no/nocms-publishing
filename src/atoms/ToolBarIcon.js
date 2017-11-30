@@ -26,4 +26,4 @@ ToolBarIcon.contextTypes = {
   editMode: PropTypes.bool,
 };
 
-module.exports = ToolBarIcon;
+export default ToolBarIcon;
