@@ -1,6 +1,6 @@
 {
   "name": "nocms-publishing",
-  "version": "1.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "Publisher interface for NoCMS",
   "main": "lib/index.js",
   "scripts": {
