@@ -39,7 +39,10 @@ export default class AdminPanel extends Component {
     const { pageData, onAddSection } = this.props;
     const components = pageData.components || [];
     const name = type.name;
-    components.push({ name, id: urlUtils.forComponent(type) });
+    components.push({
+      type: name,
+      id: urlUtils.forComponent(type.name),
+    });
     triggerGlobal('nocms.value-changed', 'components', components);
     const componentId = `s${(components.length - 1)}`;
     setTimeout(() => {
