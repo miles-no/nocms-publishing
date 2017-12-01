@@ -72,7 +72,7 @@ export default class AdminPanel extends Component {
   }
 
   render() {
-    const { templates, sections, languages, pageData, folders } = this.props;
+    const { templates, languages, pageData, folders } = this.props;
     const { lang } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
     const template = templates.find((obj) => {
