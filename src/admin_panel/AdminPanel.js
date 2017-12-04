@@ -42,6 +42,9 @@ export default class AdminPanel extends Component {
     components.push({
       type: name,
       id: urlUtils.forComponent(type.name),
+      label: type.label,
+      description: type.description,
+      icon: type.icon,
     });
     triggerGlobal('nocms.value-changed', 'components', components);
     const componentId = `s${(components.length - 1)}`;
