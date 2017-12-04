@@ -7,13 +7,23 @@ const EditableComponentWrapper = (props) => {
   const {
     children,
     components,
+    sections,
   } = props;
   const editableComponents = children.map((component, idx) => {
     if (!components[idx].id) {
       components[idx].id = urlUtils.forComponent(components[idx].type);
     }
-
-    return <EditableComponent key={components[idx].id} componentIndex={idx} label={components[idx].type} components={components}>{component}</EditableComponent>;
+    const sectionData = sections.find((section) => {
+      return section.name === components[idx].type;
+    });
+    return (<EditableComponent
+      key={components[idx].id}
+      componentIndex={idx}
+      label={sectionData.label}
+      components={components}
+    >
+      {component}
+    </EditableComponent>);
   });
   return (
     <div className="edit-mode__wrapper">
@@ -25,6 +35,7 @@ const EditableComponentWrapper = (props) => {
 EditableComponentWrapper.propTypes = {
   children: PropTypes.array,
   components: PropTypes.array,
+  sections: PropTypes.array,
 };
 
 export default EditableComponentWrapper;
