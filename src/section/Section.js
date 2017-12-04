@@ -39,6 +39,6 @@ export default class Section extends Component {
 }
 
 Section.propTypes = {
-  section: PropTypes.string,
+  section: PropTypes.object,
   onClick: PropTypes.func,
 };
