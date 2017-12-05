@@ -86,7 +86,9 @@ export default class CreatePage extends Component {
     // lang is undefined
     const { lang, adminConfig } = this.context;
     const site = adminConfig.site;
-    const templateOptions = templates.map((tmpl) => { return { label: tmpl.name.no, value: tmpl.id }; });
+    const templateOptions = templates
+      .filter((tmpl) => { return tmpl.siteTemplate; })
+      .map((tmpl) => { return { label: tmpl.name.no, value: tmpl.id }; });
     return (
       <div className="modal__content modal__content--centered">
         <div className="nocms-admin-form">
