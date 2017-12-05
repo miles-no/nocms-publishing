@@ -24,16 +24,18 @@ const SectionFolderList = (props) => {
       }
     });
   });
-  const folderItems = categoriesList.map((folder, idx) => {
-    return (
-      <SectionFolder
-        folder={folder}
-        onClick={onClick}
-        isOpen={idx === 0}
-        key={folder.id}
-      />
-    );
-  });
+  const folderItems = categoriesList
+    .filter((folder) => { return (folder.sections.length !== 0); })
+    .map((folder, idx) => {
+      return (
+        <SectionFolder
+          folder={folder}
+          onClick={onClick}
+          isOpen={idx === 0}
+          key={folder.id}
+        />
+      );
+    });
 
   return (
     <ul className="folders unstyled-list">
