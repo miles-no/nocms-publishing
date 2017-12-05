@@ -12,7 +12,7 @@ const SiteInfo = (props) => {
         <dt><I>Versjon</I></dt>
         <dd>{revision}</dd>
         <dt><I>Maltype</I></dt>
-        <dd>{template[0].name}</dd>
+        <dd><I>{template.name}</I></dd>
         <dt><I>Opprettet</I></dt>
         <dd>{moment(publishedDate).format('L')}</dd>
         <dt><I>Opprettet av</I></dt>
