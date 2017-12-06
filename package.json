@@ -9,7 +9,7 @@
     "eslint": "eslint --ext .js, .jsx .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "build-js": "babel ./src --out-dir ./lib --source-maps --presets env,react",
-    "build-css": "postcss --config ./postcss.config.js --output lib/styles/index.css styles/index.css"
+    "build-css": "postcss --config ./postcss.config.js --output lib/index.css styles/index.css"
   },
   "repository": {
     "type": "git",
