@@ -1,0 +1,155 @@
+/* ==========================================================================
+Button styles.
+This is for the publisher's interface. Intented to be separate from skin.
+========================================================================== */
+.admin-button {
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.admin-button__primary {
+  color: var(--white);
+  background-color: var(--admin-primary);
+  border: 1px solid var(--white);
+  text-decoration: none;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: var(--padding-large);
+  &:hover,
+  &:focus {
+    border: 1px solid var(--admin-green);
+    background-color: var(--admin-primary);
+  }
+}
+
+.admin-button__icon {
+  border: 1px solid var(--dark-grey);
+  background-color: var(--admin-primary);
+  color: var(--white);
+  padding: 5px;
+  height: 36px;
+  width: 36px;
+  font-size: 24px;
+  &:focus,
+  &:active,
+  &:hover {
+    color: var(--admin-peach);
+    background-color: var(--admin-primary);
+  }
+  &.button--large {
+    height: 48px;
+    width: 48px;
+  }
+  &.button--xlarge {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.admin-button__text-icon {
+  display: flex;
+  align-items: center;
+  & span:first-child {
+    margin-right: var(--margin-medium);
+  }
+  &:hover,
+  &:focus,
+  &:hover .material-icons,
+  &:focus .material-icons {
+    color: var(--admin-peach);
+  }
+}
+
+.admin-button__text-icon--vertical {
+  border: none;
+  flex-direction: column;
+  align-items: center;
+  color: var(--admin-button-text);
+  & .material-icons {
+    color: var(--white);
+  }
+}
+
+.admin-button__icon-only {
+  background-color: transparent;
+  border: none;
+  &:focus,
+  &:active,
+  &:hover {
+    color: var(--admin-peach);
+    background: transparent;
+  }
+}
+
+.admin-button__icon:disabled {
+  color: var(--dark-grey);
+  &:focus,
+  &:active,
+  &:hover {
+    cursor: default;
+    color: var(--dark-grey);
+  }
+}
+
+.admin-button__add-image {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  background: var(--admin-primary);
+  padding:  var(--padding-small) var(--padding-medium);
+  z-index: 1;
+  & .admin-button__icon .material-icons {
+    color: white;
+  }
+  & .admin-button__icon:hover .material-icons ,
+  & .admin-button__icon:focus .material-icons {
+    color: var(--peach);
+  }
+}
+
+.admin-button--transparent {
+  border: 1px solid var(--white);
+  color: var(--white);
+  background-color: transparent !important;
+}
+
+.admin-button--dark {
+  background-color: var(--admin-primary);
+  color: var(--white);
+  border: 1px solid var(--admin-primary);
+  &:hover,
+  &:focus {
+    border-color: var(--admin-green);
+    background-color: var(--admin-primary);
+  }
+}
+
+.admin-button--dark.admin-button--transparent {
+  color: var(--slate);
+  &:hover,
+  &:focus {
+    color: var(--admin-green);
+  }
+}
+
+.admin-button--noBorder {
+  border: none !important;
+  &:hover,
+  &:active,
+  &:focus {
+    border: none;
+  }
+}
+
+.admin-button--green .material-icons {
+  color: var(--admin-green);
+}
+
+.button-container {
+
+}
+
+.button-container--center {
+  display: flex;
+  justify-content: center;
+}

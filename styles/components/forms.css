@@ -1,0 +1,35 @@
+/****** Overrides from forms styles according to admin design ********/
+.nocms-admin-form .form__button-container .button__primary {
+  color: var(--white);
+  background-color: var(--admin-primary);
+  border: 1px solid var(--white);
+  text-decoration: none;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: var(--padding-large);
+  margin-top: 0;
+  &:hover,
+  &:focus {
+    border: 1px solid var(--admin-green);
+    background-color: var(--admin-primary);
+  }
+}
+.modal .form__button-container {
+  margin-left: 0 !important;
+  left: 0;
+}
+
+.form__control-group--compressed {
+  margin-top: -10px;
+  & .form__label {
+    font-size: 80%;
+    margin-left: 5px;
+    &:after {
+      content: "";
+    }
+  }
+  & input {
+    width: auto !important;
+    display: inline-block;
+  }
+}

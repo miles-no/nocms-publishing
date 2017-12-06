@@ -1,13 +1,15 @@
 {
   "name": "nocms-publishing",
-  "version": "1.1.0",
+  "version":"0.0.0-semantic-release",
   "description": "Publisher interface for NoCMS",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "babel ./src --out-dir ./lib --source-maps --presets env,react",
+    "prepare": "npm run build-js && npm run build-css",
     "eslint": "eslint --ext .js, .jsx .",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "build-js": "babel ./src --out-dir ./lib --source-maps --presets env,react",
+    "build-css": "postcss --config ./postcss.config.js --output lib/styles/index.css styles/index.css"
   },
   "repository": {
     "type": "git",
@@ -50,6 +52,10 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "postcss-cli": "^4.1.1",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "postcss-url": "^7.3.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "semantic-release": "^8.2.0"

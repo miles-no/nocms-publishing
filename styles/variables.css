@@ -1,0 +1,140 @@
+:root{
+  /* =================================
+  Colors
+  ================================= */
+  --white: #ffffff;
+  --black: #000000;
+  --slate: #414A52;
+  --light-slate: #5E6265;
+  --light-grey: #F4F6F9;
+  --dark-grey: #8A9097;
+  --teal: #7AE2DE;
+  --dark-teal: #71D5D2;
+  --porcelain: #E5E7E9;
+  --placeholder: #9197a3;
+  --smoke: #f4f4f4;
+  --peach: #F06A48;
+
+/* ===================================
+  Admin (own variables sheet?)
+  ================================= */
+  --admin-primary: #303030;
+  --admin-primary_expanded: #3D3D3D;
+  --admin-tool_active: #4E4E4E;
+  --admin-button-border: #95989A;
+  --admin-button-text: #95989A;
+  --admin-dialog: #EEEEEE;
+  --admin-secondary: #f4f4f4;
+  --admin-green: #00FFA7;
+  --admin-peach: #F06A48;
+  --admin-border: #4E4E4E;
+  --admin-beige: #e8e6e4;
+  --light-slate: #5E6265;
+  /* =================================
+  Typography (copy-paste from internet design...)
+  ================================== */
+  --sans-serif: Raleway, Verdana, Arial, sans-serif;
+  --serif: Montserrat, Georgia, 'Times New Roman', serif;
+  --light: 300;
+  --normal: 400;
+  --semibold: 500;
+  --bold: 600;
+  --strong: 700;
+  --italic: italic;
+
+  --font-size-h1: 45px;
+  --font-size-h2: 32px;
+  --font-size-h3: 20px;
+  --font-size-h4: 15px;
+  --font-size-h5: 13px;
+  --font-size-base: 16px;
+  --font-size-footer: 14px;
+  --font-size-nav: 13px;
+  --font-size-search-input: 13px;
+  --font-size-tag: 13px;
+  --font-size-smalltext: 13px;
+  --font-size-button: 13px;
+  --font-size-hero-large: 72px;
+  --responsive-h1: 40px;
+  --line-height-h1: 68px;
+  --base-line-height: 27px;
+  --line-height-article-header: 30px;
+
+  --text-color: var(--slate);
+
+  /* =================================
+  Padding
+  ================================= */
+  --padding-xsmall: 1px;
+  --padding-small: 5px;
+  --padding-medium: 10px;
+  --padding-large: 20px;
+  --padding-xlarge: 30px;
+
+  /* =================================
+  Margin
+  ================================= */
+  --margin-xsmall: 1px;
+  --margin-small: 5px;
+  --margin-medium: 10px;
+  --margin-large: 15px;
+  --margin-xlarge: 20px;
+  --margin-xxlarge: 50px;
+
+  /* =================================
+  Borders
+  ================================= */
+  --border-radius-small: 1px;
+  --border-radius-medium: 4px;
+  --border-radius-large: 8px;
+
+  /* =================================
+  Side space
+  ================================= */
+  --side-space-small: 10px;
+  --side-space-medium: 20px;
+  --side-space-large: 30px;
+  --side-space-xlarge: 60px;
+
+  /* =================================
+  Buttons
+  ================================= */
+  --btn-font-weight: normal;
+  --btn-font-size: var(--base-font-size);
+  --btn-bg-color: var(--white);
+  --btn-bg-active-color: var(--light-grey);
+  --btn-color: var(--text-color);
+  --btn-border: 1px solid var(--slate);
+  --btn-text-align: center;
+  --btn-border-radius: var(--border-radius-small);
+
+  /* =================================
+  Forms
+  ================================= */
+  --input-border: 1px solid var(--slate);
+  --input-border-radius: var(--border-radius-small);
+  --input-bg-color: var(--white);
+  --input-box-shadow: none;
+  --select-height: 2.25rem;
+
+  --readonly-bg-color: #eee;
+  --readonly-color: #777;
+  --readonly-border-color: #ccc;
+
+  --disabled-bg-color: #eaeded;
+  --disabled-color: #cad2d3;
+
+  /* =================================
+  Media queries
+  ================================== */
+  --breakpoint-sm: 500px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+@custom-media --breakpoint-sm (width > 500px);
+@custom-media --breakpoint-md (width > 767px);
+@custom-media --breakpoint-lg (width > 1024px);
+@custom-media --breakpoint-xl (width > 1280px);
+@custom-media --breakpoint-xxl (width > 1300px);

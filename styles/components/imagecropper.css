@@ -1,0 +1,76 @@
+@import "../thirdParts/cropperjs";
+
+.cropper-modal {
+    background-color: var(--admin-beige);
+    opacity: 0.5;
+}
+
+.cropper-view-box {
+    outline: 1px solid var(--admin-button-border);
+}
+
+.cropper-bg {
+    background: var(--admin-beige);
+}
+
+.image-cropper__placeholder {
+  max-height: 500px;
+  max-width: 100%;
+}
+
+.image-cropper__zoom-in,
+.image-cropper__zoom-out {
+  position: absolute;
+  top: 2px;
+}
+
+.image-cropper__zoom-out {
+  left: 0;
+}
+
+.image-cropper__zoom-in {
+  right: 0;
+}
+
+.image-cropper__slider-container {
+  margin: 10px 50px;
+  padding: 4px 40px;
+  position: relative;
+}
+
+.image-cropper__slider-container button {
+  border: 0;
+  background: none;
+}
+
+.image-cropper__slider {
+  height: 30px;
+}
+
+.image-cropper__slider .handle.active {
+  background-color: var(--admin-peach);
+}
+
+.image-cropper__slider .bar {
+  background-color: var(--admin-peach);
+}
+
+.image-cropper__slider .bar.bar-1 {
+  background: var(--slate);
+}
+
+.image-cropper__slider .bar {
+  top: 14px;
+  height: 2px;
+}
+
+.image-cropper__slider .handle {
+  top: 1px;
+  width: 30px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  background-color: var(--admin-peach);
+  cursor: pointer;
+  border-radius: 14px;
+}

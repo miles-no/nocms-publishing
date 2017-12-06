@@ -1,0 +1,19 @@
+.edit-mode--active {
+  & .quote {
+    & .quote__wrapper {
+      & .quote__image {
+        display: block;
+        margin: 0 0 0 auto;
+      }
+      & cite {
+        margin-bottom: var(--margin-xlarge);
+        & input {
+          width: auto;
+          max-width: 90%;
+          max-width: calc(100%-10px);
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

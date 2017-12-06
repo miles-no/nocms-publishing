@@ -1,0 +1,15 @@
+dt {
+  display: inline;
+  &:after {
+    content: ":";
+  }
+}
+
+dd {
+  display: inline;
+  margin-left: 5px;
+  &:after {
+  	content: '\A';
+  	white-space: pre;
+  }
+}
