@@ -4,7 +4,7 @@ import moment from 'moment';
 import I from '../i18n/Internationalization';
 
 const SiteInfo = (props) => {
-  const { templateId, createdBy, published, publishedDate, revision, templates } = props;
+  const { templateId, createdBy, published, created, revision, templates } = props;
   const template = templates.find((obj) => { return obj.id === templateId; });
   return (
     <div className="admin-menu__site-info">
@@ -13,9 +13,9 @@ const SiteInfo = (props) => {
         <dd>{revision}</dd>
         <dt><I>Maltype</I></dt>
         <dd><I>{template.name}</I></dd>
-        <dt><I>Opprettet</I></dt>
-        <dd>{moment(publishedDate).format('L')}</dd>
-        <dt><I>Opprettet av</I></dt>
+        <dt><I>Endret</I></dt>
+        <dd>{moment(created).format('L')}</dd>
+        <dt><I>Endret av</I></dt>
         <dd>{createdBy}</dd>
         { published ?
           <span>
@@ -31,7 +31,7 @@ SiteInfo.propTypes = {
   templateId: PropTypes.string,
   createdBy: PropTypes.string,
   published: PropTypes.bool,
-  publishedDate: PropTypes.string,
+  created: PropTypes.string,
   revision: PropTypes.number,
   templates: PropTypes.array,
 };
