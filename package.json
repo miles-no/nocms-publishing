@@ -33,7 +33,7 @@
     "nocms-atoms": "^1.2.0",
     "nocms-events": "^1.2.0",
     "nocms-forms": "^3.6.3",
-    "nocms-image-cropper": "^1.1.0",
+    "nocms-image-cropper": "^1.2.0",
     "nocms-shortcuts": "^1.0.1",
     "nocms-utils": "^1.1.1",
     "prop-types": "^15.6.0",
@@ -62,7 +62,8 @@
     "semantic-release": "^8.2.3"
   },
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0"
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
   },
   "release": {
     "verifyConditions": "condition-circle"
