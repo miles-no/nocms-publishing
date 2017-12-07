@@ -50,7 +50,7 @@ export default class MovePage extends Component {
   }
 
   render() {
-    const initialState = { pageId: this.props.pageId };
+    const initialState = { pageId: this.props.pageId, uri: this.props.uri };
     const lang = this.context.lang;
     return (
       <div className="modal__content modal__content--centered">
@@ -66,7 +66,6 @@ export default class MovePage extends Component {
               name="uri"
               required
               label={dictionary('Ny side-URI', this.context.lang)}
-              value={this.props.uri}
               validate="notEmpty"
               errorText={dictionary('Siden må ha en URL', this.context.lang)}
             />
