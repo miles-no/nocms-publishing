@@ -33,3 +33,13 @@
     display: inline-block;
   }
 }
+
+form > div {
+  margin-bottom: 15px;
+}
+
+.form__button-container--center {
+  display: flex;
+  justify-content: center;
+}
+
