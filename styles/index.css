@@ -1,5 +1,6 @@
 
 @import "./variables.css";
+@import "./elements/global.css";
 @import "components/editor.css";
 @import "components/elements.css";
 @import "components/editMode.css";
@@ -15,4 +16,14 @@
 @import "components/thumbnail.css";
 @import "components/menu.css";
 @import "components/spinner.css";
-@import "./overrides.css";
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

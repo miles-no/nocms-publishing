@@ -1,0 +1,48 @@
+<!doctype html>
+<head>
+	<title>nocms-publish</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="build/css/example.css" />
+</head>
+<body>
+	<div class="container">
+    <h1>Demo</h1>
+    <div id="adminPanel"/>
+	</div>
+	<div id="nocms.config" style="display:none;">{"messageApi":"/message","widgetApi":"/widgets","cloudinaryCloudName":"miles","pdfFolders":["Pdf"],"peopleApi":"http://192.168.4.245:3000/people","publisherLoginUrl":"/publishing","publisherLogoutUrl":"/publishing/sign-out","authenticationCookieName":"nocms-authenticated","nocmsUserInfoCookieName":"nocms-user","userCookieName":"end-user-authenticated","pageTitlePostfix":" - Miles","googleAnalyticsId":"UA-55208-1"}</div>	
+	<div id="nocms.adminConfig" style="display:none;">{"segments":["Kunde","Kandidat"],"enableABTesting":true,"sites":[{"name":"in","domains":["milesdev.in:3080"],"lang":"en"},{"name":"no","domains":["milesdev.no:3080","localhost:3080"],"lang":"no"}],"lang":"no","site":"no"}</div>
+	<script>
+			window.NoCMS = {};
+			window.NoCMS.getNoCMSUserInfo = () => {
+				return {
+					id: "wenche.tollevsen@miles.no",
+					name: "Wenche Tollevsen", 
+					email: "wenche.tollevsen@miles.no", 
+					photo: "https://lh4.googleusercontent.com/-Slze07v3qfM/AAAAAAAAAAI/AAAAAAAAAAs/ME0Wwj3PRH0/photo.jpg",
+					claims: {
+						admin: true,
+						employee: true,
+						milesCampAdmin: true,
+						publisher: true,
+					}
+				}
+			}
+			window.NoCMS.getPageData = () => {
+				return {
+					componentData: {},
+					created: "2017-04-11T10:58:54.898Z",
+					createdBy: "wenche.tollevsen@miles.no",
+					lang: "no",
+					pageId: "5c89cdd7-3494-40a3-8abb-d5c14aecd136",
+					pageTitle: "Kontakt",
+					published: false,
+					revision: 1,
+					site: "no",
+					templateId: "newsPage",
+					uri: "/kontakt",
+				}
+			}
+		</script>
+	<script src="./build/app.js"></script>
+</body>

@@ -68,8 +68,7 @@ export default class MovePage extends Component {
               label={dictionary('Ny side-URI', this.context.lang)}
               validate="notEmpty"
               errorText={dictionary('Siden må ha en URL', this.context.lang)}
-            /> 
-
+            />
           </Form>
         </div>
       </div>
