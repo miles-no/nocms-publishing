@@ -5,6 +5,11 @@ This is for the publisher's interface. Intented to be separate from skin.
 .admin-button {
   display: inline-block;
   letter-spacing: 1px;
+    &:hover,
+    &:focus {
+    border: 1px solid var(--admin-tool_active);
+    background-color: var(--dark-slate);
+  }
 }
 
 .admin-button__primary {
@@ -14,7 +19,7 @@ This is for the publisher's interface. Intented to be separate from skin.
   text-decoration: none;
   line-height: 1;
   text-transform: uppercase;
-  padding: var(--padding-large);
+  padding: var(--spacing-medium);
   &:hover,
   &:focus {
     border: 1px solid var(--admin-green);
@@ -30,12 +35,6 @@ This is for the publisher's interface. Intented to be separate from skin.
   height: 36px;
   width: 36px;
   font-size: 24px;
-  &:focus,
-  &:active,
-  &:hover {
-    color: var(--admin-peach);
-    background-color: var(--admin-primary);
-  }
   &.button--large {
     height: 48px;
     width: 48px;
@@ -50,13 +49,7 @@ This is for the publisher's interface. Intented to be separate from skin.
   display: flex;
   align-items: center;
   & span:first-child {
-    margin-right: var(--margin-medium);
-  }
-  &:hover,
-  &:focus,
-  &:hover .material-icons,
-  &:focus .material-icons {
-    color: var(--admin-peach);
+    margin-right: var(--spacing-small);
   }
 }
 
@@ -65,6 +58,9 @@ This is for the publisher's interface. Intented to be separate from skin.
   flex-direction: column;
   align-items: center;
   color: var(--admin-button-text);
+  & span:first-child {
+    margin-right: 0;
+  }
   & .material-icons {
     color: var(--white);
   }
@@ -73,12 +69,6 @@ This is for the publisher's interface. Intented to be separate from skin.
 .admin-button__icon-only {
   background-color: transparent;
   border: none;
-  &:focus,
-  &:active,
-  &:hover {
-    color: var(--admin-peach);
-    background: transparent;
-  }
 }
 
 .admin-button__icon:disabled {
@@ -96,7 +86,7 @@ This is for the publisher's interface. Intented to be separate from skin.
   position: absolute;
   right: 0;
   background: var(--admin-primary);
-  padding:  var(--padding-small) var(--padding-medium);
+  padding:  var(--spacing-small) var(--spacing-medium);
   z-index: 1;
   & .admin-button__icon .material-icons {
     color: white;
@@ -110,7 +100,12 @@ This is for the publisher's interface. Intented to be separate from skin.
 .admin-button--transparent {
   border: 1px solid var(--white);
   color: var(--white);
-  background-color: transparent !important;
+  background-color: transparent;
+    &:hover,
+    &:focus {
+      border: 1px solid var(--admin-tool_active);
+      background-color: var(--dark-slate);
+  }
 }
 
 .admin-button--dark {
@@ -133,21 +128,13 @@ This is for the publisher's interface. Intented to be separate from skin.
 }
 
 .admin-button--noBorder {
-  border: none !important;
-  &:hover,
-  &:active,
-  &:focus {
-    border: none;
-  }
+  border: 1px solid transparent;
 }
 
 .admin-button--green .material-icons {
   color: var(--admin-green);
 }
 
-.button-container {
-
-}
 
 .button-container--center {
   display: flex;

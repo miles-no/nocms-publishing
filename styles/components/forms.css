@@ -6,7 +6,7 @@
   text-decoration: none;
   line-height: 1;
   text-transform: uppercase;
-  padding: var(--padding-large);
+  padding: var(--spacing-medium);
   margin-top: 0;
   &:hover,
   &:focus {

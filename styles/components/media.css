@@ -1,5 +1,5 @@
 .image-folder {
-  margin-bottom: var(--margin-large);
+  margin-bottom: var(--spacing-large);
   &:last-child {
     margin-bottom: 200px;
   }
@@ -27,7 +27,7 @@
 }
 
 .form__label {
-  margin-right: var(--margin-small);
+  margin-right: var(--spacing-small);
   &:after {
     content: ":";
   }
@@ -89,7 +89,7 @@
 
   .media__details {
     width: 30%;
-    padding-left: var(--padding-large);
+    padding-left: var(--spacing-large);
     & input {
       width: 100%;
     }

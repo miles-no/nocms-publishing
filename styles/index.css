@@ -1,29 +1,18 @@
-
-@import "./variables.css";
-@import "./elements/global.css";
-@import "components/editor.css";
-@import "components/elements.css";
-@import "components/editMode.css";
-@import "components/forms.css";
-@import "components/buttons.css";
-@import "components/media.css";
-@import "components/tabs.css";
-@import "components/dialog.css";
-@import "components/imagecropper.css";
-@import "components/esi.css";
-@import "components/quote.css";
-@import "components/folders.css";
-@import "components/thumbnail.css";
-@import "components/menu.css";
-@import "components/spinner.css";
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
+@import "nocms-base-styles";
+@import "./variables";
+@import "./elements/global";
+@import "components/editor";
+@import "components/elements";
+@import "components/editMode";
+@import "components/forms";
+@import "components/buttons";
+@import "components/media";
+@import "components/tabs";
+@import "components/dialog";
+@import "components/imagecropper";
+@import "components/esi";
+@import "components/quote";
+@import "components/folders";
+@import "components/thumbnail";
+@import "components/menu";
+@import "components/spinner";

@@ -6,7 +6,7 @@
         margin: 0 0 0 auto;
       }
       & cite {
-        margin-bottom: var(--margin-xlarge);
+        margin-bottom: var(--spacing-xlarge);
         & input {
           width: auto;
           max-width: 90%;

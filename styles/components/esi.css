@@ -1,7 +1,7 @@
 .edit-mode--active {
   & .esi__button-container {
     display: flex;
-    margin: var(--margin-medium);
+    margin: var(--spacing-medium);
   }
   & .esi__content-container {
     min-height: 60px;

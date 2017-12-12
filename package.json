@@ -32,6 +32,7 @@
     "moment": "^2.19.3",
     "nocms-ajax": "^1.0.0",
     "nocms-atoms": "^1.2.0",
+    "nocms-base-styles": "^1.1.1",
     "nocms-events": "^1.2.0",
     "nocms-forms": "^3.7.0",
     "nocms-image-cropper": "^1.2.0",

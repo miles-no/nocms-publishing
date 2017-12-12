@@ -35,15 +35,22 @@ export default class PreviewPage extends Component {
   }
 
   render() {
+    const menuItemClass = 'admin-menu__item';    
     return (
       <div>
-        <div className="admin-menu__edit">
-          <div className="admin-menu__about-page">
-            <div className="admin-menu__page-info-wrapper">
-              <IconButton iconType="phone_iphone" text={dictionary('Mobil', this.context.adminLang)} transparent noBorder onClick={this.previewMobile} />
-              <IconButton iconType="tablet_mac" text={dictionary('Tablet', this.context.adminLang)} transparent noBorder onClick={this.previewTablet} />
-              <IconButton iconType="tablet" text={dictionary('Tablet', this.context.adminLang)} transparent noBorder onClick={this.previewTabletLandscape} />
-            </div>
+        <div className="admin-menu__preview">
+          <div className="admin-menu__actions">
+            <ul className="unstyled-list">
+              <li className={menuItemClass}>
+                <IconButton iconType="phone_iphone" text={dictionary('Mobil', this.context.adminLang)} transparent noBorder onClick={this.previewMobile} />
+              </li>
+              <li className={menuItemClass}>
+                <IconButton iconType="tablet_mac" text={dictionary('Tablet', this.context.adminLang)} transparent noBorder onClick={this.previewTablet} />
+              </li>
+              <li className={menuItemClass}>
+                <IconButton iconType="tablet" text={dictionary('Tablet', this.context.adminLang)} transparent noBorder onClick={this.previewTabletLandscape} />
+              </li>
+            </ul>
           </div>
         </div>
       </div>

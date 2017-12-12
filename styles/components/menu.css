@@ -39,8 +39,8 @@
   border: 1px solid var(--admin-border);
   text-transform: uppercase;
   color: var(--admin-button-text);
-  padding: var(--margin-small);
-  margin-right: var(--margin-medium);
+  padding: var(--spacing-small);
+  margin-right: var(--spacing-medium);
 }
 
 .admin-panel {
@@ -55,7 +55,8 @@
   z-index: 99;
   background-color: var(--admin-primary);
   color: var(--admin-secondary);
-  font-size: 80%;
+  font-size: 80% !important;
+  line-height: 1.5rem;
   padding-top: 38px;
 }
 
@@ -88,6 +89,7 @@ button.admin-panel__open {
 
 .admin-menu--open .admin-panel {
   right: 0px;
+  padding: var(--spacing-medium);
 }
 
 .admin-menu--open {
@@ -110,20 +112,15 @@ button.admin-panel__open {
 }
 
 .admin-menu__toolbar-top {
-  margin-bottom: var(--margin-large);
-  border-bottom: 1px solid var(--admin-border);
   & button {
-    margin: var(--margin-large);
-  }
-  & button:last-child {
-    margin-right: 0;
+    margin: var(--spacing-large) 0;
   }
 }
 
 .admin-menu__header {
   display: flex;
   justify-content: space-between;
-  padding: var(--padding-medium);
+  padding: var(--spacing-medium) 0;
   align-items: center;
   border-bottom: 1px solid var(--admin-border);
 }
@@ -158,34 +155,41 @@ button.admin-panel__open {
 }
 
 .admin-menu__admin-dropdown-item {
-  padding: var(--padding-small) var(--padding-medium);
+  padding: var(--spacing-small) var(--spacing-medium);
   color: var(--admin-primary);
 }
 
 .admin-menu__header-avatar {
-  margin-right: var(--margin-medium);
-  width: 46px;
-  height: 46px;
+  margin-right: var(--spacing-medium);
+  width: 58px;
+  height: 58px;
+  border: 3px solid white;
 }
 .admin-menu__edit,
-.admin-menu__site-info {
-  padding: 0 var(--padding-large);
+.admin-menu__site-info,
+.admin-menu__preview {
+  margin-top: var(--spacing-small);
+}
+
+.admin-menu__page-info {
+  font-size: 80%;
+  line-height: 1rem;
 }
 
 .admin-menu__title {
   border-bottom: 1px solid var(--admin-border);
   text-transform: uppercase;
   color: var(--admin-button-text);
-  margin: 0 var(--margin-xlarge) var(--margin-large) var(--margin-xlarge);
 }
 
 .admin-menu__actions {
-  margin: var(--margin-xlarge) var(--margin-small) var(--margin-xlarge) var(--margin-xlarge);
+  padding-left: var(--spacing-large);
+  padding-top: var(--spacing-small);
   & .admin-menu__item-button {
     border: none;
-    margin: var(--margin-small) 0;
+    margin: var(--spacing-small) 0;
     & .material-icons {
-      padding: var(--padding-small);
+      padding: var(--spacing-small);
     }
   }
 }
@@ -194,7 +198,7 @@ button.admin-panel__open {
   display: flex;
   align-items: flex-start;
   & .admin-menu__favourite {
-    margin-right: var(--margin-large);
+    margin-right: var(--spacing-large);
   }
 }
 
@@ -213,20 +217,20 @@ button.admin-panel__open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: var(--padding-medium);
+  padding-bottom: var(--spacing-small);
   border-bottom: 1px solid var(--admin-border);
 }
 
 .admin_menu__add-section-container {
-  margin: var(--margin-xxlarge) 0;
+  margin-top: var(--spacing-medium);
 }
 
 .admin-menu__notification {
-  padding: var(--padding-large);
+  padding: var(--spacing-large);
 }
 
 .admin-menu__notification-icon {
-  margin-right: var(--margin-small);
+  margin-right: var(--spacing-small);
   margin-top: 4px;
 }
 

@@ -6,14 +6,10 @@
   --black: #000000;
   --slate: #414A52;
   --light-slate: #5E6265;
+  --dark-slate: #393939;
   --light-grey: #F4F6F9;
   --dark-grey: #8A9097;
-  --teal: #7AE2DE;
-  --dark-teal: #71D5D2;
-  --porcelain: #E5E7E9;
   --placeholder: #9197a3;
-  --smoke: #f4f4f4;
-  --peach: #F06A48;
 
 /* ===================================
   Admin (own variables sheet?)
@@ -62,24 +58,6 @@
 
   --text-color: var(--slate);
 
-  /* =================================
-  Padding
-  ================================= */
-  --padding-xsmall: 1px;
-  --padding-small: 5px;
-  --padding-medium: 10px;
-  --padding-large: 20px;
-  --padding-xlarge: 30px;
-
-  /* =================================
-  Margin
-  ================================= */
-  --margin-xsmall: 1px;
-  --margin-small: 5px;
-  --margin-medium: 10px;
-  --margin-large: 15px;
-  --margin-xlarge: 20px;
-  --margin-xxlarge: 50px;
 
   /* =================================
   Borders
@@ -89,12 +67,15 @@
   --border-radius-large: 8px;
 
   /* =================================
-  Side space
+  Spacing
   ================================= */
-  --side-space-small: 10px;
-  --side-space-medium: 20px;
-  --side-space-large: 30px;
-  --side-space-xlarge: 60px;
+  --spacing-xxsmall: 1px;
+  --spacing-xsmall: 5px;
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 30px;
+  --spacing-xlarge: 60px;
+  --spacing-xxlarge: 80px;
 
   /* =================================
   Buttons

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'nocms-atoms';
 import { triggerGlobal } from 'nocms-events';
 import CreatePage from '../dialogs/CreatePage';
 import { dictionary } from '../i18n/Internationalization';
@@ -12,7 +11,6 @@ import PreviewPage from './PreviewPage';
 import MenuSectionWrapper from './MenuSectionWrapper';
 import NotificationArea from './notifications/NotificationArea';
 import Applications from './Applications';
-import PublishPage from '../dialogs/PublishPage';
 import AddSection from '../section/AddSection';
 import urlUtils from '../utils/url';
 
@@ -106,49 +104,35 @@ export default class AdminPanel extends Component {
             <AdminMenuDialog
               instructionTitle={dictionary('Opprett en ny side', lang)}
               instructionContent={dictionary('Opprett ny side-instruksjoner', lang)}
-              vertical iconSize="large" text={dictionary('Opprett ny side', lang)} icon="note_add"
+              vertical iconSize="large" text={dictionary('Ny side', lang)} icon="note_add"
             >
               <CreatePage templates={templates} languages={languages} />
             </AdminMenuDialog>
           </div>
-          <div className="admin-menu__about-page">
-            <div className="admin-menu__page-info-wrapper">
-              <Icon type="star_border" className="admin-menu__favourite" />
-              <span className="admin-menu__page-info">
-                <div>{pageData.title}</div>
-                <div className="admin-menu__page-info-uri">{pageData.uri}</div>
-                <div className="admin-menu__content-status" />
-              </span>
-            </div>
-            <AdminMenuDialog
-              icon="publish" instructionTitle={dictionary('Publisér side', lang)}
-              instructionContent={dictionary('Publisér side-instruksjoner', lang)}
-              vertical noBorder green text={dictionary('Publiser', lang)}
-            >
-              <PublishPage {...pageData} />
-            </AdminMenuDialog>
-          </div>
         </div>
-        <MenuSectionWrapper folderName={dictionary('Rediger side', lang)}>
+        <MenuSectionWrapper folderName={dictionary('Rediger side', lang)} startOpen>
           <EditPage pageData={pageData} />
+          <div className="button-container button-container--center">
+            <div className="admin_menu__add-section-container">
+              {template.sections.length > 0 ?
+                <AddSection
+                  sections={template.sections}
+                  onClick={this.onAddSection}
+                  template={template}
+                  folders={folders}
+                />
+                : null}
+            </div>
+          </div>
         </MenuSectionWrapper>
         <MenuSectionWrapper folderName={dictionary('Sideinformasjon', lang)}>
           <SiteInfo {...pageData} templates={templates} />
         </MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary('Forhåndsvis', lang)}><PreviewPage pageData={pageData} /></MenuSectionWrapper>
+        <MenuSectionWrapper folderName={dictionary('Forhåndsvis', lang)}>
+          <PreviewPage pageData={pageData} />
+        </MenuSectionWrapper>
         <Applications claims={publisherInfo.claims} />
-        <div className="button-container button-container--center">
-          <div className="admin_menu__add-section-container">
-            {template.sections.length > 0 ?
-              <AddSection
-                sections={template.sections}
-                onClick={this.onAddSection}
-                template={template}
-                folders={folders}
-              />
-              : null}
-          </div>
-        </div>
+        
         <NotificationArea />
       </div>
     );

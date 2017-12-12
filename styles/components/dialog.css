@@ -11,13 +11,13 @@
 
 .modal__body {
   background-color: var(--admin-beige);
-  padding: var(--padding-xlarge) var(--padding-xlarge) 150px var(--padding-xlarge);
+  padding: var(--spacing-xlarge) var(--spacing-xlarge) 150px var(--spacing-xlarge);
 }
 
 .modal__header {
   display: flex;
   align-items: center;
-  padding: var(--padding-medium) var(--padding-small);
+  padding: var(--spacing-medium) var(--spacing-small);
   background-color: var(--admin-primary);
   border-bottom: 1px solid var(--admin-border);
 }
@@ -26,7 +26,7 @@
 .modal .form__button-container {
   display: flex;
   justify-content: center;
-  padding: var(--padding-large) var(--padding-large);
+  padding: var(--spacing-large) var(--spacing-large);
   background-color: var(--admin-primary);
   position: fixed;
   bottom: 0;
@@ -37,7 +37,7 @@
 
 .modal__title {
   margin: 0;
-  margin-left: var(--margin-xxlarge);
+  margin-left: var(--spacing-xxlarge);
   text-transform: uppercase;
   color: var(--white);
   font-size: 16px;
@@ -45,13 +45,13 @@
   align-items: center;
   line-height: 1;
   & .material-icons {
-    margin-right: var(--margin-small);
+    margin-right: var(--spacing-small);
   }
 }
 
 .modal__instructions {
   background-color: var(--admin-primary);
-  padding: var(--padding-large);
+  padding: var(--spacing-large);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,14 +68,14 @@
   background-color: var(--white);
   color: black;
   display: flex;
-  margin-top: var(--margin-large);
+  margin-top: var(--spacing-large);
   & p {
     margin-top: 0;
   }
 }
 
 .modal__body-title {
-  margin: var(--margin-xlarge);
+  margin: var(--spacing-xlarge);
   color: var(--white);
   font-size: 20px;
   display: flex;
