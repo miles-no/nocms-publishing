@@ -57,7 +57,6 @@
   color: var(--admin-secondary);
   font-size: 80% !important;
   line-height: 1.5rem;
-  padding-top: 38px;
 }
 
 .admin-panel--closed .admin-edit {
@@ -66,13 +65,16 @@
 }
 
 button.admin-panel__toggle {
+  text-transform: uppercase;
+  font-size: 80%;
   position: absolute;
   display: flex;
+  flex-direction: column;
   align-items: center;
   line-height: 1;
-  width: 100px;
+  width: 50px;
   top: 0;
-  right: 5px;
+  right: 0;
   transition: all 0.5s ease;
   border: 1px solid var(--admin-border);
   color: var(--admin-button-text);
@@ -80,7 +82,7 @@ button.admin-panel__toggle {
 }
 
 button.admin-panel__open {
-  left: -100px;
+  left: -50px;
 }
 .admin-menu {
   max-height: 100%;
@@ -89,7 +91,7 @@ button.admin-panel__open {
 
 .admin-menu--open .admin-panel {
   right: 0px;
-  padding: var(--spacing-medium);
+  padding: 50px var(--spacing-medium);
 }
 
 .admin-menu--open {
@@ -113,14 +115,14 @@ button.admin-panel__open {
 
 .admin-menu__toolbar-top {
   & button {
-    margin: var(--spacing-large) 0;
+    margin: var(--spacing-small) 0;
   }
 }
 
 .admin-menu__header {
   display: flex;
   justify-content: space-between;
-  padding: var(--spacing-medium) 0;
+  padding-bottom: var(--spacing-small);
   align-items: center;
   border-bottom: 1px solid var(--admin-border);
 }
@@ -133,7 +135,8 @@ button.admin-panel__open {
 
 .admin-menu__publisher-name,
 .admin-menu__publisher-role {
-  display: block;
+  line-height: 1rem;
+  display: inline-block;
 }
 
 .admin-menu__publisher-name {
@@ -147,9 +150,9 @@ button.admin-panel__open {
 .admin-menu__admin-dropdown {
   background-color: var(--white);
   box-shadow: 0 3px 6px rgba(0,0,0,.2);
-  top: 25px;
+  top: 35px;
   position: absolute;
-  right: 15px;
+  right: 25px;
   border-radius: 3px;
   width: 140px;
 }
@@ -161,8 +164,8 @@ button.admin-panel__open {
 
 .admin-menu__header-avatar {
   margin-right: var(--spacing-medium);
-  width: 58px;
-  height: 58px;
+  width: 48px;
+  height: 48px;
   border: 3px solid white;
 }
 .admin-menu__edit,
@@ -222,7 +225,7 @@ button.admin-panel__open {
 }
 
 .admin_menu__add-section-container {
-  margin-top: var(--spacing-medium);
+  margin-top: var(--spacing-small);
 }
 
 .admin-menu__notification {
@@ -235,11 +238,22 @@ button.admin-panel__open {
 }
 
 @media (--breakpoint-md) {
+  .admin-menu__toolbar-top {
+    & button {
+      margin: var(--spacing-large) 0;
+    }
+  }
   .admin-edit {
     right: 20px;
     bottom: 20px;
   }
 
+  .admin-menu__header-avatar {
+    margin-right: var(--spacing-medium);
+    width: 48px;
+    height: 48px;
+    border: 3px solid white;
+  }
   .admin-edit__button {
     padding: 15px;
     width: 61px;
@@ -264,4 +278,9 @@ button.admin-panel__open {
   .admin-menu {
     margin-top: 0;
   }
+
+  .admin_menu__add-section-container {
+    margin-top: var(--spacing-small);
+  }
+
 }

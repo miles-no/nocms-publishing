@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ModalDialog from './atoms/ModalDialog';
 import IconButton from './atoms/IconButton';
@@ -25,7 +25,7 @@ export default class AdminMenuDialog extends Component {
       onClose: this.onClose,
     });
     return (
-      <span>
+      <Fragment>
         <IconButton
           vertical={this.props.vertical}
           green={this.props.green}
@@ -55,7 +55,7 @@ export default class AdminMenuDialog extends Component {
             {childWithProps}
           </ModalDialog>
         }
-      </span>
+      </Fragment>
     );
   }
 }

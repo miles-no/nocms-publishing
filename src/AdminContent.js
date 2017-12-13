@@ -6,7 +6,7 @@ import { Icon } from 'nocms-atoms';
 import shortcuts from 'nocms-shortcuts';
 import utils from 'nocms-utils';
 import ToolBarIcon from './atoms/ToolBarIcon';
-import dictionary from './i18n/Internationalization';
+import I, { dictionary } from './i18n/Internationalization';
 import AdminPanel from './admin_panel/AdminPanel';
 
 const menuOpenClass = 'admin-menu--open';
@@ -84,11 +84,10 @@ export default class AdminContent extends Component {
     const { hidePanel } = this.state;
     const arrowDirection = hidePanel ? 'back' : 'forward';
     const buttonState = hidePanel ? 'open' : 'close';
-    const buttonLabel = hidePanel ? dictionary('Vis meny', 'no') : dictionary('Skjul meny', 'no');
     return (
       <button className={`admin-panel__toggle admin-panel__${buttonState}`} onClick={this.togglePanel}>
-        <Icon type={`arrow_${arrowDirection}`} />
-        <span>{buttonLabel}</span>
+        <I>Meny</I>
+        <Icon type={`arrow_${arrowDirection}`} size="small" />
       </button>
     );
   }

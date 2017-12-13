@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  margin-top: var(--spacing-large);
+  margin-top: var(--spacing-small);
 }
 
 .folder__title {
@@ -84,5 +84,11 @@
   & .folder-item__content {
     background-color: var(--admin-primary);
     color: var(--white);
+  }
+}
+
+@media (--breakpoint-md) {
+  .folder__header {
+    margin-top: var(--spacing-large);
   }
 }

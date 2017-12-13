@@ -36,7 +36,7 @@ export default class AddSection extends Component {
     const instructionContent = dictionary('Legg til en ny seksjon på siden-instruksjoner', this.context.lang);
     return (
       <span>
-        <IconButton transparent onClick={this.onClick} iconType="add" text={dictionary('Legg til en ny seksjon på siden', this.context.lang)} />
+        <IconButton transparent onClick={this.onClick} iconType="add" text={dictionary('Legg til en ny seksjon', this.context.lang)} />
         <ModalDialog
           onClose={this.onClose}
           modalActive={this.state.dialogOpen}
