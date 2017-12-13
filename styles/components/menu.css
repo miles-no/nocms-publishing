@@ -57,6 +57,7 @@
   color: var(--admin-secondary);
   font-size: 80% !important;
   line-height: 1.5rem;
+  padding: 50px var(--spacing-medium);
 }
 
 .admin-panel--closed .admin-edit {
@@ -91,7 +92,6 @@ button.admin-panel__open {
 
 .admin-menu--open .admin-panel {
   right: 0px;
-  padding: 50px var(--spacing-medium);
 }
 
 .admin-menu--open {

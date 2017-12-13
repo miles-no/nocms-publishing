@@ -5,16 +5,18 @@
     border: 1px solid #d5d5d5;
   }
 
-  & select {
-    -webkit-appearance: initial;
-  }
-
   & input:focus,
-  & input:active {
+  & input:active,
+  & select:focus,
+  & select:active {
     border: 1px solid #7a7d7d;
     box-shadow: inset 0 -2px 0 0 var(--admin-green);
     background-color: #f7fffd;
   }
+}
+
+.admin-form {
+  margin-top: var(--spacing-small);
 }
 
 .admin-form__button-submit {
@@ -64,7 +66,7 @@
   & textarea,
   & select,
   & form__radio-label {
-    background-color: #fdf5f6 ;
+    background-color: #fdf5f6 !important;
     border: 1px solid var(--red);
     box-shadow: 0 0 2px 0 var(--red) ;
   }
@@ -77,6 +79,10 @@
 }
 
 @media (--breakpoint-md) {
+  .admin-form {
+    margin-top: var(--spacing-xlarge);
+  }
+
   .admin-form__label {
     display: inline-block;
     margin-bottom: var(--spacing-small);

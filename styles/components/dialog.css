@@ -121,7 +121,7 @@
   }
 
   .modal__header-title {
-    margin-left: var(--spacing-xxlarge);
+    margin-left: var(--spacing-medium);
   }
 }
 
