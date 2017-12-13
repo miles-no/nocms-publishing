@@ -11,13 +11,14 @@
 
 .modal__body {
   background-color: var(--admin-beige);
-  padding: var(--spacing-xlarge) var(--spacing-xlarge) 150px var(--spacing-xlarge);
+  padding: var(--spacing-medium);
 }
 
 .modal__header {
   display: flex;
   align-items: center;
-  padding: var(--spacing-medium) var(--spacing-small);
+  justify-content: space-between;
+  padding: var(--spacing-small);
   background-color: var(--admin-primary);
   border-bottom: 1px solid var(--admin-border);
 }
@@ -26,7 +27,7 @@
 .modal .form__button-container {
   display: flex;
   justify-content: center;
-  padding: var(--spacing-large) var(--spacing-large);
+  padding: var(--spacing-small);
   background-color: var(--admin-primary);
   position: fixed;
   bottom: 0;
@@ -35,9 +36,9 @@
   margin-bottom: 0;
 }
 
-.modal__title {
+.modal__header-title {
   margin: 0;
-  margin-left: var(--spacing-xxlarge);
+  margin-left: var(--spacing-small);
   text-transform: uppercase;
   color: var(--white);
   font-size: 16px;
@@ -49,29 +50,9 @@
   }
 }
 
-.modal__instructions {
-  background-color: var(--admin-primary);
-  padding: var(--spacing-large);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--white);
-}
-
-.modal__instruction-title {
-  margin-top: 0;
+.modal__title {
   text-align: center;
-}
-
-.modal__instruction-content {
-  padding: 10px;
-  background-color: var(--white);
-  color: black;
-  display: flex;
-  margin-top: var(--spacing-large);
-  & p {
-    margin-top: 0;
-  }
+  font-size: 1.5rem;
 }
 
 .modal__body-title {
@@ -125,6 +106,22 @@
 @media (--breakpoint-md) {
   .modal__content {
     width: 80%;
+  }
+
+  .modal__body {
+    padding: var(--spacing-xlarge) var(--spacing-xlarge) 150px var(--spacing-xlarge);
+  }
+  .modal__footer,
+  .modal .form__button-container {
+    padding: var(--spacing-large);
+  }
+
+  .modal__header {
+    padding: var(--spacing-medium) var(--spacing-small);
+  }
+
+  .modal__header-title {
+    margin-left: var(--spacing-xxlarge);
   }
 }
 

@@ -10,10 +10,7 @@
   --light-grey: #F4F6F9;
   --dark-grey: #8A9097;
   --placeholder: #9197a3;
-
-/* ===================================
-  Admin (own variables sheet?)
-  ================================= */
+  --red: #D64D4F;
   --admin-primary: #303030;
   --admin-primary_expanded: #3D3D3D;
   --admin-tool_active: #4E4E4E;
@@ -25,7 +22,7 @@
   --admin-peach: #F06A48;
   --admin-border: #4E4E4E;
   --admin-beige: #e8e6e4;
-  --light-slate: #5E6265;
+  
   /* =================================
   Typography (copy-paste from internet design...)
   ================================== */

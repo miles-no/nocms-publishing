@@ -1,12 +1,30 @@
-/****** Overrides from forms styles according to admin design ********/
-.nocms-admin-form .form__button-container .button__primary {
+.admin-form {
+  & input[type=text],
+  & select {
+    height: 48px;
+    border: 1px solid #d5d5d5;
+  }
+
+  & select {
+    -webkit-appearance: initial;
+  }
+
+  & input:focus,
+  & input:active {
+    border: 1px solid #7a7d7d;
+    box-shadow: inset 0 -2px 0 0 var(--admin-green);
+    background-color: #f7fffd;
+  }
+}
+
+.admin-form__button-submit {
   color: var(--white);
   background-color: var(--admin-primary);
   border: 1px solid var(--white);
   text-decoration: none;
   line-height: 1;
   text-transform: uppercase;
-  padding: var(--spacing-medium);
+  padding: var(--spacing-small);
   margin-top: 0;
   &:hover,
   &:focus {
@@ -14,19 +32,16 @@
     background-color: var(--admin-primary);
   }
 }
-.modal .form__button-container {
-  margin-left: 0 !important;
-  left: 0;
-}
 
-.form__control-group--compressed {
-  margin-top: -10px;
-  & .form__label {
+  .admin-form__control-group {
+    margin-top: var(--spacing-medium);
+  }
+
+.admin-form__control-group--compressed {
+  margin-top: 5px;
+  & .admin-form__label {
     font-size: 80%;
     margin-left: 5px;
-    &:after {
-      content: "";
-    }
   }
   & input {
     width: auto !important;
@@ -34,12 +49,40 @@
   }
 }
 
-form > div {
-  margin-bottom: 15px;
-}
-
-.form__button-container--center {
+.admin-form__button-container--center {
   display: flex;
   justify-content: center;
 }
 
+.modal .form__button-container {
+  margin-left: 0 !important;
+  left: 0;
+}
+
+.admin-form__error-wrapper {
+  & input[type=text],
+  & textarea,
+  & select,
+  & form__radio-label {
+    background-color: #fdf5f6 ;
+    border: 1px solid var(--red);
+    box-shadow: 0 0 2px 0 var(--red) ;
+  }
+
+  & .admin-form__error-text {
+    font-size: 0.9rem;
+    margin-top: var(--spacing-xsmall);
+    color: var(--red);
+  }
+}
+
+@media (--breakpoint-md) {
+  .admin-form__label {
+    display: inline-block;
+    margin-bottom: var(--spacing-small);
+  }
+
+  .admin-form__button-submit {
+    padding: var(--spacing-medium);
+  }
+}

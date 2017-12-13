@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'nocms-forms';
+import Field from '../atoms/Field';
+import Form from '../atoms/Form';
 import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
@@ -90,60 +91,58 @@ export default class CreatePage extends Component {
       .filter((tmpl) => { return tmpl.siteTemplate; })
       .map((tmpl) => { return { label: tmpl.name, value: tmpl.id }; });
     return (
-      <div className="modal__content modal__content--centered">
-        <div className="nocms-admin-form">
-          <Form
-            store={store}
-            submitButton={dictionary('Opprett ny side', lang)}
-            onSubmit={this.handleCreatePage}
-            initialState={{ site }}
-          >
-            <Field
-              name="pageTitle"
-              required
-              label={dictionary('Sidetittel', this.context.lang)}
-              errorText={dictionary('Du må gi siden en tittel', this.context.lang)}
-              validate="notEmpty"
-            />
-            <Field
-              name="uri"
-              required
-              label={dictionary('Side-URI', this.context.lang)}
-              validate="notEmpty"
-              readOnly={!this.state.overrideUri}
-              dependOn={!this.state.overrideUri ? 'pageTitle' : null}
-              dependencyFunc={!this.state.overrideUri ? getUriForPageTitle : null}
-              errorText={dictionary('Siden må ha en URL', this.context.lang)}
-            />
-            <div className="form__control-group form__control-group--compressed">
-              <label>
-                <input type="checkbox" onChange={this.handleOverrideUriChange} checked={this.state.overrideUri} value="1" name="overrideUri" />
-                <span className="form__label"><I>Egendefinert side-URL</I></span>
-              </label>
-            </div>
-            <Field
-              type="select"
-              required
-              name="templateId"
-              validate="notEmpty"
-              emptyLabel={dictionary('Velg sidemal', this.context.lang)}
-              label={dictionary('Sidemal', this.context.lang)}
-              options={templateOptions}
-              errorText={dictionary('Du må velge sidemal', this.context.lang)}
-            />
-            <Field
-              type="select"
-              required
-              validate="notEmpty"
-              name="lang"
-              emptyLabel={dictionary('Velg språk', this.context.lang)}
-              label={dictionary('Sidespråk', this.context.lang)}
-              options={languages}
-              errorText={dictionary('Du må angi språk', this.context.lang)}
-            />
-          </Form>
-        </div>
-      </div>
+      <Fragment>
+        <Form
+          store={store}
+          submitButtonText={dictionary('Opprett ny side', lang)}
+          onSubmit={this.handleCreatePage}
+          initialState={{ site }}
+        >
+          <Field
+            name="pageTitle"
+            required
+            label={dictionary('Sidetittel', this.context.lang)}
+            errorText={dictionary('Du må gi siden en tittel', this.context.lang)}
+            validate="notEmpty"
+          />
+          <Field
+            name="uri"
+            required
+            label={dictionary('Side-URL', this.context.lang)}
+            validate="notEmpty"
+            readOnly={!this.state.overrideUri}
+            dependOn={!this.state.overrideUri ? 'pageTitle' : null}
+            dependencyFunc={!this.state.overrideUri ? getUriForPageTitle : null}
+            errorText={dictionary('Siden må ha en URL', this.context.lang)}
+          />
+          <div className="admin-form__control-group admin-form__control-group--compressed">
+            <label>
+              <input type="checkbox" onChange={this.handleOverrideUriChange} checked={this.state.overrideUri} value="1" name="overrideUri" />
+              <span className="admin-form__label"><I>Egendefinert side-URL</I></span>
+            </label>
+          </div>
+          <Field
+            type="select"
+            required
+            name="templateId"
+            validate="notEmpty"
+            emptyLabel={dictionary('Velg sidemal', this.context.lang)}
+            label={dictionary('Sidemal', this.context.lang)}
+            options={templateOptions}
+            errorText={dictionary('Du må velge sidemal', this.context.lang)}
+          />
+          <Field
+            type="select"
+            required
+            validate="notEmpty"
+            name="lang"
+            emptyLabel={dictionary('Velg språk', this.context.lang)}
+            label={dictionary('Sidespråk', this.context.lang)}
+            options={languages}
+            errorText={dictionary('Du må angi språk', this.context.lang)}
+          />
+        </Form>
+      </Fragment>
     );
   }
 }

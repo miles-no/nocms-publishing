@@ -32,7 +32,7 @@ export default class AddSection extends Component {
   render() {
     const { sections, template, folders } = this.props;
     // @TODO: How should we represent instructions
-    const instructionTitle = dictionary('Legg til en ny seksjon på siden', this.context.lang);
+    const title = dictionary('Legg til en ny seksjon på siden', this.context.lang);
     const instructionContent = dictionary('Legg til en ny seksjon på siden-instruksjoner', this.context.lang);
     return (
       <span>
@@ -45,7 +45,7 @@ export default class AddSection extends Component {
           showHeader
           showInstructions
           titleIcon="note"
-          instructionTitle={instructionTitle}
+          title={title}
           instructionContent={instructionContent}
           titleText={dictionary('Seksjoner', this.context.lang)}
         >

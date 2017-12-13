@@ -31,7 +31,7 @@ export default class EditPdf extends Component {
 
 
   render() {
-    const instructionTitle = dictionary('Jeg ønsker å legge til en PDF-fil', this.context.lang);
+    const title = dictionary('Jeg ønsker å legge til en PDF-fil', this.context.lang);
     const instructionContent = dictionary('Legg til pdf-instruksjoner', this.context.lang);
     return (
       <span> {this.props.activeEditMode && this.context.editMode ?
@@ -45,7 +45,7 @@ export default class EditPdf extends Component {
             showInstructions
             animation
             titleIcon="picture_as_pdf"
-            instructionTitle={instructionTitle}
+            title={title}
             instructionContent={instructionContent}
             titleText={dictionary('PDF-filer', this.context.lang)}
           >

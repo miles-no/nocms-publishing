@@ -23,7 +23,7 @@ const EditPage = (props, context) => {
           </span>
         </div>
         <AdminMenuDialog
-          icon="publish" instructionTitle={dictionary('Publisér side', lang)}
+          icon="publish" title={dictionary('Publisér side', lang)}
           instructionContent={dictionary('Publisér side-instruksjoner', lang)}
           vertical noBorder green text={dictionary('Publiser', lang)}
         >
@@ -35,7 +35,7 @@ const EditPage = (props, context) => {
           <li className={menuItemClass}>
             <AdminMenuDialog
               instructionContent={dictionary('Sideinnstillinger', lang)}
-              instructionTitle={dictionary('Jeg ønsker å endre på sideinnstillingene', lang)}
+              title={dictionary('Jeg ønsker å endre på sideinnstillingene', lang)}
               text={dictionary('Sideinnstillinger', lang)} icon="settings"
             >
               <PageSettings {...pageData} />
@@ -44,7 +44,7 @@ const EditPage = (props, context) => {
           <li className={menuItemClass}>
             <AdminMenuDialog
               instructionContent={dictionary('Flytt siden', lang)}
-              instructionTitle={dictionary('Jeg ønsker å flytte siden', lang)}
+              title={dictionary('Jeg ønsker å flytte siden', lang)}
               text={dictionary('Flytt side', lang)} icon="trending_flat"
             >
               <MovePage {...pageData} />
@@ -53,7 +53,7 @@ const EditPage = (props, context) => {
           <li className={menuItemClass}>
             <AdminMenuDialog
               instructionContent={dictionary('Slett siden', lang)}
-              instructionTitle={dictionary('Jeg ønsker å slette siden', lang)}
+              title={dictionary('Jeg ønsker å slette siden', lang)}
               text={dictionary('Slett side', lang)} icon="delete"
             >
               <DeletePage {...pageData} />

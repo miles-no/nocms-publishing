@@ -44,10 +44,11 @@ export default class AdminMenuDialog extends Component {
             cover
             animation
             showHeader
+            showTitle
             showFooter
             showInstructions
             titleIcon={this.props.icon}
-            instructionTitle={this.props.instructionTitle}
+            title={this.props.title}
             instructionContent={this.props.instructionContent}
             titleText={this.props.text}
           >
@@ -63,7 +64,7 @@ AdminMenuDialog.propTypes = {
   children: PropTypes.node,
   icon: PropTypes.string,
   text: PropTypes.string,
-  instructionTitle: PropTypes.string,
+  title: PropTypes.string,
   instructionContent: PropTypes.string,
   vertical: PropTypes.bool,
   green: PropTypes.bool,

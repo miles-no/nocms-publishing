@@ -23,7 +23,7 @@ export default class EditSimpleImage extends Component {
   }
 
   render() {
-    const instructionTitle = dictionary('Jeg ønsker å legge til bilde', this.context.lang);
+    const title = dictionary('Jeg ønsker å legge til bilde', this.context.lang);
     const instructionContent = dictionary('Rediger bilde-instruksjoner', this.context.lang);
     return (
       <span> {this.props.activeEditMode && this.context.editMode ?
@@ -38,7 +38,7 @@ export default class EditSimpleImage extends Component {
             showInstructions
             animation
             titleIcon="camera_alt"
-            instructionTitle={instructionTitle}
+            title={title}
             instructionContent={instructionContent}
             titleText={dictionary('Bildefiler', this.context.lang)}
           >

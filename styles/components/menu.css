@@ -1,7 +1,7 @@
 .admin-edit {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  bottom: 10px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -14,13 +14,13 @@
   color: var(--admin-secondary);
   border: 3px solid var(--admin-secondary);
   border-radius: 50%;
-  padding: 15px;
+  padding: 10px;
   background: var(--admin-primary);
   transition: all .2s ease-in-out;
   display: flex;
   align-items: center;
   opacity: 0.8;
-  width: 61px;
+  width: 51px;
   & span {
     display: inline-block;
     height: 24px;
@@ -235,6 +235,16 @@ button.admin-panel__open {
 }
 
 @media (--breakpoint-md) {
+  .admin-edit {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .admin-edit__button {
+    padding: 15px;
+    width: 61px;
+  }
+    
   .admin-menu--open .admin-panel {
     width: 35%;
     width: calc(350px);

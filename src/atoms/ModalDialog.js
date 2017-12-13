@@ -1,17 +1,15 @@
+/* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AriaModal from 'react-aria-modal';
 import { Icon } from 'nocms-atoms';
 import { listenToGlobal, stopListenToGlobal } from 'nocms-events';
 import IconButton from './IconButton';
-import { dictionary } from '../i18n/Internationalization';
 
 export default class ModalDialog extends Component {
   constructor(props) {
     super(props);
     this.closeModal = this.closeModal.bind(this);
-    this.openInstructions = this.openInstructions.bind(this);
-    this.closeInstructions = this.closeInstructions.bind(this);
     this.onModalEnter = this.onModalEnter.bind(this);
     this.state = {
       modalHasEntered: false,
@@ -47,22 +45,13 @@ export default class ModalDialog extends Component {
     }
   }
 
-  openInstructions() {
-    this.setState({ instructionsOpen: true });
-  }
-
-  closeInstructions() {
-    this.setState({ instructionsOpen: false });
-  }
-
   render() {
     const {
       showHeader,
-      showInstructions,
-      instructionTitle,
-      instructionContent,
+      showTitle,
       titleText,
       titleIcon,
+      title,
       cover,
       children,
       animation,
@@ -74,7 +63,6 @@ export default class ModalDialog extends Component {
     if (this.props.animation && this.state.modalHasEntered) {
       modalClass += ' modal--animation-active';
     }
-
     return (
       <AriaModal
         mounted={this.state.modalActive}
@@ -87,22 +75,17 @@ export default class ModalDialog extends Component {
         <div className={modalClass}>
           {showHeader ?
             <header id="dialogHeader" className="modal__header">
-              <IconButton iconType="keyboard_backspace" iconOnly noBorder onClick={this.closeModal} />
-              <h2 className="modal__title"><Icon type={titleIcon} /><span>{titleText}</span></h2>
+              <h2 className="modal__header-title"><Icon type={titleIcon} /><span>{titleText}</span></h2>
+              <div className="modal__header-close">
+                <IconButton iconType="close" iconOnly noBorder onClick={this.closeModal} />
+              </div>
             </header> : null}
-          {showInstructions ?
-            <div className="modal__instructions">
-              <h3 className="modal__instruction-title">{instructionTitle}</h3>
-              {this.state.instructionsOpen ? <IconButton iconType="keyboard_arrow_up" onClick={this.closeInstructions} text={dictionary('Lukk hjelp', 'no')} transparent />
-                : <IconButton iconType="keyboard_arrow_down" onClick={this.openInstructions} text={dictionary('Trenger du hjelp?', 'no')} transparent />}
-              {this.state.instructionsOpen ?
-                <div className="modal__instruction-content">
-                  <Icon type="info_outline" />
-                  <p>{instructionContent}</p>
-                </div> : null}
-            </div> : null}
           <div className="modal__body">
-            {children}
+            <div className="modal__content modal__content--centered">
+              { showTitle ?
+                <h1 className="modal__title">{title}</h1> : null }
+              {children}
+            </div>
           </div>
         </div>
       </AriaModal>
@@ -112,12 +95,11 @@ export default class ModalDialog extends Component {
 
 ModalDialog.propTypes = {
   showHeader: PropTypes.bool,
+  showTitle: PropTypes.bool,
   titleText: PropTypes.string,
+  title: PropTypes.string,
   cover: PropTypes.bool,
   children: PropTypes.object,
-  showInstructions: PropTypes.bool,
-  instructionTitle: PropTypes.string,
-  instructionContent: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   animation: PropTypes.bool,
   modalActive: PropTypes.bool.isRequired,
@@ -130,7 +112,6 @@ ModalDialog.defaultProps = {
   focusElement: '',
   cover: false,
   titleText: 'Dialog',
-  showInstructions: false,
   animation: false,
   titleIcon: '',
   setBodyHeight: null,

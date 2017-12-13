@@ -102,8 +102,6 @@ export default class AdminPanel extends Component {
         <div className="admin-menu__toolbar-top">
           <div className="button-container button-container--center">
             <AdminMenuDialog
-              instructionTitle={dictionary('Opprett en ny side', lang)}
-              instructionContent={dictionary('Opprett ny side-instruksjoner', lang)}
               vertical iconSize="large" text={dictionary('Ny side', lang)} icon="note_add"
             >
               <CreatePage templates={templates} languages={languages} />

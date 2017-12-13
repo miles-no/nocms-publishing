@@ -34,7 +34,7 @@ export default class Applications extends Component {
               <li className={menuItemClass}>
                 <AdminMenuDialog
                   instructionContent={dictionary('Språk', this.context.lang)}
-                  instructionTitle={dictionary('Jeg ønsker å håndtere språk og uttrykk', this.context.lang)}
+                  title={dictionary('Jeg ønsker å håndtere språk og uttrykk', this.context.lang)}
                   text={dictionary('Språk', this.context.lang)} icon="language"
                 >
                   <iframe
@@ -54,7 +54,7 @@ export default class Applications extends Component {
               <li className={menuItemClass}>
                 <AdminMenuDialog
                   instructionContent={dictionary('Menneskene', this.context.lang)}
-                  instructionTitle={dictionary('Jeg ønsker å endre data om menneskene', this.context.lang)}
+                  title={dictionary('Jeg ønsker å endre data om menneskene', this.context.lang)}
                   text={dictionary('Menneskene', this.context.lang)} icon="people"
                 >
                   <iframe
@@ -74,7 +74,7 @@ export default class Applications extends Component {
               <li className={menuItemClass}>
                 <AdminMenuDialog
                   instructionContent={dictionary('Sosialt', this.context.lang)}
-                  instructionTitle={dictionary('Jeg ønsker å endre/legge til arrangement', this.context.lang)}
+                  title={dictionary('Jeg ønsker å endre/legge til arrangement', this.context.lang)}
                   text={dictionary('Sosialt', this.context.lang)} icon="event"
                 >
                   <iframe
