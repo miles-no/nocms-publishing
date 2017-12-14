@@ -34,9 +34,9 @@ const EditPage = (props, context) => {
         <ul className="unstyled-list">
           <li className={menuItemClass}>
             <AdminMenuDialog
-              instructionContent={dictionary('Sideinnstillinger', lang)}
               title={dictionary('Jeg ønsker å endre på sideinnstillingene', lang)}
               text={dictionary('Sideinnstillinger', lang)} icon="settings"
+              centeredwidthConstrained
             >
               <PageSettings {...pageData} />
             </AdminMenuDialog>
@@ -52,7 +52,6 @@ const EditPage = (props, context) => {
           </li>
           <li className={menuItemClass}>
             <AdminMenuDialog
-              instructionContent={dictionary('Slett siden', lang)}
               title={dictionary('Jeg ønsker å slette siden', lang)}
               text={dictionary('Slett side', lang)} icon="delete"
               centered

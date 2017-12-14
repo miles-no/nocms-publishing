@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'nocms-forms';
 import { triggerGlobal } from 'nocms-events';
 import { dictionary } from '../i18n/Internationalization';
+import Field from '../atoms/Field';
+import Form from '../atoms/Form';
 
 const storeName = 'nocms-update-page-settings';
 
@@ -23,32 +24,38 @@ export default class PageSettings extends Component {
   }
 
   render() {
+    // @TODO: from props/context
     const languages = ['no', 'en'];
+    const { adminLang } = this.context;
     return (
       <div>
         <div className="modal__content modal__content--centered">
           <Form
             store={storeName}
-            submitButton={dictionary('OK, jeg er ferdig', this.context.adminLang)}
+            submitButton={dictionary('OK, jeg er ferdig', adminLang)}
             initialState={this.initialState}
             onSubmit={this.handleUpdatePageSettings}
           >
             <Field
               name="pageTitle"
               store={storeName}
-              label={dictionary('Sidetittel', this.context.adminLang)}
+              label={dictionary('Sidetittel', adminLang)}
+              required
+              errorText="Siden må ha en tittel"
             />
             <Field
               name="metaDescription"
               store={storeName}
-              label={dictionary('Meta-beskrivelse', this.context.adminLang)}
+              label={dictionary('Meta-beskrivelse', adminLang)}
             />
             <Field
               type="select"
               store={storeName}
-              label={dictionary('Sidespråk', this.context.adminLang)}
+              label={dictionary('Sidespråk', adminLang)}
               options={languages}
               name="lang"
+              required
+              errorText="Siden må ha et språk"
             />
           </Form>
         </div>
