@@ -21,6 +21,7 @@ export default class AdminMenuDialog extends Component {
   }
 
   render() {
+    const { widthConstrained, centered } = this.props;
     const childWithProps = React.cloneElement(this.props.children, {
       onClose: this.onClose,
     });
@@ -51,6 +52,8 @@ export default class AdminMenuDialog extends Component {
             title={this.props.title}
             instructionContent={this.props.instructionContent}
             titleText={this.props.text}
+            widthConstrained={widthConstrained}
+            centered={centered}
           >
             {childWithProps}
           </ModalDialog>
@@ -69,6 +72,8 @@ AdminMenuDialog.propTypes = {
   vertical: PropTypes.bool,
   green: PropTypes.bool,
   iconSize: PropTypes.string,
+  widthConstrained: PropTypes.bool,
+  centered: PropTypes.bool,
 };
 
 AdminMenuDialog.contextTypes = {

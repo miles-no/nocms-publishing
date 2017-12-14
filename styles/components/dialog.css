@@ -104,7 +104,7 @@
 }
 
 @media (--breakpoint-md) {
-  .modal__content {
+  .modal__content--constrained {
     width: 80%;
   }
 
@@ -126,13 +126,13 @@
 }
 
 @media (--breakpoint-lg) {
-  .modal__content {
+  .modal__content--constrained {
     width: 50%;
   }
 }
 
 @media (--breakpoint-xxl) {
-  .modal__content {
+  .modal__content--constrained {
     width: 40%;
   }
 }

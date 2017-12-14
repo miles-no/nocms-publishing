@@ -55,6 +55,8 @@ export default class ModalDialog extends Component {
       cover,
       children,
       animation,
+      centered,
+      widthConstrained,
     } = this.props;
     const mainContentId = global.environment !== 'server' ? document.getElementById('mainContent') : null;
 
@@ -62,6 +64,13 @@ export default class ModalDialog extends Component {
     if (animation) { modalClass += ' modal--animation'; }
     if (this.props.animation && this.state.modalHasEntered) {
       modalClass += ' modal--animation-active';
+    }
+    let contentClass = 'modal__content';
+    if (widthConstrained) {
+      contentClass += ' modal__content--constrained';
+    }
+    if (centered) {
+      contentClass += ' modal__content--centered';
     }
     return (
       <AriaModal
@@ -81,7 +90,7 @@ export default class ModalDialog extends Component {
               </div>
             </header> : null}
           <div className="modal__body">
-            <div className="modal__content modal__content--centered">
+            <div className={contentClass}>
               { showTitle ?
                 <h1 className="modal__title">{title}</h1> : null }
               {children}
@@ -104,6 +113,8 @@ ModalDialog.propTypes = {
   animation: PropTypes.bool,
   modalActive: PropTypes.bool.isRequired,
   titleIcon: PropTypes.string,
+  centered: PropTypes.bool,
+  widthConstrained: PropTypes.bool,
 };
 
 ModalDialog.defaultProps = {

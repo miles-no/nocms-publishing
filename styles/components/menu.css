@@ -80,6 +80,12 @@ button.admin-panel__toggle {
   border: 1px solid var(--admin-border);
   color: var(--admin-button-text);
   background-color: var(--admin-primary);
+  &:hover,
+  &:active,
+  &:focus {
+    cursor: cursor;
+    background-color: var(--dark-slate);
+  }
 }
 
 button.admin-panel__open {

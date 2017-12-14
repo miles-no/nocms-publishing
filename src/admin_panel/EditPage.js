@@ -55,6 +55,8 @@ const EditPage = (props, context) => {
               instructionContent={dictionary('Slett siden', lang)}
               title={dictionary('Jeg ønsker å slette siden', lang)}
               text={dictionary('Slett side', lang)} icon="delete"
+              centered
+              widthConstrained
             >
               <DeletePage {...pageData} />
             </AdminMenuDialog>
