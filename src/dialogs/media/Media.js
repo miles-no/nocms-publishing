@@ -296,7 +296,7 @@ export default class Media extends Component {
                   <span>{fileName}</span>
                 </div>
               </div>
-              <div className="media__details">
+              <div className="media__details admin-form">
                 {this.props.targetDevices && this.state.selectedTab === 'small' ?
                   <div className="admin-form__control-group admin-form__control-group--inline">
                     <label>

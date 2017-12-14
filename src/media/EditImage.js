@@ -25,7 +25,6 @@ export default class EditImage extends Component {
   render() {
     // @TODO: How should we represent instructions
     const title = dictionary('Jeg ønsker å endre på bilde', this.context.lang);
-    const instructionContent = dictionary('Rediger bilde-instruksjoner', this.context.lang);
     return (
       <span> {this.props.activeEditMode && this.context.editMode ?
         <span className="admin-button__add-image">
@@ -40,8 +39,8 @@ export default class EditImage extends Component {
             animation
             titleIcon="camera_alt"
             title={title}
-            instructionContent={instructionContent}
             titleText={dictionary('Bildefiler', this.context.lang)}
+            showTitle
           >
             <Media
               scope={this.props.scope}

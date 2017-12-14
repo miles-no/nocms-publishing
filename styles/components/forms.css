@@ -107,6 +107,9 @@
 
     & .admin-form__control-group--inline {
       margin-bottom: var(--spacing-small);
+      & label {
+        display: flex;
+      }
       & .admin-form__label {
         margin-bottom: 0;
       }

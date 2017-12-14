@@ -14,7 +14,7 @@ export default class ImageMeta extends Component {
 
   render() {
     return (
-      <form className="admin-form">
+      <form>
         <div>
           <div className="admin-form__control-group">
             <label>

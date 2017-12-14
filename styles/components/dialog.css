@@ -109,7 +109,7 @@
   }
 
   .modal__body {
-    padding: var(--spacing-xlarge) var(--spacing-xlarge) 150px var(--spacing-xlarge);
+    padding: var(--spacing-large) var(--spacing-xlarge) 150px var(--spacing-xlarge);
   }
   .modal__footer,
   .modal .form__button-container {

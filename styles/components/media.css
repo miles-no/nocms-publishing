@@ -81,7 +81,7 @@
   transform: rotate(180deg);
 }
 
-.media__details .admin-form {
+.media__details.admin-form {
   margin-top: 0;
 }
 
