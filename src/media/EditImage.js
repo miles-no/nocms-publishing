@@ -24,7 +24,7 @@ export default class EditImage extends Component {
 
   render() {
     // @TODO: How should we represent instructions
-    const title = dictionary('Jeg ønsker å endre på bilde', this.context.lang);
+    const title = dictionary('Jeg ønsker å endre på bilde', 'no');
     return (
       <span> {this.props.activeEditMode && this.context.editMode ?
         <span className="admin-button__add-image">
