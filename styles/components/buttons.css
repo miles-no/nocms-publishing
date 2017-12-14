@@ -86,14 +86,11 @@ This is for the publisher's interface. Intented to be separate from skin.
   position: absolute;
   right: 0;
   background: var(--admin-primary);
-  padding:  var(--spacing-small) var(--spacing-medium);
+  opacity: 0.7;
   z-index: 1;
+  font-size: 80%;
   & .admin-button__icon .material-icons {
     color: white;
-  }
-  & .admin-button__icon:hover .material-icons ,
-  & .admin-button__icon:focus .material-icons {
-    color: var(--peach);
   }
 }
 

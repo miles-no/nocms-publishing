@@ -14,17 +14,17 @@ export default class ImageMeta extends Component {
 
   render() {
     return (
-      <form className="form form--admin">
+      <form className="admin-form">
         <div>
-          <div className="form__control-group">
+          <div className="admin-form__control-group">
             <label>
-              <span className="form__label"><I>Alt-tekst</I></span>
+              <span className="admin-form__label"><I>Alt-tekst</I></span>
               <input type="text" value={this.props.alt} placeholder="Kort tekst som beskriver bildet" onChange={(e) => { return this.onMetaChange(e, 'alt'); }} />
             </label>
           </div>
-          <div className="form__control-group">
+          <div className="admin-form__control-group">
             <label>
-              <span className="form__label"><I>Bildetekst</I></span>
+              <span className="admin-form__label"><I>Bildetekst</I></span>
               <input type="text" value={this.props.caption} onChange={(e) => { return this.onMetaChange(e, 'caption'); }} />
             </label>
           </div>

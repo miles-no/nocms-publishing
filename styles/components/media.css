@@ -81,6 +81,10 @@
   transform: rotate(180deg);
 }
 
+.media__details .admin-form {
+  margin-top: 0;
+}
+
 
 @media (--breakpoint-md) {
   .media__image {

@@ -29,7 +29,7 @@ export default class EditImage extends Component {
     return (
       <span> {this.props.activeEditMode && this.context.editMode ?
         <span className="admin-button__add-image">
-          <IconButton onClick={this.onClick} iconType="photo" iconOnly transparent noBorder />
+          <IconButton onClick={this.onClick} iconType="photo_camera" text="Rediger bilde" iconSize="small" transparent noBorder />
           <ModalDialog
             onClose={this.onClose}
             modalActive={this.state.dialogOpen}

@@ -298,10 +298,10 @@ export default class Media extends Component {
               </div>
               <div className="media__details">
                 {this.props.targetDevices && this.state.selectedTab === 'small' ?
-                  <div className="form__control-group">
+                  <div className="admin-form__control-group admin-form__control-group--inline">
                     <label>
-                      <span className="form__label"><I>Bruk samme bilde som på desktop & tablet</I></span>
                       <input type="checkbox" checked={this.state.sameImageAcrossDevices} onChange={this.onChangeSameImagesAcrossDevices} />
+                      <span className="admin-form__label"><I>Bruk samme bilde som på desktop & tablet</I></span>
                     </label>
                   </div> : null}
                 {!this.props.presentationalImage ?
