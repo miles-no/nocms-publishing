@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'nocms-forms';
 import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
 import { dictionary } from '../i18n/Internationalization';
+import Field from '../atoms/Field';
+import Form from '../atoms/Form';
 
 const store = 'nocms-move-page-dialog';
 
@@ -56,7 +57,7 @@ export default class MovePage extends Component {
       <div className="modal__content modal__content--centered">
         <div className="nocms-admin-form">
           <Form
-            submitButton={dictionary('Flytt siden', lang)}
+            submitButtonText={dictionary('Flytt siden', lang)}
             store={store}
             errorText={this.state.errorText}
             initialState={initialState}

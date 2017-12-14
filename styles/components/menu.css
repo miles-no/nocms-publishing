@@ -246,7 +246,7 @@ button.admin-panel__open {
 @media (--breakpoint-md) {
   .admin-menu__toolbar-top {
     & button {
-      margin: var(--spacing-large) 0;
+      margin: var(--spacing-medium) 0;
     }
   }
   .admin-edit {
