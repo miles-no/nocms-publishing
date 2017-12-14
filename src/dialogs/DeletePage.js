@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
+import { Icon } from 'nocms-atoms';
 import { triggerGlobal } from 'nocms-events';
 import I, { dictionary } from '../i18n/Internationalization';
-import Button from '../atoms/Button';
+import Field from '../atoms/Field';
+import Form from '../atoms/Form';
 
 export default class DeletePage extends Component {
   constructor(props) {
     super(props);
-    this.onFinish = this.onFinish.bind(this);
     this.handleDeletePage = this.handleDeletePage.bind(this);
+    this.state = {
+      hasError: false,
+    };
   }
 
-  onFinish() {
-    this.props.onClose();
-  }
-
-  handleDeletePage() {
+  handleDeletePage(formData, cb) {
     const messageObj = {
       messageType: 'nocms-delete-page',
       uri: this.props.uri,
@@ -27,36 +27,44 @@ export default class DeletePage extends Component {
     };
     ajax.post(this.context.config.messageApi, messageObj, options, (err) => {
       if (err) {
-        this.setState({ error: 'Sletting av side feilet.' });
+        this.setState({ hasError: true });
         return;
       }
 
       triggerGlobal('notify', `Siden på ${this.props.uri} ble slettet`);
       triggerGlobal('navigate', '/');
+      cb();
     });
   }
 
   render() {
+    const initialData = { confirm: false };
+    const confirmValidate = (value) => {
+      return value;
+    };
     return (
-      <div>
-        <div className="modal__content modal__content--centered">
-          <div className="tabs tabs--sm-stacked">
-            <ul className="tabs__header">
-              <li className="tabs__tab tabs__tab--active">Sideinformasjon</li>
-              <li className="tabs__tab">Sidehistorikk</li>
-              <li className="tabs__tab">Publiseringsdetaljer</li>
-            </ul>
-          </div>
-          <div className="nocms-admin-form">
+      <Form
+        store="delete-page"
+        submitButtonText={dictionary('Slett side', 'no')}
+        onSubmit={this.handleDeletePage}
+        initialData={initialData}
+      >
+        <div className="message message__warning">
+          <Icon type="warning" size="large" />
+          <div className="message__body">
             <p><I>Ved å slette siden, vil den fjernes fra websidene og alle aktuelle grensesnitt.</I></p>
-            <p><I>Er du sikker på at du vil slette siden</I></p>
-            <Button primary text={dictionary('Slett siden', 'no')} onClick={this.handleDeletePage} />
+            <p><I>Er du sikker på at du vil slette siden?</I></p>
           </div>
         </div>
-        <footer className="modal__footer">
-          <Button primary text={dictionary('Avbryt', 'no')} onClick={this.onFinish} />
-        </footer>
-      </div>
+        <Field
+          type="checkbox"
+          label={dictionary('Ja, jeg ønsker å slette siden', 'no')}
+          name="confirm"
+          required
+          validate={confirmValidate}
+          errorText="Du må bekrefte at du vil slette siden"
+        />
+      </Form>
     );
   }
 }
@@ -67,7 +75,6 @@ DeletePage.contextTypes = {
 };
 
 DeletePage.propTypes = {
-  onClose: PropTypes.func,
   pageId: PropTypes.string,
   uri: PropTypes.string,
 };

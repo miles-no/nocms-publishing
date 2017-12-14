@@ -1,0 +1,11 @@
+.message__warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  padding: var(--spacing-medium);
+  display: flex;
+  align-items: center;
+}
+
+.message__body {
+  margin-left: var(--spacing-medium);
+}
