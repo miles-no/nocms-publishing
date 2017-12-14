@@ -70,10 +70,10 @@ export default class SectionMenuSticky extends Component {
         <div className="edit-mode__widget-title">{label}</div>
         <div className="edit-mode__widget-buttons">
           {!sticky && componentIndex < components.length - 1 ?
-            <IconButton transparent iconOnly noBorder dark iconType="keyboard_arrow_down" onClick={() => { return this.onComponentMove('down'); }} />
+            <IconButton transparent iconOnly noBorder dark iconType="arrow_downward" onClick={() => { return this.onComponentMove('down'); }} />
             : null}
           {!sticky && componentIndex !== 0 ?
-            <IconButton transparent iconOnly noBorder dark iconType="keyboard_arrow_up" onClick={() => { return this.onComponentMove('up'); }} />
+            <IconButton transparent iconOnly noBorder dark iconType="arrow_upward" onClick={() => { return this.onComponentMove('up'); }} />
             : null}
           {!sticky ?
             <div>
@@ -88,7 +88,7 @@ export default class SectionMenuSticky extends Component {
               </nav>
             </div>
             : null}
-          <IconButton onClick={this.onEditAbortClick} iconType="check" text={dictionary('OK', this.context.lang)} dark />
+          <IconButton onClick={this.onEditAbortClick} className="text-uppercase text-small" iconSize="small" iconType="check" text={dictionary('Lukk', this.context.lang)} dark />
         </div>
       </div>
     );

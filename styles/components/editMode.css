@@ -78,10 +78,7 @@
 
 .edit-mode__widget-title {
   padding: 5px;
-  height: 38px;
   font-size: var(--font-size-smalltext);
-  line-height: 28px;
-  border-right: 1px solid var(--admin-border);
   text-transform: uppercase;
   color: var(--admin-button-text);
 }
