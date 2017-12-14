@@ -36,7 +36,7 @@ export default class EditPdf extends Component {
     return (
       <span> {this.props.activeEditMode && this.context.editMode ?
         <span className="admin-button__add-image">
-          <IconButton onClick={this.onClick} iconType="picture_as_pdf" iconOnly transparent noBorder />
+          <IconButton onClick={this.onClick} iconType="picture_as_pdf" text="Rediger PDF" iconSize="small" iconOnly transparent noBorder />
           <ModalDialog
             onClose={this.onClose}
             modalActive={this.state.dialogOpen}
@@ -48,6 +48,7 @@ export default class EditPdf extends Component {
             title={title}
             instructionContent={instructionContent}
             titleText={dictionary('PDF-filer', this.context.lang)}
+            showTitle
           >
             <Pdf
               scope={this.props.scope}
