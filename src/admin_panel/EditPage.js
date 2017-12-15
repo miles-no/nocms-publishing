@@ -36,16 +36,19 @@ const EditPage = (props, context) => {
             <AdminMenuDialog
               title={dictionary('Jeg ønsker å endre på sideinnstillingene', lang)}
               text={dictionary('Sideinnstillinger', lang)} icon="settings"
-              centeredwidthConstrained
+              centered
+              widthConstrained
             >
               <PageSettings {...pageData} />
             </AdminMenuDialog>
           </li>
           <li className={menuItemClass}>
             <AdminMenuDialog
-              instructionContent={dictionary('Flytt siden', lang)}
               title={dictionary('Jeg ønsker å flytte siden', lang)}
-              text={dictionary('Flytt side', lang)} icon="trending_flat"
+              text={dictionary('Flytt side', lang)}
+              icon="trending_flat"
+              centered
+              widthConstrained
             >
               <MovePage {...pageData} />
             </AdminMenuDialog>
