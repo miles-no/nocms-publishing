@@ -23,9 +23,14 @@ const EditPage = (props, context) => {
           </span>
         </div>
         <AdminMenuDialog
-          icon="publish" title={dictionary('Publisér side', lang)}
-          instructionContent={dictionary('Publisér side-instruksjoner', lang)}
-          vertical noBorder green text={dictionary('Publiser', lang)}
+          icon="publish" title={dictionary('Publiser side', lang)}
+          showTitle
+          vertical
+          noBorder
+          green
+          text={dictionary('Publiser', lang)}
+          centered
+          widthConstrained
         >
           <PublishPage {...pageData} />
         </AdminMenuDialog>

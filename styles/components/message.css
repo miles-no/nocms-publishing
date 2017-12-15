@@ -1,9 +1,17 @@
-.message__warning {
-  color: #9F6000;
-  background-color: #FEEFB3;
+.message {
   padding: var(--spacing-medium);
   display: flex;
   align-items: center;
+}
+
+.message__warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+
+.message__error {
+  color: #D8000C;
+  background-color: #FFBABA;
 }
 
 .message__body {

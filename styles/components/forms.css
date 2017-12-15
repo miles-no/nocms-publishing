@@ -54,7 +54,8 @@
   }
 
   & .admin-form__control-group--inline label{
-    & .admin-form__label {
+    & .admin-form__label,
+    & .form__radio-label {
       margin-left: var(--spacing-xsmall);
     }
     & input {
