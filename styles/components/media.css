@@ -3,6 +3,9 @@
   &:last-child {
     margin-bottom: 200px;
   }
+}
+
+.image-folders {
   & .admin-button--transparent,
   & .admin-button__icon {
     color: var(--admin-button-text);
@@ -12,7 +15,7 @@
     }
   }
 }
-
+ 
 .image-folder__header {
   border-bottom: 1px solid var(--admin-button-border);
   display: flex;
