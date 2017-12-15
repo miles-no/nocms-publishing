@@ -96,7 +96,7 @@ This is for the publisher's interface. Intented to be separate from skin.
 
 .admin-button--transparent {
   border: 1px solid var(--white);
-  color: var(--white);
+  color: var(--admin-button-text);
   background-color: transparent;
     &:hover,
     &:focus {

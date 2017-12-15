@@ -31,7 +31,7 @@ export default class SectionFolder extends Component {
       <li className={folderClass}>
         <div className="folder__header" onClick={this.onToggleFolder}>
           <span className="folder__title"><Icon type="folder_open" /><span><I>{folder.title}</I></span></span>
-          <IconButton transparent iconOnly dark noBorder onClick={this.onToggleFolder} iconClass="folder__icon" iconType="keyboard_arrow_down" />
+          <IconButton transparent iconOnly noBorder onClick={this.onToggleFolder} iconClass="folder__icon" iconType="keyboard_arrow_down" />
         </div>
         {this.state.isOpen ? <ul className="folder__content unstyled-list">{list}</ul> : null}
       </li>
