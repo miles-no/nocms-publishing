@@ -32,7 +32,7 @@ export default class PageSettings extends Component {
         <div className="modal__content modal__content--centered">
           <Form
             store={storeName}
-            submitButton={dictionary('OK, jeg er ferdig', adminLang)}
+            submitButtonText={dictionary('OK, jeg er ferdig', adminLang)}
             initialState={this.initialState}
             onSubmit={this.handleUpdatePageSettings}
           >
