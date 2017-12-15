@@ -70,19 +70,19 @@ export default class SectionMenuSticky extends Component {
         <div className="edit-mode__widget-title">{label}</div>
         <div className="edit-mode__widget-buttons">
           {!sticky && componentIndex < components.length - 1 ?
-            <IconButton transparent iconOnly noBorder dark iconType="arrow_downward" onClick={() => { return this.onComponentMove('down'); }} />
+            <IconButton transparent iconOnly noBorder dark iconType="arrow_downward" iconSize="small" onClick={() => { return this.onComponentMove('down'); }} />
             : null}
           {!sticky && componentIndex !== 0 ?
-            <IconButton transparent iconOnly noBorder dark iconType="arrow_upward" onClick={() => { return this.onComponentMove('up'); }} />
+            <IconButton transparent iconOnly noBorder dark iconType="arrow_upward" iconSize="small" onClick={() => { return this.onComponentMove('up'); }} />
             : null}
           {!sticky ?
             <div>
-              <IconButton transparent iconOnly noBorder dark iconType="more_vert" onClick={this.onMoreDropdown} />
+              <IconButton transparent iconOnly noBorder dark iconType="more_vert" iconSize="small" onClick={this.onMoreDropdown} />
               <nav id="adminDropdown" aria-hidden="true" className="edit-mode__more-dropdown">
                 {this.state.adminDropdownOpen ?
                   <ul className="unstyled-list">
                     <li className="edit-mode__more-dropdown-item">
-                      <IconButton onClick={this.onDeleteComponentClick} transparent dark iconType="delete" text={dictionary('Slett seksjon', this.context.lang)} />
+                      <IconButton onClick={this.onDeleteComponentClick} transparent dark iconType="delete" iconSize="small" text={dictionary('Slett seksjon', this.context.lang)} />
                     </li>
                   </ul> : null}
               </nav>
