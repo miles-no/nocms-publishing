@@ -38,12 +38,13 @@ class ImageFolders extends Component {
   }
 
   render() {
+    const { firstDefaultOpen, activeImageId } = this.props;
     const pdfFolders = this.context.config.pdfFolders;
     const folders = this.state.data
       .filter(function removePdfFolders(folder) {
         return this.indexOf(folder.name) < 0;
       }, pdfFolders)
-      .map((folder, idx) => { return <ImageFolderArchive isOpen={this.props.firstDefaultOpen && idx === 0} folderName={folder.name} key={idx} />; });
+      .map((folder, idx) => { return <ImageFolderArchive isOpen={firstDefaultOpen && idx === 0} folderName={folder.name} key={idx} activeImageId={activeImageId} />; });
     return (
       <div className="image-folders">
         {folders}
@@ -54,6 +55,7 @@ class ImageFolders extends Component {
 
 ImageFolders.propTypes = {
   firstDefaultOpen: PropTypes.bool,
+  activeImageId: PropTypes.string,
 };
 
 ImageFolders.defaultProps = {

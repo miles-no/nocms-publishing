@@ -19,6 +19,7 @@ export default class ImageThumbnail extends Component {
   render() {
     const {
       publicId,
+      activeImageId,
       width,
       height,
       format,
@@ -33,11 +34,15 @@ export default class ImageThumbnail extends Component {
     const size = `${height}x${width}px`;
     const name = publicId.substr(publicId.lastIndexOf('/') + 1);
     const fileName = `${name}.${format}`;
+    let className = 'thumbnail';
+    if (publicId === activeImageId) {
+      className += ' thumbnail--active';
+    }
     if (isPdf) {
       url = `${url}.jpg`;
     }
     return (
-      <div className="thumbnail" onClick={this.onClick}>
+      <div className={className} onClick={this.onClick}>
         <div className="admin-button admin-button--dark thumbnail__select-button">
           <I>Bruk bildet</I>
         </div>
@@ -57,6 +62,7 @@ export default class ImageThumbnail extends Component {
 
 ImageThumbnail.propTypes = {
   publicId: PropTypes.string,
+  activeImageId: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   format: PropTypes.string,

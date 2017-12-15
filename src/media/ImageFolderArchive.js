@@ -58,12 +58,22 @@ export default class ImageFolderArchive extends Component {
       isPdf,
       folderName,
       onClick,
+      activeImageId,
     } = this.props;
     let images;
     if (isPdf) {
-      images = this.state.data.map((image, idx) => { return <PdfThumbnail publicId={image.public_id} onClick={onClick} format={image.format} key={idx} />; });
+      images = this.state.data.map((image, idx) => { return <PdfThumbnail publicId={image.public_id} onClick={onClick} format={image.format} key={idx} activeImageId />; });
     } else {
-      images = this.state.data.map((image, idx) => { return <ImageThumbnail publicId={image.public_id} width={image.width} height={image.height} format={image.format} key={idx} />; });
+      images = this.state.data.map((image, idx) => {
+        return (<ImageThumbnail
+          publicId={image.public_id}
+          width={image.width}
+          height={image.height}
+          format={image.format}
+          key={idx}
+          activeImageId={activeImageId}
+        />);
+      });
     }
     const folderClass = this.state.isOpen ? 'folder folder--open' : 'folder';
     return (
@@ -80,6 +90,7 @@ export default class ImageFolderArchive extends Component {
 
 ImageFolderArchive.propTypes = {
   folderName: PropTypes.string,
+  activeImageId: PropTypes.string,
   isOpen: PropTypes.bool,
   isPdf: PropTypes.bool,
   onClick: PropTypes.func,

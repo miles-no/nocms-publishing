@@ -24,6 +24,7 @@ export default class PdfThumbnail extends Component {
   render() {
     const {
       publicId,
+      activeImageId,
       format,
     } = this.props;
     const options = {
@@ -34,8 +35,12 @@ export default class PdfThumbnail extends Component {
     const url = cloudinary.url(publicId, this.context.config.cloudinaryCloudName, options);
     const name = publicId.substr(publicId.lastIndexOf('/') + 1);
     const fileName = `${name}.${format}`;
+    let className = 'thumbnail';
+    if (publicId === activeImageId) {
+      className += ' thumbnail--active';
+    }
     return (
-      <div className="thumbnail" onClick={this.onClick}>
+      <div className={className} onClick={this.onClick}>
         <div className="admin-button admin-button--dark thumbnail__select-button">
           <I>Legg til</I>
         </div>
@@ -54,6 +59,7 @@ export default class PdfThumbnail extends Component {
 
 PdfThumbnail.propTypes = {
   publicId: PropTypes.string,
+  activeImageId: PropTypes.string,
   format: PropTypes.string,
   onClick: PropTypes.func,
 };

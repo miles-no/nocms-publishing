@@ -258,16 +258,23 @@ export default class Media extends Component {
   render() {
     let imageMarkup;
     let imageMetaMarkup = null;
+    let activeImageId = null;
     let fileName;
     if (this.props.targetDevices && this.state.selectedTab === 'large' || !this.props.targetDevices) {
       imageMarkup = this.state.enableLarge ? this.getCropperMarkup(this.state.largeDevice.publicId) : this.getImagePreviewMarkup();
       fileName = this.state.largeDevice.publicId ? `${this.state.largeDevice.publicId}.${this.state.largeDevice.format}` : 'Ingen valgt';
+      if (this.state.largeDevice.publicId) {
+        activeImageId = this.state.largeDevice.publicId;
+      }
       if (!this.props.presentationalImage) {
         imageMetaMarkup = <ImageMeta onMetaChange={this.onMetaChange} onChangeSameImagesAcrossDevices={this.onChangeSameImagesAcrossDevices} {...this.state.largeDevice} size="large" />;
       }
     } else {
       imageMarkup = this.state.enableSmall ? this.getCropperMarkup(this.state.smallDevice.publicId) : this.getImagePreviewMarkup();
       fileName = this.state.smallDevice.publicId ? `${this.state.smallDevice.publicId}.${this.state.smallDevice.format}` : 'Ingen valgt';
+      if (this.state.smallDevice.publicId) {
+        activeImageId = this.state.smallDevice.publicId;
+      }
       if (!this.props.presentationalImage) {
         imageMetaMarkup = <ImageMeta onMetaChange={this.onMetaChange} onChangeSameImagesAcrossDevices={this.onChangeSameImagesAcrossDevices} {...this.state.smallDevice} size="small" />;
       }
@@ -311,7 +318,7 @@ export default class Media extends Component {
             </div>
           </div>
         </div>
-        <ImageFolders firstDefaultOpen />
+        <ImageFolders firstDefaultOpen activeImageId={activeImageId} />
         <footer className="modal__footer">
           <Button primary text={dictionary('OK, jeg er ferdig', 'no')} onClick={this.onFinish} />
         </footer>
