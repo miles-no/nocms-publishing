@@ -44,7 +44,7 @@ export default class PdfThumbnail extends Component {
             <img src={`${url}.jpg`} alt="" />
           </div>
           <div className="thumbnail__image-info">
-            <div className="thumbnail__format">{fileName}</div>
+            <div className="thumbnail__name">{fileName}</div>
           </div>
         </div>
       </div>

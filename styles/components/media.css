@@ -3,6 +3,14 @@
   &:last-child {
     margin-bottom: 200px;
   }
+  & .admin-button--transparent,
+  & .admin-button__icon {
+    color: var(--admin-button-text);
+    &:hover,
+    &:active {
+      color: var(--white);
+    }
+  }
 }
 
 .image-folder__header {
