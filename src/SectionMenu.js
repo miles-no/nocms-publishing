@@ -70,14 +70,14 @@ export default class SectionMenuSticky extends Component {
         <div className="edit-mode__widget-title">{label}</div>
         <div className="edit-mode__widget-buttons">
           {!sticky && componentIndex < components.length - 1 ?
-            <IconButton transparent iconOnly noBorder iconType="arrow_downward" iconSize="small" className="admin-button__icon--small" onClick={() => { return this.onComponentMove('down'); }} />
+            <IconButton transparent iconOnly noBorder iconType="arrow_downward" iconSize="small" className="button--small" onClick={() => { return this.onComponentMove('down'); }} />
             : null}
           {!sticky && componentIndex !== 0 ?
-            <IconButton transparent iconOnly noBorder iconType="arrow_upward" className="admin-button__icon--small" iconSize="small" onClick={() => { return this.onComponentMove('up'); }} />
+            <IconButton transparent iconOnly noBorder iconType="arrow_upward" className="button--small" iconSize="small" onClick={() => { return this.onComponentMove('up'); }} />
             : null}
           {!sticky ?
             <div>
-              <IconButton transparent iconOnly noBorder iconType="more_vert" className="admin-button__icon--small" iconSize="small" onClick={this.onMoreDropdown} />
+              <IconButton transparent iconOnly noBorder iconType="more_vert" className="button--small" iconSize="small" onClick={this.onMoreDropdown} />
               <nav id="adminDropdown" aria-hidden="true" className="edit-mode__more-dropdown">
                 {this.state.adminDropdownOpen ?
                   <ul className="unstyled-list">

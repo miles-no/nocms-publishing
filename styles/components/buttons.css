@@ -35,6 +35,10 @@ This is for the publisher's interface. Intented to be separate from skin.
   height: 36px;
   width: 36px;
   font-size: 24px;
+  &.button--small {
+    height: 32px;
+    width: 32px;
+  }
   &.button--large {
     height: 48px;
     width: 48px;
