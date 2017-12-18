@@ -46,6 +46,11 @@
   }
 }
 
+.formatting-button--disabled {
+  cursor: default;
+  color: grey;
+}
+
 .formatting-button_active {
   background-color: var(--dark-grey);
 }
