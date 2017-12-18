@@ -111,10 +111,10 @@ export default class PublishPage extends Component {
       //  label: dictionary('Lagre som kladd', adminLang),
       //  value: 'notPublished',
       // },
-      {
-        label: dictionary('Publiser i et tidsrom', adminLang),
-        value: 'interval',
-      },
+      // {
+      //  label: dictionary('Publiser i et tidsrom', adminLang),
+      //  value: 'interval',
+      // },
     ];
 
     return (
@@ -122,7 +122,7 @@ export default class PublishPage extends Component {
         <div className="modal__content modal__content--centered">
           <Form
             store={storeName}
-            submitButton={dictionary('Publisere side', adminLang)}
+            submitButtonText={dictionary('Publiser side', adminLang)}
             initialState={this.initialState}
             onSubmit={this.handlePublishPage}
           >
