@@ -20,7 +20,9 @@ export default class Applications extends Component {
       modalHeight: height,
     });
   }
+
   render() {
+    const { applications } = this.props;
     const { admin: isAdmin, publisher: isPublisher } = this.props.claims;
     if (!isAdmin && !isPublisher) {
       return null;
@@ -31,64 +33,58 @@ export default class Applications extends Component {
         <div className="admin-menu__edit">
           <ul className="admin-menu__actions unstyled-list">
             { isPublisher ?
-              <li className={menuItemClass}>
-                <AdminMenuDialog
-                  instructionContent={dictionary('Språk', this.context.lang)}
-                  title={dictionary('Jeg ønsker å håndtere språk og uttrykk', this.context.lang)}
-                  text={dictionary('Språk', this.context.lang)} icon="language"
-                >
-                  <iframe
-                    className="application__iframe"
-                    src="/applications/i18n"
-                    title="Internationalization"
-                    onLoad={() => {
-                      this.setFrameHeight();
-                    }}
-                    ref={(iframe) => { this.ifr = iframe; }}
-                    style={{ height: this.state.modalHeight }}
-                  />
-                </AdminMenuDialog>
-              </li>
+              applications
+                .filter((app) => { return app.requirePublisher; })
+                .map((app) => {
+                  return (
+                    <li className={menuItemClass} key={app.src}>
+                      <AdminMenuDialog
+                        instructionContent={dictionary(app.text, this.context.lang)}
+                        title={dictionary(app.title, this.context.lang)}
+                        text={dictionary(app.text, this.context.lang)}
+                        icon={app.icon}
+                      >
+                        <iframe
+                          className="application__iframe"
+                          src={app.src}
+                          title={app.iframeTitle}
+                          onLoad={() => {
+                            this.setFrameHeight();
+                          }}
+                          ref={(iframe) => { this.ifr = iframe; }}
+                          style={{ height: this.state.modalHeight }}
+                        />
+                      </AdminMenuDialog>
+                    </li>
+                  );
+                })
               : null }
             { isAdmin ?
-              <li className={menuItemClass}>
-                <AdminMenuDialog
-                  instructionContent={dictionary('Menneskene', this.context.lang)}
-                  title={dictionary('Jeg ønsker å endre data om menneskene', this.context.lang)}
-                  text={dictionary('Menneskene', this.context.lang)} icon="people"
-                >
-                  <iframe
-                    className="application__iframe"
-                    src="/applications/people-admin"
-                    title="People admin"
-                    onLoad={() => {
-                      this.setFrameHeight();
-                    }}
-                    ref={(iframe) => { this.ifr = iframe; }}
-                    style={{ height: this.state.modalHeight }}
-                  />
-                </AdminMenuDialog>
-              </li>
-              : null }
-            { isAdmin ?
-              <li className={menuItemClass}>
-                <AdminMenuDialog
-                  instructionContent={dictionary('Sosialt', this.context.lang)}
-                  title={dictionary('Jeg ønsker å endre/legge til arrangement', this.context.lang)}
-                  text={dictionary('Sosialt', this.context.lang)} icon="event"
-                >
-                  <iframe
-                    className="application__iframe"
-                    src="/applications/smiles-admin"
-                    title="SMiles"
-                    onLoad={() => {
-                      this.setFrameHeight();
-                    }}
-                    ref={(iframe) => { this.ifr = iframe; }}
-                    style={{ height: this.state.modalHeight }}
-                  />
-                </AdminMenuDialog>
-              </li>
+              applications
+                .filter((app) => { return app.requireAdmin; })
+                .map((app) => {
+                  return (
+                    <li className={menuItemClass} key={app.src}>
+                      <AdminMenuDialog
+                        instructionContent={dictionary(app.text, this.context.lang)}
+                        title={dictionary(app.title, this.context.lang)}
+                        text={dictionary(app.text, this.context.lang)}
+                        icon={app.icon}
+                      >
+                        <iframe
+                          className="application__iframe"
+                          src={app.src}
+                          title={app.iframeTitle}
+                          onLoad={() => {
+                            this.setFrameHeight();
+                          }}
+                          ref={(iframe) => { this.ifr = iframe; }}
+                          style={{ height: this.state.modalHeight }}
+                        />
+                      </AdminMenuDialog>
+                    </li>
+                  );
+                })
               : null }
           </ul>
         </div>
@@ -99,6 +95,7 @@ export default class Applications extends Component {
 
 Applications.propTypes = {
   claims: PropTypes.object,
+  applications: PropTypes.array,
 };
 
 Applications.defaultProps = {
