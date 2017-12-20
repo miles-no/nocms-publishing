@@ -42,26 +42,24 @@ export default class CreatePage extends Component {
   }
 
   handleCreatePage(formData, cb) {
-    let defaults;
+    const data = {
+      lang: formData.lang,
+      pageTitle: formData.pageTitle,
+      templateId: formData.templateId,
+      uri: formData.uri,
+      published: false,
+      pageId: uuid.v4(),
+      revision: 1,
+    };
+
     if (formData.templateId === 'blogpost' || formData.templateId === 'newspage') {
-      defaults = {
-        published: false,
-        pageId: uuid.v4(),
-        revision: 1,
-        publishedMeta: { date: new Date() },
-      };
-    } else {
-      defaults = {
-        published: false,
-        pageId: uuid.v4(),
-        revision: 1,
-      };
+      data.publishedMeta = { date: new Date() };
     }
 
     const messageObj = {
       messageType: 'nocms-create-page',
       uri: formData.uri,
-      data: Object.assign(formData, defaults),
+      data,
     };
 
     const options = {
