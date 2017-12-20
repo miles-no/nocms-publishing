@@ -52,10 +52,6 @@ export default class CreatePage extends Component {
       revision: 1,
     };
 
-    if (formData.templateId === 'blogpost' || formData.templateId === 'newspage') {
-      data.publishedMeta = { date: new Date() };
-    }
-
     const messageObj = {
       messageType: 'nocms-create-page',
       uri: formData.uri,
