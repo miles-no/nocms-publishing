@@ -117,7 +117,7 @@ export default class AdminContent extends Component {
   }
 
   render() {
-    const { templates, sections, languages, folders } = this.props;
+    const { templates, sections, languages, folders, applications } = this.props;
     const togglePanelMarkup = this.getTogglePanelButton();
     const className = this.state.hidePanel ? 'closed' : 'open';
 
@@ -132,6 +132,7 @@ export default class AdminContent extends Component {
           languages={languages}
           onAddSection={this.onAddSection}
           folders={folders}
+          applications={applications}
         />
       </div>
     );
@@ -143,6 +144,7 @@ AdminContent.propTypes = {
   sections: PropTypes.array,
   languages: PropTypes.array,
   folders: PropTypes.array,
+  applications: PropTypes.array,
 };
 
 AdminContent.childContextTypes = {

@@ -23,6 +23,32 @@ const templates = [
 ];
 const sections = [];
 const folders = [];
+const applications = [
+  {
+    title: 'Jeg ønsker å håndtere språk og uttrykk',
+    iframeTitle: 'Internationalization',
+    text: 'Språk',
+    src: '/applications/i18n',
+    icon: 'language',
+    requirePublisher: true
+  },
+  {
+    title: 'Jeg ønsker å endre data om menneskene',
+    iframeTitle: 'People admin',
+    text: 'Menneskene',
+    src: '/applications/people-admin',
+    icon: 'people',
+    requireAdmin: true
+  },
+  {
+    title: 'Jeg ønsker å endre/legge til et arrangement',
+    iframeTitle: 'SMiles',
+    text: 'Sosialt',
+    src: '/applications/smiles-admin',
+    icon: 'event',
+    requireAdmin: true
+  }
+]
 
 const config = document.getElementById('nocms.config');
 
@@ -45,6 +71,7 @@ export default class App extends React.Component {
           sections={sections}
           languages={lang}
           folders={folders}
+          applications={applications}
         />
       </div>
     );

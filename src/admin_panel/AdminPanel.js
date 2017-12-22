@@ -70,7 +70,7 @@ export default class AdminPanel extends Component {
   }
 
   render() {
-    const { templates, languages, pageData, folders } = this.props;
+    const { templates, languages, pageData, folders, applications } = this.props;
     const { lang } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
     const template = templates.find((obj) => {
@@ -129,8 +129,8 @@ export default class AdminPanel extends Component {
         <MenuSectionWrapper folderName={dictionary('Forhåndsvis', lang)}>
           <PreviewPage pageData={pageData} />
         </MenuSectionWrapper>
-        <Applications claims={publisherInfo.claims} />
-        
+        <Applications claims={publisherInfo.claims} applications={applications} />
+
         <NotificationArea />
       </div>
     );
@@ -144,6 +144,7 @@ AdminPanel.propTypes = {
   sections: PropTypes.array,
   languages: PropTypes.array,
   folders: PropTypes.array,
+  applications: PropTypes.array,
 };
 
 AdminPanel.contextTypes = {
