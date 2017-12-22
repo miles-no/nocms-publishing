@@ -50,6 +50,7 @@ export default class CreatePage extends Component {
       published: false,
       pageId: uuid.v4(),
       revision: 1,
+      site: this.context.adminConfig.site,
     };
 
     const messageObj = {
@@ -79,8 +80,7 @@ export default class CreatePage extends Component {
   render() {
     const { templates, languages } = this.props;
     // lang is undefined
-    const { lang, adminConfig } = this.context;
-    const site = adminConfig.site;
+    const { lang } = this.context;
     const templateOptions = templates
       .filter((tmpl) => { return tmpl.siteTemplate; })
       .map((tmpl) => { return { label: tmpl.name, value: tmpl.id }; });
@@ -90,7 +90,6 @@ export default class CreatePage extends Component {
           store={store}
           submitButtonText={dictionary('Opprett ny side', lang)}
           onSubmit={this.handleCreatePage}
-          initialState={{ site }}
         >
           <Field
             name="pageTitle"
