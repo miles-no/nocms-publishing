@@ -18,8 +18,8 @@ class ImageFolders extends Component {
   }
 
   loadData() {
-    const widgetApi = this.context.config.widgetApi;
-    ajax.get(`${widgetApi}/image-folders`, (err, results) => {
+    const imageApi = this.context.config.imageApi;
+    ajax.get(`${imageApi}/folders`, (err, results) => {
       if (err) {
         this.handleLoadError(err);
       } else {

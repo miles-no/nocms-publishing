@@ -17,9 +17,9 @@ class ImageTags extends Component {
   }
 
   loadData() {
-    const widgetApi = this.context.config.widgetApi;
+    const imageApi = this.context.config.imageApi;
 
-    ajax.get(`${widgetApi}/image-tags`, (err, results) => {
+    ajax.get(`${imageApi}/tags`, (err, results) => {
       if (err) {
         this.handleLoadError(err);
       } else {

@@ -34,8 +34,8 @@ export default class ImageFolderArchive extends Component {
 
   loadData() {
     this.setState({ isLoading: true });
-    const widgetApi = this.context.config.widgetApi;
-    ajax.get(`${widgetApi}/images/folders/${this.props.folderName}`, (err, results) => {
+    const imageApi = this.context.config.imageApi;
+    ajax.get(`${imageApi}/folders/${this.props.folderName}`, (err, results) => {
       if (err) {
         this.handleLoadError(err);
       } else {

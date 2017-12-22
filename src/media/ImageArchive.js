@@ -18,9 +18,9 @@ export default class ImageArchive extends Component {
   }
 
   loadData() {
-    const widgetApi = this.context.config.widgetApi;
+    const imageApi = this.context.config.imageApi;
 
-    ajax.get(`${widgetApi}/images`, (err, results) => {
+    ajax.get(`${imageApi}/list`, (err, results) => {
       if (err) {
         this.handleLoadError(err);
       } else {
