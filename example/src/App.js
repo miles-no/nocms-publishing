@@ -18,11 +18,38 @@ const templates = [
         icon: '',
         label: 'Kapittel',
       },
+      {
+        name: 'banner',
+        description: '',
+        categories: ['content', 'all'],
+        icon: '',
+        label: 'Banner',
+      },
     ],
   },
 ];
-const sections = [];
-const folders = [];
+
+const sections = [{
+  name: 'chapter',
+  description: '',
+  categories: ['all'],
+  icon: '',
+  label: 'Kapittel',
+  defaultContent: { foo: 1 },
+},
+{
+  name: 'banner',
+  description: '',
+  categories: ['all'],
+  icon: '',
+  label: 'Banner'
+}];
+
+const folders = [  {
+  id: 'all',
+  title: 'Alle typer',
+}];
+
 const applications = [
   {
     title: 'Jeg ønsker å håndtere språk og uttrykk',
@@ -85,4 +112,3 @@ App.childContextTypes = {
   isNoCMSUser: PropTypes.bool,
   config: PropTypes.object,
 };
-
