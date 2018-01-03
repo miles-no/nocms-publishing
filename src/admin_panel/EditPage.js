@@ -19,7 +19,7 @@ const EditPage = (props, context) => {
           <span className="admin-menu__page-info">
             <div>{pageData.pageTitle}</div>
             <div className="admin-menu__page-info-uri">{pageData.uri}</div>
-            <div className="admin-menu__content-status" />
+            <div className="admin-menu__content-status">{pageData.hasUnpublishedChanges ? 'Denne siden har upubliserte endringer' : null}</div>
           </span>
         </div>
         <AdminMenuDialog
