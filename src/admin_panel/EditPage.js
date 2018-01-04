@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from 'nocms-atoms';
 import AdminMenuDialog from '../AdminMenuDialog';
 import PublishPage from '../dialogs/PublishPage';
 import PageSettings from '../dialogs/PageSettings';
@@ -19,7 +20,10 @@ const EditPage = (props, context) => {
           <span className="admin-menu__page-info">
             <div>{pageData.pageTitle}</div>
             <div className="admin-menu__page-info-uri">{pageData.uri}</div>
-            <div className="admin-menu__content-status">{pageData.hasUnpublishedChanges ? 'Denne siden har upubliserte endringer' : null}</div>
+            <div className="admin-menu__content-status">
+              {pageData.hasUnpublishedChanges ? <Icon size="small" type="notifications" /> : null }
+              {pageData.hasUnpublishedChanges ? 'Denne siden har upubliserte endringer' : null}
+            </div>
           </span>
         </div>
         <AdminMenuDialog

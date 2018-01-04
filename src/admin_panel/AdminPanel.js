@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
 import CreatePage from '../dialogs/CreatePage';
+import PageList from '../dialogs/PageList';
 import { dictionary } from '../i18n/Internationalization';
 import IconButton from '../atoms/IconButton';
 import AdminMenuDialog from '../AdminMenuDialog';
@@ -108,6 +109,18 @@ export default class AdminPanel extends Component {
         </div>
         <div className="admin-menu__toolbar-top">
           <div className="button-container button-container--center">
+            <AdminMenuDialog
+              vertical
+              iconSize="large"
+              text={dictionary('Alle sider', lang)}
+              icon="layers"
+              showTitle
+              title={dictionary('Oversikt alle sider', lang)}
+              centered
+              widthConstrained
+            >
+              <PageList />
+            </AdminMenuDialog>
             <AdminMenuDialog
               vertical iconSize="large" text={dictionary('Ny side', lang)} icon="note_add" showTitle title="Opprett en ny side" centered widthConstrained
             >

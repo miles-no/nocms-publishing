@@ -17,4 +17,5 @@
 @import "components/menu";
 @import "components/spinner";
 @import "components/message";
+@import "components/pagelist";
 @import "trumps/utilities"

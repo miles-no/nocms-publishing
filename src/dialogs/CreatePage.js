@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Field from '../atoms/Field';
-import Form from '../atoms/Form';
 import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
+import Field from '../atoms/Field';
+import Form from '../atoms/Form';
 import I, { dictionary } from '../i18n/Internationalization';
 
 const store = 'nocms-create-page-dialog';
