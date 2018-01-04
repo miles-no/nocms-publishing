@@ -117,7 +117,6 @@ export default class AdminPanel extends Component {
               showTitle
               title={dictionary('Oversikt alle sider', lang)}
               centered
-              widthConstrained
             >
               <PageList />
             </AdminMenuDialog>

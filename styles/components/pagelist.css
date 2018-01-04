@@ -1,6 +1,6 @@
 .admin-pagelist__wrapper {
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
 }
 
 .admin-pagelist__item {
@@ -62,7 +62,7 @@
 
 @media(--breakpoint-lg) {
   .admin-pagelist__item__content {
-    min-width: 45%;
+    min-width: 65%;
   }
 }
 
