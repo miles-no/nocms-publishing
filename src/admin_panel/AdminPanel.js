@@ -37,11 +37,15 @@ export default class AdminPanel extends Component {
     const { pageData, onAddSection, sections } = this.props;
     const components = pageData.components || [];
     const name = type.name;
-    const sectionData = sections.find((s) => { return s.name === name; });
-    const componentObject = Object.assign({}, sectionData.defaultContent, {
+    const section = sections.find((s) => { return s.name === name; });
+    const sectionData = section ? section.defaultData : null;
+    const componentObject = {
       type: name,
       id: urlUtils.forComponent(type.name),
-    });
+    };
+    if (sectionData) {
+      componentObject.data = { ...sectionData };
+    }
     components.push(componentObject);
 
     triggerGlobal('nocms.value-changed', 'components', components);

@@ -35,7 +35,7 @@ const sections = [{
   categories: ['all'],
   icon: '',
   label: 'Kapittel',
-  defaultContent: { foo: 1 },
+  defaultData: { foo: 1 },
 },
 {
   name: 'banner',
