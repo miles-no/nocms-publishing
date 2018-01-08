@@ -19,12 +19,12 @@ export default class PageList extends Component {
   componentDidMount() {
     const webApi = this.context.config.webApi;
     if (webApi) {
-      ajax.get(`${webApi}/pages`, (err, res) => {
+      ajax.get(`${webApi}/pages`, (err, pages) => {
         if (err) {
           console.warn(err);
           return;
         }
-        this.setState({ pages: res.pages });
+        this.setState({ pages });
       });
     }
   }
