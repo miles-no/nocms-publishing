@@ -30,7 +30,7 @@ const PageListItem = (props, context) => {
       <div className="admin-pagelist__item__content">
         <span className="admin-pagelist__pagetitle">{page.pageTitle}</span>
         <span className="admin-pagelist__item__content--sub">
-          {dictionary('Sist endret', context.lang)} {page.publicationDetails ? moment(page.publicationDetails.published).format('DD.MM.YYYY [kl] HH:mm:ss') : null }
+          {dictionary('Sist endret', context.lang)} { moment(page.created).format('DD.MM.YYYY [kl] HH:mm:ss') }
         </span>
       </div>
       <div className="admin-pagelist__item__page-status">
