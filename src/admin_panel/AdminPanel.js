@@ -12,6 +12,7 @@ import PreviewPage from './PreviewPage';
 import MenuSectionWrapper from './MenuSectionWrapper';
 import NotificationArea from './notifications/NotificationArea';
 import Applications from './Applications';
+import AdvancedFunctions from './AdvancedFunctions';
 import AddSection from '../section/AddSection';
 import urlUtils from '../utils/url';
 
@@ -149,7 +150,7 @@ export default class AdminPanel extends Component {
           <PreviewPage pageData={pageData} />
         </MenuSectionWrapper>
         <Applications claims={publisherInfo.claims} applications={applications} />
-
+        <AdvancedFunctions claims={publisherInfo.claims} />
         <NotificationArea />
       </div>
     );
