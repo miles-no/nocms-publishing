@@ -33,7 +33,7 @@ export default class ImportPages extends Component {
         return;
       }
       const message = {
-        type: 'import-pages',
+        messageType: 'import-pages',
         data: pageData,
       };
       ajax.post(this.context.config.messageApi, message, { responseRequired: true }, (err) => {
