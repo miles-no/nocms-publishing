@@ -124,6 +124,10 @@ const i18n = {
     no: 'Skjul meny',
     en: 'Hide menu',
   },
+  '409': {
+    no: 'Det finnes allerede en side på uri. Velg annen eller avbryt',
+    en: 'Uri taken, choose another one or abort',
+  },
 };
 
 export default i18n;
