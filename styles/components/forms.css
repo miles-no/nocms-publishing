@@ -96,12 +96,13 @@
       color: var(--red);
     }
   }
-}
-.form__error{
-  & .form__error-summary{
-    font-size: 0.9rem;
-    margin-top: var(--spacing-xsmall);
-    color: var(--red);
+
+  .form__error{
+    & .form__error-summary{
+      font-size: 0.9rem;
+      margin-top: var(--spacing-xsmall);
+      color: var(--red);
+    }
   }
 }
 
