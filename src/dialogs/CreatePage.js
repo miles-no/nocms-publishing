@@ -37,7 +37,7 @@ export default class CreatePage extends Component {
 
     this.state = {
       lang: context.lang,
-      overrideUri: false,
+      overrideUri: false
     };
   }
 
@@ -64,7 +64,13 @@ export default class CreatePage extends Component {
     };
     ajax.post(this.context.config.messageApi, messageObj, options, (err, res) => {
       if (err) {
-        cb(err.message);
+        let message;
+        if (!err.message) {
+          message = dictionary(`${err.status}`, 'no');
+        } else {
+          message = err.message;
+        }
+        cb(message);
         return;
       }
 
