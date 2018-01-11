@@ -103,7 +103,7 @@ export default class SimpleImage extends Component {
             }
           </div>
         </div>
-        <ImageFolders firstDefaultOpen />
+        <ImageFolders firstDefaultOpen activeImageId={this.state.image.publicId} />
         <footer className="modal__footer">
           <Button primary text={dictionary('OK, jeg er ferdig', 'no')} onClick={this.onFinish} />
         </footer>
