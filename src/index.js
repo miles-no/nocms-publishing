@@ -10,3 +10,4 @@ export { default as EditPdf } from './media/EditPdf';
 export { default as EditSimpleImage } from './media/EditSimpleImage';
 
 export { default as LinkButton } from './atoms/LinkButton';
+export { default as IconButton } from './atoms/IconButton';
