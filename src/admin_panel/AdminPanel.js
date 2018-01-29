@@ -149,7 +149,7 @@ export default class AdminPanel extends Component {
         <MenuSectionWrapper folderName={dictionary('Forhåndsvis', lang)}>
           <PreviewPage pageData={pageData} />
         </MenuSectionWrapper>
-        <Applications claims={publisherInfo.claims} applications={applications} />
+        {applications && applications.length !== 0 ? <Applications claims={publisherInfo.claims} applications={applications} /> : null }
         <AdvancedFunctions claims={publisherInfo.claims} />
         <NotificationArea />
       </div>
