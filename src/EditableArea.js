@@ -30,8 +30,9 @@ export default class EditableArea extends Component {
     const {
       children,
       label,
+      areaClassName,
     } = this.props;
-    const className = this.state.activeEditMode ? 'edit-mode edit-mode--active' : 'edit-mode edit-mode--not-active';
+    const className = `edit-mode ${areaClassName} ${this.state.activeEditMode ? 'edit-mode--active' : 'edit-mode--not-active'}`;
     const activeEditModeProps = this.state.componentEditButton ? this.state.activeEditMode : true;
     const childWithProps = React.cloneElement(children, {
       activeEditMode: activeEditModeProps,
@@ -52,8 +53,10 @@ export default class EditableArea extends Component {
 EditableArea.propTypes = {
   children: PropTypes.object,
   label: PropTypes.string,
+  areaClassName: PropTypes.string,
 };
 
 EditableArea.defaultProps = {
   label: '',
+  areaClassName: '',
 };
