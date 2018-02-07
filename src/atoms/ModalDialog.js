@@ -2,9 +2,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AriaModal from 'react-aria-modal';
-import { Icon } from 'nocms-atoms';
+import { Icon, IconButton } from 'nocms-atoms';
 import { listenToGlobal, stopListenToGlobal } from 'nocms-events';
-import IconButton from './IconButton';
 
 export default class ModalDialog extends Component {
   constructor(props) {

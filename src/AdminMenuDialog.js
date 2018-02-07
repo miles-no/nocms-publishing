@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from 'nocms-atoms';
 import ModalDialog from './atoms/ModalDialog';
-import IconButton from './atoms/IconButton';
+
 
 export default class AdminMenuDialog extends Component {
   constructor(props) {

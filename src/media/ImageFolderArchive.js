@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
-import { Icon } from 'nocms-atoms';
+import { Icon, IconButton } from 'nocms-atoms';
 import ImageThumbnail from './ImageThumbnail';
 import PdfThumbnail from './PdfThumbnail';
-import IconButton from '../atoms/IconButton';
 
 export default class ImageFolderArchive extends Component {
   constructor(props) {

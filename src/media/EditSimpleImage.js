@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from 'nocms-atoms';
 import { dictionary } from '../i18n/Internationalization';
-import IconButton from '../atoms/IconButton';
 import SimpleImage from '../dialogs/media/SimpleImage';
 import ModalDialog from '../atoms/ModalDialog';
 

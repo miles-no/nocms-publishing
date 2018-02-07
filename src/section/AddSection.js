@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from 'nocms-atoms';
 import { dictionary } from '../i18n/Internationalization';
 import AddSectionDialog from '../dialogs/AddSection';
 import ModalDialog from '../atoms/ModalDialog';
-import IconButton from '../atoms/IconButton';
 
 export default class AddSection extends Component {
   constructor(props) {

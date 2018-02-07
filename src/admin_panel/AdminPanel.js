@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
+import { IconButton } from 'nocms-atoms';
 import CreatePage from '../dialogs/CreatePage';
 import PageList from '../dialogs/PageList';
 import { dictionary } from '../i18n/Internationalization';
-import IconButton from '../atoms/IconButton';
 import AdminMenuDialog from '../AdminMenuDialog';
 import SiteInfo from './SiteInfo';
 import EditPage from './EditPage';

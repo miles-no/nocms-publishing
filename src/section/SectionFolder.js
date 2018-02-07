@@ -1,10 +1,9 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'nocms-atoms';
+import { Icon, IconButton } from 'nocms-atoms';
 import Section from './Section';
 import I from '../i18n/Internationalization';
-import IconButton from '../atoms/IconButton';
 
 export default class SectionFolder extends Component {
   constructor(props) {

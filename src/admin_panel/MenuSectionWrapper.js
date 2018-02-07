@@ -1,7 +1,7 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '../atoms/IconButton';
+import { IconButton } from 'nocms-atoms';
 
 export default class MenuSectionWrapper extends Component {
   constructor(props) {

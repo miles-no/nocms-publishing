@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
+import { IconButton } from 'nocms-atoms';
 import { dictionary } from '../i18n/Internationalization';
-import IconButton from '../atoms/IconButton';
 import Pdf from '../dialogs/media/Pdf';
 import ModalDialog from '../atoms/ModalDialog';
 

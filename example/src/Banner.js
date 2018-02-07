@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextArea } from 'nocms-atoms';
-import { EditImage, LinkButton } from 'nocms-publishing';
+import { TextArea, LinkButton } from 'nocms-atoms';
+import { EditImage } from 'nocms-publishing';
 import cloudinary from '../../src/utils/cloudinary';
 
 const Banner = (props) => {

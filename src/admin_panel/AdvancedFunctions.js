@@ -1,10 +1,11 @@
 // @TODO: rewrite
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from 'nocms-atoms';
 import ImportPages from './advanced_functions/ImportPages';
 import MenuSectionWrapper from './MenuSectionWrapper';
 import { dictionary } from '../i18n/Internationalization';
-import IconButton from '../atoms/IconButton';
+
 
 export default class AdvancedFunctions extends Component {
   constructor(props) {

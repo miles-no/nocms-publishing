@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from 'nocms-atoms';
 import { dictionary } from '../i18n/Internationalization';
-import IconButton from '../atoms/IconButton';
 
 const openPreviewPopup = (type, title) => {
   const url = `/assets/preview.html?type=${type}&url=${window.location.href}`;
@@ -35,7 +35,7 @@ export default class PreviewPage extends Component {
   }
 
   render() {
-    const menuItemClass = 'admin-menu__item';    
+    const menuItemClass = 'admin-menu__item';
     return (
       <div>
         <div className="admin-menu__preview">
