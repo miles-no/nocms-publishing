@@ -47,7 +47,6 @@ export default class CreatePage extends Component {
       pageTitle: formData.pageTitle,
       templateId: formData.templateId,
       uri: formData.uri,
-      published: false,
       pageId: uuid.v4(),
       revision: 1,
       site: this.context.adminConfig.site,
