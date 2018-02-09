@@ -30,8 +30,8 @@ const SiteInfo = (props) => {
 SiteInfo.propTypes = {
   templateId: PropTypes.string,
   createdBy: PropTypes.string,
-  published: PropTypes.bool,
-  created: PropTypes.string,
+  published: PropTypes.object,
+  created: PropTypes.object,
   revision: PropTypes.number,
   templates: PropTypes.array,
 };
