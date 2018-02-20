@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
 import { IconButton } from 'nocms-atoms';
+import { dictionary } from 'nocms-i18n';
 import CreatePage from '../dialogs/CreatePage';
 import PageList from '../dialogs/PageList';
-import { dictionary } from '../i18n/Internationalization';
 import AdminMenuDialog from '../AdminMenuDialog';
 import SiteInfo from './SiteInfo';
 import EditPage from './EditPage';
@@ -66,21 +66,21 @@ export default class AdminPanel extends Component {
   }
 
   getAdminRoles(publisher) {
-    const { lang } = this.context;
+    const { lang, i18n } = this.context;
     const claims = publisher.claims;
     const roles = [];
     if (claims.publisher) {
-      roles.push(dictionary('publiserer', lang));
+      roles.push(dictionary(i18n, 'publiserer', lang));
     }
     if (claims.admin) {
-      roles.push(dictionary('administrator', lang));
+      roles.push(dictionary(i18n, 'administrator', lang));
     }
     return roles.join(', ');
   }
 
   render() {
     const { templates, languages, pageData, folders, applications } = this.props;
-    const { lang } = this.context;
+    const { lang, i18n } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
     const template = templates.find((obj) => {
       return obj.id === pageData.templateId;
@@ -103,7 +103,7 @@ export default class AdminPanel extends Component {
               {this.state.adminDropdownOpen ?
                 <ul className="unstyled-list">
                   <li className="admin-menu__admin-dropdown-item">Språk: Norsk</li>
-                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary('Logg ut', lang)}</a></li>
+                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary(i18n, 'Logg ut', lang)}</a></li>
                 </ul> : null}
             </nav>
           </div>
@@ -113,22 +113,22 @@ export default class AdminPanel extends Component {
             <AdminMenuDialog
               vertical
               iconSize="large"
-              text={dictionary('Alle sider', lang)}
+              text={dictionary(i18n, 'Alle sider', lang)}
               icon="layers"
               showTitle
-              title={dictionary('Oversikt alle sider', lang)}
+              title={dictionary(i18n, 'Oversikt alle sider', lang)}
               centered
             >
               <PageList />
             </AdminMenuDialog>
             <AdminMenuDialog
-              vertical iconSize="large" text={dictionary('Ny side', lang)} icon="note_add" showTitle title="Opprett en ny side" centered widthConstrained
+              vertical iconSize="large" text={dictionary(i18n, 'Ny side', lang)} icon="note_add" showTitle title="Opprett en ny side" centered widthConstrained
             >
               <CreatePage templates={templates} languages={languages} />
             </AdminMenuDialog>
           </div>
         </div>
-        <MenuSectionWrapper folderName={dictionary('Rediger side', lang)} startOpen>
+        <MenuSectionWrapper folderName={dictionary(i18n, 'Rediger side', lang)} startOpen>
           <EditPage pageData={pageData} />
           <div className="button-container button-container--center">
             <div className="admin_menu__add-section-container">
@@ -143,10 +143,10 @@ export default class AdminPanel extends Component {
             </div>
           </div>
         </MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary('Sideinformasjon', lang)}>
+        <MenuSectionWrapper folderName={dictionary(i18n, 'Sideinformasjon', lang)}>
           <SiteInfo {...pageData} templates={templates} />
         </MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary('Forhåndsvis', lang)}>
+        <MenuSectionWrapper folderName={dictionary(i18n, 'Forhåndsvis', lang)}>
           <PreviewPage pageData={pageData} />
         </MenuSectionWrapper>
         {applications && applications.length !== 0 ? <Applications claims={publisherInfo.claims} applications={applications} /> : null }
@@ -169,4 +169,5 @@ AdminPanel.propTypes = {
 
 AdminPanel.contextTypes = {
   lang: PropTypes.string,
+  i18n: PropTypes.object,
 };

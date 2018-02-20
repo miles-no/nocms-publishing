@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import I from '../i18n/Internationalization';
+import { I } from 'nocms-i18n';
 
 const SiteInfo = (props) => {
-  const { templateId, createdBy, published, created, revision, templates } = props;
+  const { templateId, created, published, revision, templates } = props;
   const template = templates.find((obj) => { return obj.id === templateId; });
   return (
     <div className="admin-menu__site-info">
@@ -14,14 +14,10 @@ const SiteInfo = (props) => {
         <dt><I>Maltype</I></dt>
         <dd><I>{template.name}</I></dd>
         <dt><I>Endret</I></dt>
-        <dd>{moment(created).format('L')}</dd>
+        <dd>{moment(created.time).format('L')}</dd>
         <dt><I>Endret av</I></dt>
-        <dd>{createdBy}</dd>
-        { published ?
-          <span>
-            <dt><I>Publisert periode</I></dt>
-            <dd />
-          </span> : null }
+        <dd>{created.user}</dd>
+        
       </dl>
     </div>
   );
@@ -29,7 +25,6 @@ const SiteInfo = (props) => {
 
 SiteInfo.propTypes = {
   templateId: PropTypes.string,
-  createdBy: PropTypes.string,
   published: PropTypes.object,
   created: PropTypes.object,
   revision: PropTypes.number,

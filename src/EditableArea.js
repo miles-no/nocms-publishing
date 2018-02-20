@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
 import SectionMenu from './SectionMenu';
+import i18n from './i18n/dictionary';
 
 export default class EditableArea extends Component {
   constructor(props) {
@@ -12,6 +13,13 @@ export default class EditableArea extends Component {
     this.state = {
       activeEditMode: false,
       componentEditButton: true,
+    };
+  }
+
+  getChildContext() {
+    return {
+      adminLang: 'no',
+      i18n,
     };
   }
 
@@ -59,4 +67,9 @@ EditableArea.propTypes = {
 EditableArea.defaultProps = {
   label: '',
   areaClassName: '',
+};
+
+EditableArea.childContextTypes = {
+  adminLang: PropTypes.string,
+  i18n: PropTypes.object,
 };

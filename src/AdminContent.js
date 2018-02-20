@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { I, dictionary } from 'nocms-i18n';
 import { listenToGlobal, triggerGlobal } from 'nocms-events';
 import moment from 'moment';
 import { Icon } from 'nocms-atoms';
 import shortcuts from 'nocms-shortcuts';
 import utils from 'nocms-utils';
 import ToolBarIcon from './atoms/ToolBarIcon';
-import I, { dictionary } from './i18n/Internationalization';
 import AdminPanel from './admin_panel/AdminPanel';
+import i18n from './i18n/dictionary';
 
 const menuOpenClass = 'admin-menu--open';
 
@@ -50,7 +51,7 @@ export default class AdminContent extends Component {
       this.setState({ showCreateNotFound: false, notFoundUri: null, pageData });
     });
 
-    shortcuts.addHandler('ctrl-e', dictionary('Åpne/lukke NoCMS-menyen', adminConfig.lang), this.toggleEdit);
+    shortcuts.addHandler('ctrl-e', dictionary(i18n, 'Åpne/lukke NoCMS-menyen', adminConfig.lang), this.toggleEdit);
   }
 
   getChildContext() {
@@ -59,6 +60,7 @@ export default class AdminContent extends Component {
       config: this.state.config,
       adminLang: 'no',
       adminConfig: this.state.adminConfig,
+      i18n,
     };
   }
 
@@ -152,4 +154,5 @@ AdminContent.childContextTypes = {
   config: PropTypes.object,
   adminConfig: PropTypes.object,
   adminLang: PropTypes.string,
+  i18n: PropTypes.object,
 };

@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton } from 'nocms-atoms';
+import { dictionary } from 'nocms-i18n';
 import ImportPages from './advanced_functions/ImportPages';
 import MenuSectionWrapper from './MenuSectionWrapper';
-import { dictionary } from '../i18n/Internationalization';
 
 
 export default class AdvancedFunctions extends Component {
@@ -23,18 +23,19 @@ export default class AdvancedFunctions extends Component {
 
   render() {
     const { admin: isAdmin } = this.props.claims;
+    const { adminLang, i18n } = this.context;
     if (!isAdmin) {
       return null;
     }
     const menuItemClass = 'admin-menu__item';
     return (
-      <MenuSectionWrapper folderName={dictionary('Avanserte funksjoner', this.context.lang)}>
+      <MenuSectionWrapper folderName={dictionary(i18n, 'Avanserte funksjoner', adminLang)}>
         <div className="admin-menu__edit">
           <ul className="admin-menu__actions unstyled-list">
             <li className={menuItemClass}>
               <IconButton
                 iconType={'layers'}
-                text={dictionary('Eksportere sidedata', this.context.lang)}
+                text={dictionary(i18n, 'Eksportere sidedata', adminLang)}
                 transparent
                 noBorder
                 onClick={this.openFilePath}
@@ -51,8 +52,9 @@ export default class AdvancedFunctions extends Component {
 }
 
 AdvancedFunctions.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   config: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 AdvancedFunctions.propTypes = {

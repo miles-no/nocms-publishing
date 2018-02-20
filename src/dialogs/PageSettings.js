@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
-import { dictionary } from '../i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
 
@@ -26,32 +26,32 @@ export default class PageSettings extends Component {
   render() {
     // @TODO: from props/context
     const languages = ['no', 'en'];
-    const { adminLang } = this.context;
+    const { adminLang, i18n } = this.context;
     return (
       <div>
         <div className="modal__content modal__content--centered">
           <Form
             store={storeName}
-            submitButtonText={dictionary('OK, jeg er ferdig', adminLang)}
+            submitButtonText={dictionary(i18n, 'OK, jeg er ferdig', adminLang)}
             initialState={this.initialState}
             onSubmit={this.handleUpdatePageSettings}
           >
             <Field
               name="pageTitle"
               store={storeName}
-              label={dictionary('Sidetittel', adminLang)}
+              label={dictionary(i18n, 'Sidetittel', adminLang)}
               required
               errorText="Siden må ha en tittel"
             />
             <Field
               name="metaDescription"
               store={storeName}
-              label={dictionary('Meta-beskrivelse', adminLang)}
+              label={dictionary(i18n, 'Meta-beskrivelse', adminLang)}
             />
             <Field
               type="select"
               store={storeName}
-              label={dictionary('Sidespråk', adminLang)}
+              label={dictionary(i18n, 'Sidespråk', adminLang)}
               options={languages}
               name="lang"
               required
@@ -67,6 +67,7 @@ export default class PageSettings extends Component {
 PageSettings.contextTypes = {
   adminLang: PropTypes.string,
   config: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 PageSettings.propTypes = {

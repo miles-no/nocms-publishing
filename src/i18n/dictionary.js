@@ -60,6 +60,10 @@ const i18n = {
     no: 'Sidetittel',
     en: 'Page title',
   },
+  Sideinnstillinger: {
+    no: 'Sideinnstillinger',
+    en: 'Page settings',
+  },
   'nocms.Skriv en YouTube-lenke': {
     no: 'Skriv en YouTube-lenke',
     en: 'Add a YouTube link',

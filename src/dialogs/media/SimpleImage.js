@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import I, { dictionary } from 'nocms-i18n';
 import { listenToGlobal, stopListenToGlobal, triggerGlobal } from 'nocms-events';
-import I, { dictionary } from '../../i18n/Internationalization';
-
 import Button from '../../atoms/Button';
 import ImageMeta from './ImageMeta';
 import ImageFolders from '../../media/ImageFolders';
@@ -45,7 +44,7 @@ export default class SimpleImage extends Component {
   }
 
   render() {
-    const { config } = this.context;
+    const { config, i18n, lang } = this.context;
     const transformations = [{ quality: 'auto:eco' }];
     const src = cloudinary.url(this.state.image.publicId, config.cloudinaryCloudName, { transformations });
     const fileName = this.state.image.publicId ? `${this.state.image.publicId}.${this.state.image.format}` : 'Ingen valgt';
@@ -69,7 +68,7 @@ export default class SimpleImage extends Component {
         </div>
         <ImageFolders firstDefaultOpen activeImageId={this.state.image.publicId} />
         <footer className="modal__footer">
-          <Button primary text={dictionary('OK, jeg er ferdig', 'no')} onClick={this.onFinish} />
+          <Button primary text={dictionary(i18n, 'OK, jeg er ferdig', lang)} onClick={this.onFinish} />
         </footer>
       </div>
     );
@@ -90,4 +89,6 @@ SimpleImage.defaultProps = {
 
 SimpleImage.contextTypes = {
   config: PropTypes.object,
+  i18n: PropTypes.object,
+  lang: PropTypes.string,
 };

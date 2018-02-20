@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { I, dictionary } from 'nocms-i18n';
 import { listenToGlobal, stopListenToGlobal, triggerGlobal } from 'nocms-events';
 import ImageFolders from '../../media/ImageFolders';
-import I, { dictionary } from '../../i18n/Internationalization';
 import Button from '../../atoms/Button';
 import CloudinaryImage from '../../media/CloudinaryImage';
 import cloudinary from '../../utils/cloudinary';
@@ -149,6 +149,7 @@ export default class Media extends Component {
   }
 
   getImagePreviewMarkup() {
+    const { i18n, lang } = this.context;
     let publicId;
     if (this.props.targetDevices) {
       if (this.state.selectedTab === 'large') {
@@ -172,7 +173,7 @@ export default class Media extends Component {
 
     return (
       <div className="media__image-preview">
-        <Button onClick={this.onEnableCropperClick} text={dictionary('Endre utsnitt', 'no')} dark />
+        <Button onClick={this.onEnableCropperClick} text={dictionary(i18n, 'Endre utsnitt', lang)} dark />
         <CloudinaryImage publicId={publicId} options={options} />
       </div>
     );
@@ -256,6 +257,7 @@ export default class Media extends Component {
   }
 
   render() {
+    const { i18n, lang } = this.context;
     let imageMarkup;
     let imageMetaMarkup = null;
     let activeImageId = null;
@@ -320,7 +322,7 @@ export default class Media extends Component {
         </div>
         <ImageFolders firstDefaultOpen activeImageId={activeImageId} />
         <footer className="modal__footer">
-          <Button primary text={dictionary('OK, jeg er ferdig', 'no')} onClick={this.onFinish} />
+          <Button primary text={dictionary(i18n, 'OK, jeg er ferdig', lang)} onClick={this.onFinish} />
         </footer>
       </div>
     );
@@ -351,4 +353,6 @@ Media.defaultProps = {
 
 Media.contextTypes = {
   config: PropTypes.object,
+  i18n: PropTypes.object,
+  lang: PropTypes.string,
 };

@@ -23,7 +23,7 @@ export default class TabHeader extends Component {
 
 TabHeader.propTypes = {
   onClick: PropTypes.func.isRequired,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
   item: PropTypes.object,
   active: PropTypes.bool,
 };

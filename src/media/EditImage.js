@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton } from 'nocms-atoms';
-import { dictionary } from '../i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 import Media from '../dialogs/media/Media';
 import ModalDialog from '../atoms/ModalDialog';
+import i18n from '../i18n/dictionary';
 
 export default class EditImage extends Component {
   constructor(props) {
@@ -14,6 +15,13 @@ export default class EditImage extends Component {
       dialogOpen: false,
     };
   }
+
+  getChildContext() {
+    return {
+      i18n,
+    };
+  }
+
   onClose() {
     this.setState({ dialogOpen: false });
   }
@@ -23,10 +31,11 @@ export default class EditImage extends Component {
   }
 
   render() {
+    const { editMode, adminLang } = this.context;
     // @TODO: How should we represent instructions
-    const title = dictionary('Jeg ønsker å endre på bilde', 'no');
+    const title = dictionary(i18n, 'Jeg ønsker å endre på bilde', adminLang);
     return (
-      <span> {this.props.activeEditMode && this.context.editMode ?
+      <span> {this.props.activeEditMode && editMode ?
         <span className="admin-button__add-image">
           <IconButton onClick={this.onClick} iconType="photo_camera" text="Rediger bilde" iconSize="small" transparent noBorder />
           <ModalDialog
@@ -39,7 +48,7 @@ export default class EditImage extends Component {
             animation
             titleIcon="camera_alt"
             title={title}
-            titleText={dictionary('Bildefiler', this.context.lang)}
+            titleText={dictionary(i18n, 'Bildefiler', adminLang)}
             showTitle
           >
             <Media
@@ -77,5 +86,10 @@ EditImage.defaultProps = {
 
 EditImage.contextTypes = {
   lang: PropTypes.string,
+  adminLang: PropTypes.string,
   editMode: PropTypes.bool,
+};
+
+EditImage.childContextTypes = {
+  i18n: PropTypes.object,
 };

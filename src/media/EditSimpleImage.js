@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton } from 'nocms-atoms';
-import { dictionary } from '../i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 import SimpleImage from '../dialogs/media/SimpleImage';
 import ModalDialog from '../atoms/ModalDialog';
+import i18n from '../i18n/dictionary';
 
 export default class EditSimpleImage extends Component {
   constructor(props) {
@@ -14,6 +15,13 @@ export default class EditSimpleImage extends Component {
       dialogOpen: false,
     };
   }
+
+  getChildContext() {
+    return {
+      i18n,
+    };
+  }
+
   onClose() {
     this.setState({ dialogOpen: false });
   }
@@ -23,10 +31,12 @@ export default class EditSimpleImage extends Component {
   }
 
   render() {
-    const title = dictionary('Jeg ønsker å legge til bilde', this.context.lang);
-    const instructionContent = dictionary('Rediger bilde-instruksjoner', this.context.lang);
+    const { adminLang, editMode } = this.context;
+    const { activeEditMode, placeholderImage, scope, image } = this.props;
+    const title = dictionary(i18n, 'Jeg ønsker å legge til bilde', adminLang);
+    const instructionContent = dictionary(i18n, 'Rediger bilde-instruksjoner', adminLang);
     return (
-      <span> {this.props.activeEditMode && this.context.editMode ?
+      <span> {activeEditMode && editMode ?
         <span className="admin-button__add-image">
           <IconButton onClick={this.onClick} iconType="photo_camera" text="Rediger bilde" iconSize="small" transparent noBorder />
           <ModalDialog
@@ -40,15 +50,15 @@ export default class EditSimpleImage extends Component {
             titleIcon="camera_alt"
             title={title}
             instructionContent={instructionContent}
-            titleText={dictionary('Bildefiler', this.context.lang)}
+            titleText={dictionary(i18n, 'Bildefiler', adminLang)}
             showTitle
           >
             <SimpleImage
-              scope={this.props.scope}
-              image={this.props.image}
+              scope={scope}
+              image={image}
               onClose={this.onClose}
               presentationalImage={false}
-              placeholderImage={this.props.placeholderImage}
+              placeholderImage={placeholderImage}
             />
           </ModalDialog>
         </span> : null}
@@ -70,6 +80,11 @@ EditSimpleImage.defaultProps = {
 };
 
 EditSimpleImage.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   editMode: PropTypes.bool,
 };
+
+EditSimpleImage.childContextTypes = {
+  i18n: PropTypes.object,
+};
+

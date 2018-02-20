@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
 import { IconButton } from 'nocms-atoms';
-import { dictionary } from './i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 
 export default class SectionMenuSticky extends Component {
   constructor(props) {
@@ -64,6 +64,10 @@ export default class SectionMenuSticky extends Component {
       componentIndex,
       components,
     } = this.props;
+    const {
+      i18n,
+      adminLang,
+    } = this.context;
     return (
       <div className="edit-mode__widget-menu">
         <div className="edit-mode__widget-title">{label}</div>
@@ -81,13 +85,13 @@ export default class SectionMenuSticky extends Component {
                 {this.state.adminDropdownOpen ?
                   <ul className="unstyled-list">
                     <li className="edit-mode__more-dropdown-item">
-                      <IconButton onClick={this.onDeleteComponentClick} transparent iconType="delete" iconSize="small" text={dictionary('Slett seksjon', this.context.lang)} />
+                      <IconButton onClick={this.onDeleteComponentClick} transparent iconType="delete" iconSize="small" text={dictionary(i18n, 'Slett seksjon', adminLang)} />
                     </li>
                   </ul> : null}
               </nav>
             </div>
             : null}
-          <IconButton onClick={this.onEditAbortClick} className="text-uppercase text-small" iconSize="small" iconType="check" text={dictionary('Lukk', this.context.lang)} dark />
+          <IconButton onClick={this.onEditAbortClick} className="text-uppercase text-small" iconSize="small" iconType="check" text={dictionary(i18n, 'Lukk', adminLang)} dark />
         </div>
       </div>
     );
@@ -104,4 +108,9 @@ SectionMenuSticky.propTypes = {
 
 SectionMenuSticky.defaultProps = {
   sticky: false,
+};
+
+SectionMenuSticky.contextTypes = {
+  i18n: PropTypes.object,
+  adminLang: PropTypes.string,
 };

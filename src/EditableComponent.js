@@ -1,9 +1,9 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { dictionary } from 'nocms-i18n';
 import { Icon } from 'nocms-atoms';
 import SectionMenu from './SectionMenu';
-import { dictionary } from './i18n/Internationalization';
 
 export default class EditableComponent extends Component {
   constructor(props) {
@@ -34,12 +34,16 @@ export default class EditableComponent extends Component {
       components,
       label,
     } = this.props;
+    const {
+      i18n,
+      lang,
+    } = this.context;
     const className = this.state.activeEditMode ? 'edit-mode edit-mode--active' : 'edit-mode edit-mode--not-active';
     const activeEditModeProps = this.state.componentEditButton ? this.state.activeEditMode : true;
     const childWithProps = React.cloneElement(children, {
       activeEditMode: activeEditModeProps,
     });
-    const translatedLabel = dictionary(label, 'this.context.lang');
+    const translatedLabel = dictionary(i18n, label, lang);
     return (
       <div className={className} onClick={this.onEditClick}>
         <div className="edit-mode__label">
@@ -62,4 +66,5 @@ EditableComponent.propTypes = {
 
 EditableComponent.contextTypes = {
   lang: PropTypes.string,
+  i18n: PropTypes.object,
 };

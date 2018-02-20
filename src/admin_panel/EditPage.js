@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
+import { dictionary } from 'nocms-i18n';
 import AdminMenuDialog from '../AdminMenuDialog';
 import PublishPage from '../dialogs/PublishPage';
 import PageSettings from '../dialogs/PageSettings';
 import DeletePage from '../dialogs/DeletePage';
 import MovePage from '../dialogs/MovePage';
-import { dictionary } from '../i18n/Internationalization';
 // import smoothscroll from 'smoothscroll';
 
 const EditPage = (props, context) => {
   const { pageData } = props;
-  const { lang } = context;
+  const { adminLang, i18n } = context;
   const menuItemClass = 'admin-menu__item';
   return (
     <div className="admin-menu__edit">
@@ -27,12 +27,12 @@ const EditPage = (props, context) => {
           </span>
         </div>
         <AdminMenuDialog
-          icon="publish" title={dictionary('Publiser side', lang)}
+          icon="publish" title={dictionary(i18n, 'Publiser side', adminLang)}
           showTitle
           vertical
           noBorder
           green
-          text={dictionary('Publiser', lang)}
+          text={dictionary(i18n, 'Publiser', adminLang)}
           centered
           widthConstrained
         >
@@ -43,8 +43,8 @@ const EditPage = (props, context) => {
         <ul className="unstyled-list">
           <li className={menuItemClass}>
             <AdminMenuDialog
-              title={dictionary('Jeg ønsker å endre på sideinnstillingene', lang)}
-              text={dictionary('Sideinnstillinger', lang)} icon="settings"
+              title={dictionary(i18n, 'Jeg ønsker å endre på sideinnstillingene', adminLang)}
+              text={dictionary(i18n, 'Sideinnstillinger', adminLang)} icon="settings"
               centered
               widthConstrained
             >
@@ -53,8 +53,8 @@ const EditPage = (props, context) => {
           </li>
           <li className={menuItemClass}>
             <AdminMenuDialog
-              title={dictionary('Jeg ønsker å flytte siden', lang)}
-              text={dictionary('Flytt side', lang)}
+              title={dictionary(i18n, 'Jeg ønsker å flytte siden', adminLang)}
+              text={dictionary(i18n, 'Flytt side', adminLang)}
               icon="trending_flat"
               centered
               widthConstrained
@@ -64,8 +64,8 @@ const EditPage = (props, context) => {
           </li>
           <li className={menuItemClass}>
             <AdminMenuDialog
-              title={dictionary('Jeg ønsker å slette siden', lang)}
-              text={dictionary('Slett side', lang)} icon="delete"
+              title={dictionary(i18n, 'Jeg ønsker å slette siden', adminLang)}
+              text={dictionary(i18n, 'Slett side', adminLang)} icon="delete"
               centered
               widthConstrained
             >
@@ -83,7 +83,9 @@ EditPage.propTypes = {
 };
 
 EditPage.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
+  editPage: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 export default EditPage;

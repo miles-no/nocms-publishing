@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
 import { Icon } from 'nocms-atoms';
 import { triggerGlobal } from 'nocms-events';
-import I, { dictionary } from '../i18n/Internationalization';
+import { I, dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
 
@@ -38,6 +38,7 @@ export default class DeletePage extends Component {
   }
 
   render() {
+    const { i18n, adminLang } = this.context;
     const initialData = { confirm: false };
     const confirmValidate = (value) => {
       return value;
@@ -45,7 +46,7 @@ export default class DeletePage extends Component {
     return (
       <Form
         store="delete-page"
-        submitButtonText={dictionary('Slett side', 'no')}
+        submitButtonText={dictionary(i18n, 'Slett side', adminLang)}
         onSubmit={this.handleDeletePage}
         initialData={initialData}
       >
@@ -58,7 +59,7 @@ export default class DeletePage extends Component {
         </div>
         <Field
           type="checkbox"
-          label={dictionary('Ja, jeg ønsker å slette siden', 'no')}
+          label={dictionary(i18n, 'Ja, jeg ønsker å slette siden', adminLang)}
           name="confirm"
           required
           validate={confirmValidate}
@@ -70,8 +71,9 @@ export default class DeletePage extends Component {
 }
 
 DeletePage.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   config: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 DeletePage.propTypes = {

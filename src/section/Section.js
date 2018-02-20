@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
-import I from '../i18n/Internationalization';
+import { I } from 'nocms-i18n';
 
 export default class Section extends Component {
   constructor(props) {

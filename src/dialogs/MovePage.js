@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import uuid from 'uuid';
-import { dictionary } from '../i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
 
@@ -39,7 +39,6 @@ export default class MovePage extends Component {
     const options = {
       responseRequired: true,
     };
-    console.log('newuri', formData.uri);
     ajax.post(this.context.config.messageApi, messageObj, options, (err, res) => {
       if (err) {
         this.setState({ error: 'Flytting av side feilet.' });
@@ -52,12 +51,12 @@ export default class MovePage extends Component {
 
   render() {
     const initialState = { pageId: this.props.pageId, uri: this.props.uri };
-    const lang = this.context.lang;
+    const { adminLang, i18n } = this.context;
     return (
       <div className="modal__content modal__content--centered">
         <div className="nocms-admin-form">
           <Form
-            submitButtonText={dictionary('Flytt siden', lang)}
+            submitButtonText={dictionary(i18n, 'Flytt siden', adminLang)}
             store={store}
             errorText={this.state.errorText}
             initialState={initialState}
@@ -66,9 +65,9 @@ export default class MovePage extends Component {
             <Field
               name="uri"
               required
-              label={dictionary('Ny side-URI', this.context.lang)}
+              label={dictionary(i18n, 'Ny side-URI', adminLang)}
               validate="notEmpty"
-              errorText={dictionary('Siden må ha en URL', this.context.lang)}
+              errorText={dictionary(i18n, 'Siden må ha en URL', adminLang)}
             />
           </Form>
         </div>
@@ -77,9 +76,10 @@ export default class MovePage extends Component {
   }
 }
 MovePage.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   config: PropTypes.object,
   adminConfig: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 MovePage.propTypes = {

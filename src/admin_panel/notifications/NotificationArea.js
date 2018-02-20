@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { listenToGlobal } from 'nocms-events';
+import { dictionary } from 'nocms-i18n';
 import { Icon } from 'nocms-atoms';
 import Notification from './Notification';
-
-import { dictionary } from '../../i18n/Internationalization';
 
 const DEFAULT_DURATION = 5000;
 
@@ -26,7 +25,7 @@ export default class NotificationArea extends Component {
     });
     listenToGlobal('nocms.value-changed', () => {
       const notification = {
-        text: dictionary('Lagrer', this.context.adminLang),
+        text: dictionary(this.context.i18n, 'Lagrer', this.context.adminLang),
         icon: 'save-changes',
         id: 'nocms.value-changed',
         clear: ['nocms.page-saved', 'nocms.value-changed'],
@@ -35,7 +34,7 @@ export default class NotificationArea extends Component {
     });
     listenToGlobal('nocms.page-saved', () => {
       const notification = {
-        text: dictionary('Lagret', this.context.adminLang),
+        text: dictionary(this.context.i18n, 'Lagret', this.context.adminLang),
         icon: 'check',
         id: 'nocms.page-saved',
         clear: ['nocms.page-saved', 'nocms.value-changed'],
@@ -74,10 +73,7 @@ export default class NotificationArea extends Component {
   }
 }
 
-NotificationArea.propTypes = {
-
-};
-
 NotificationArea.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
+  i18n: PropTypes.object,
 };

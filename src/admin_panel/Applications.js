@@ -1,9 +1,9 @@
 // @TODO: rewrite
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { dictionary } from 'nocms-i18n';
 import AdminMenuDialog from '../AdminMenuDialog';
 import MenuSectionWrapper from './MenuSectionWrapper';
-import { dictionary } from '../i18n/Internationalization';
 
 export default class Applications extends Component {
   constructor(props) {
@@ -23,13 +23,14 @@ export default class Applications extends Component {
 
   render() {
     const { applications } = this.props;
+    const { adminLang, i18n } = this.context;
     const { admin: isAdmin, publisher: isPublisher } = this.props.claims;
     if (!isAdmin && !isPublisher) {
       return null;
     }
     const menuItemClass = 'admin-menu__item';
     return (
-      <MenuSectionWrapper folderName={dictionary('Applikasjoner', this.context.lang)}>
+      <MenuSectionWrapper folderName={dictionary(i18n, 'Applikasjoner', adminLang)}>
         <div className="admin-menu__edit">
           <ul className="admin-menu__actions unstyled-list">
             { isPublisher ?
@@ -39,9 +40,9 @@ export default class Applications extends Component {
                   return (
                     <li className={menuItemClass} key={app.src}>
                       <AdminMenuDialog
-                        instructionContent={dictionary(app.text, this.context.lang)}
-                        title={dictionary(app.title, this.context.lang)}
-                        text={dictionary(app.text, this.context.lang)}
+                        instructionContent={dictionary(i18n, app.text, adminLang)}
+                        title={dictionary(i18n, app.title, adminLang)}
+                        text={dictionary(i18n, app.text, adminLang)}
                         icon={app.icon}
                       >
                         <iframe
@@ -66,9 +67,9 @@ export default class Applications extends Component {
                   return (
                     <li className={menuItemClass} key={app.src}>
                       <AdminMenuDialog
-                        instructionContent={dictionary(app.text, this.context.lang)}
-                        title={dictionary(app.title, this.context.lang)}
-                        text={dictionary(app.text, this.context.lang)}
+                        instructionContent={dictionary(i18n, app.text, adminLang)}
+                        title={dictionary(i18n, app.title, adminLang)}
+                        text={dictionary(i18n, app.text, adminLang)}
                         icon={app.icon}
                       >
                         <iframe
@@ -100,4 +101,9 @@ Applications.propTypes = {
 
 Applications.defaultProps = {
   claims: {},
+};
+
+Applications.contextTypes = {
+  adminLang: PropTypes.string,
+  i18n: PropTypes.object,
 };

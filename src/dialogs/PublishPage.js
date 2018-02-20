@@ -4,7 +4,7 @@ import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import { Icon } from 'nocms-atoms';
 import moment from 'moment';
-import I, { dictionary } from '../i18n/Internationalization';
+import { I, dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
 
@@ -101,18 +101,18 @@ export default class PublishPage extends Component {
   }
 
   render() {
-    const { adminLang } = this.context;
+    const { adminLang, i18n } = this.context;
     const radioOptions = [
       {
-        label: dictionary('Publiser nå', adminLang),
+        label: dictionary(i18n, 'Publiser nå', adminLang),
         value: 'published',
       },
       // {
-      //  label: dictionary('Lagre som kladd', adminLang),
+      //  label: dictionary(i18n, 'Lagre som kladd', adminLang),
       //  value: 'notPublished',
       // },
       // {
-      //  label: dictionary('Publiser i et tidsrom', adminLang),
+      //  label: dictionary(i18n, 'Publiser i et tidsrom', adminLang),
       //  value: 'interval',
       // },
     ];
@@ -122,7 +122,7 @@ export default class PublishPage extends Component {
         <div className="modal__content modal__content--centered">
           <Form
             store={storeName}
-            submitButtonText={dictionary('Publiser side', adminLang)}
+            submitButtonText={dictionary(i18n, 'Publiser side', adminLang)}
             initialState={this.initialState}
             onSubmit={this.handlePublishPage}
           >
@@ -145,7 +145,7 @@ export default class PublishPage extends Component {
             <Field
               type="datetime-local"
               store={storeName}
-              label={dictionary('Fra', adminLang)}
+              label={dictionary(i18n, 'Fra', adminLang)}
               disabled={!this.state.isInterval}
               name="publishedFrom"
               validate={validateDate}
@@ -153,12 +153,12 @@ export default class PublishPage extends Component {
               dependencyFunc={isInterval}
               required
               placeholder="DD.MM.YYYY hh:mm"
-              errorText={dictionary('Du må velge en gyldig dato og et tidspunkt', adminLang)}
+              errorText={dictionary(i18n, 'Du må velge en gyldig dato og et tidspunkt', adminLang)}
             />
             <Field
               type="datetime-local"
               store={storeName}
-              label={dictionary('Til', adminLang)}
+              label={dictionary(i18n, 'Til', adminLang)}
               disabled={!this.state.isInterval}
               name="publishedTo"
               validate={validateFutureDate}
@@ -167,7 +167,7 @@ export default class PublishPage extends Component {
               required
               placeholder="DD.MM.YYYY hh:mm"
               min={moment().format('YYYY-MM-DD')}
-              errorText={dictionary('Du må velge en gyldig dato og et tidspunkt', adminLang)}
+              errorText={dictionary(i18n, 'Du må velge en gyldig dato og et tidspunkt', adminLang)}
             />
           </Form>
         </div>
@@ -180,6 +180,7 @@ PublishPage.contextTypes = {
   adminLang: PropTypes.string,
   config: PropTypes.object,
   adminConfig: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 PublishPage.propTypes = {

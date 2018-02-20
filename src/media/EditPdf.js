@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
 import { IconButton } from 'nocms-atoms';
-import { dictionary } from '../i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 import Pdf from '../dialogs/media/Pdf';
 import ModalDialog from '../atoms/ModalDialog';
+import i18n from '../i18n/dictionary';
 
 export default class EditPdf extends Component {
   constructor(props) {
@@ -16,6 +17,13 @@ export default class EditPdf extends Component {
       dialogOpen: false,
     };
   }
+
+  getChildContext() {
+    return {
+      i18n,
+    };
+  }
+
   onClose() {
     this.setState({ dialogOpen: false });
   }
@@ -31,10 +39,11 @@ export default class EditPdf extends Component {
 
 
   render() {
-    const title = dictionary('Jeg ønsker å legge til en PDF-fil', this.context.lang);
-    const instructionContent = dictionary('Legg til pdf-instruksjoner', this.context.lang);
+    const { i18n, lang, editMode } = this.context;
+    const title = dictionary(i18n, 'Jeg ønsker å legge til en PDF-fil', lang);
+    const instructionContent = dictionary(i18n, 'Legg til pdf-instruksjoner', lang);
     return (
-      <span> {this.props.activeEditMode && this.context.editMode ?
+      <span> {this.props.activeEditMode && editMode ?
         <span className="admin-button__add-image">
           <IconButton onClick={this.onClick} iconType="picture_as_pdf" text="Rediger PDF" iconSize="small" iconOnly transparent noBorder />
           <ModalDialog
@@ -47,7 +56,7 @@ export default class EditPdf extends Component {
             titleIcon="picture_as_pdf"
             title={title}
             instructionContent={instructionContent}
-            titleText={dictionary('PDF-filer', this.context.lang)}
+            titleText={dictionary(i18n, 'PDF-filer', lang)}
             showTitle
           >
             <Pdf
@@ -79,4 +88,8 @@ EditPdf.defaultProps = {
 EditPdf.contextTypes = {
   lang: PropTypes.string,
   editMode: PropTypes.bool,
+};
+
+EditPdf.childContextTypes = {
+  i18n: PropTypes.object,
 };

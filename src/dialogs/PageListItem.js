@@ -2,22 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
 import moment from 'moment';
-import { dictionary } from '../i18n/Internationalization';
+import { dictionary } from 'nocms-i18n';
 
 const PageListItem = (props, context) => {
   const { page, iconSize, onItemClick } = props;
+  const { adminLang, i18n } = context;
   const notificationIconType = page.published ? 'notifications' : 'notifications_none';
   let iconClass = '';
-  let statusText = dictionary('Denne siden er ikke publisert', context.lang);
+  let statusText = dictionary(i18n, 'Denne siden er ikke publisert', adminLang);
 
   if (page.published) {
     iconClass = 'admin_pagelist__item__page-status-icon--success';
-    statusText = dictionary('Denne siden er publisert', context.lang);
+    statusText = dictionary(i18n, 'Denne siden er publisert', adminLang);
   }
 
   if (page.hasUnpublishedChanges) {
     iconClass = 'admin_pagelist__item__page-status-icon--alert';
-    statusText = dictionary('Denne siden har upubliserte endringer', context.lang);
+    statusText = dictionary(i18n, 'Denne siden har upubliserte endringer', adminLang);
   }
 
   return (
@@ -30,7 +31,7 @@ const PageListItem = (props, context) => {
       <div className="admin-pagelist__item__content">
         <span className="admin-pagelist__pagetitle">{page.pageTitle}</span>
         <span className="admin-pagelist__item__content--sub">
-          {dictionary('Sist endret', context.lang)} { moment(page.created).format('DD.MM.YYYY [kl] HH:mm:ss') }
+          {dictionary(i18n, 'Sist endret', adminLang)} { moment(page.created).format('DD.MM.YYYY [kl] HH:mm:ss') }
         </span>
       </div>
       <div className="admin-pagelist__item__page-status">
@@ -46,7 +47,8 @@ const PageListItem = (props, context) => {
 };
 
 PageListItem.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
+  i18n: PropTypes.object,
 };
 
 PageListItem.propTypes = {

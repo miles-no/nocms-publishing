@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I from '../../i18n/Internationalization';
+import { I, dictionary } from 'nocms-i18n';
 
 export default class ImageMeta extends Component {
   constructor(props) {
@@ -13,13 +13,14 @@ export default class ImageMeta extends Component {
   }
 
   render() {
+    const { adminLang, i18n } = this.context;
     return (
       <form>
         <div>
           <div className="admin-form__control-group">
             <label>
               <span className="admin-form__label"><I>Alt-tekst</I></span>
-              <input type="text" value={this.props.alt} placeholder="Kort tekst som beskriver bildet" onChange={(e) => { return this.onMetaChange(e, 'alt'); }} />
+              <input type="text" value={this.props.alt} placeholder={dictionary(i18n, 'Kort tekst som beskriver bildet', adminLang)} onChange={(e) => { return this.onMetaChange(e, 'alt'); }} />
             </label>
           </div>
           <div className="admin-form__control-group">
@@ -45,3 +46,8 @@ ImageMeta.defaultProps = {
   alt: '',
   caption: '',
 };
+
+ImageMeta.contextTypes = {
+  adminLang: PropTypes.string,
+  i18n: PropTypes.object,
+}

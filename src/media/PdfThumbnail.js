@@ -1,8 +1,8 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { I } from 'nocms-i18n';
 import cloudinary from '../utils/cloudinary';
-import I from '../i18n/Internationalization';
 
 export default class PdfThumbnail extends Component {
   constructor(props) {
