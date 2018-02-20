@@ -29,26 +29,30 @@ const templates = [
   },
 ];
 
-const sections = [{
-  name: 'chapter',
-  description: '',
-  categories: ['all'],
-  icon: '',
-  label: 'Kapittel',
-  defaultData: { foo: 1 },
-},
-{
-  name: 'banner',
-  description: '',
-  categories: ['all'],
-  icon: '',
-  label: 'Banner'
-}];
+const sections = [
+  {
+    name: 'chapter',
+    description: '',
+    categories: ['all'],
+    icon: '',
+    label: 'Kapittel',
+    defaultData: { foo: 1 },
+  },
+  {
+    name: 'banner',
+    description: '',
+    categories: ['all'],
+    icon: '',
+    label: 'Banner',
+  },
+];
 
-const folders = [  {
-  id: 'all',
-  title: 'Alle typer',
-}];
+const folders = [
+  {
+    id: 'all',
+    title: 'Alle typer',
+  }
+];
 
 const applications = [
   {
@@ -57,7 +61,7 @@ const applications = [
     text: 'Språk',
     src: '/applications/i18n',
     icon: 'language',
-    requirePublisher: true
+    requirePublisher: true,
   },
   {
     title: 'Jeg ønsker å endre data om menneskene',
@@ -65,7 +69,7 @@ const applications = [
     text: 'Menneskene',
     src: '/applications/people-admin',
     icon: 'people',
-    requireAdmin: true
+    requireAdmin: true,
   },
   {
     title: 'Jeg ønsker å endre/legge til et arrangement',
@@ -73,9 +77,9 @@ const applications = [
     text: 'Sosialt',
     src: '/applications/smiles-admin',
     icon: 'event',
-    requireAdmin: true
-  }
-]
+    requireAdmin: true,
+  },
+];
 
 const config = document.getElementById('nocms.config');
 
@@ -87,6 +91,7 @@ export default class App extends React.Component {
       isNoCMSUser: true,
       adminLang: 'no',
       config: { config },
+
     };
   }
   render() {
