@@ -257,7 +257,7 @@ export default class Media extends Component {
   }
 
   render() {
-    const { i18n, lang } = this.context;
+    const { i18n, adminLang } = this.context;
     let imageMarkup;
     let imageMetaMarkup = null;
     let activeImageId = null;
@@ -322,7 +322,7 @@ export default class Media extends Component {
         </div>
         <ImageFolders firstDefaultOpen activeImageId={activeImageId} />
         <footer className="modal__footer">
-          <Button primary text={dictionary(i18n, 'OK, jeg er ferdig', lang)} onClick={this.onFinish} />
+          <Button primary text={dictionary(i18n, 'OK, jeg er ferdig', adminLang)} onClick={this.onFinish} />
         </footer>
       </div>
     );
@@ -354,5 +354,5 @@ Media.defaultProps = {
 Media.contextTypes = {
   config: PropTypes.object,
   i18n: PropTypes.object,
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
 };

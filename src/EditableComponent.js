@@ -36,14 +36,14 @@ export default class EditableComponent extends Component {
     } = this.props;
     const {
       i18n,
-      lang,
+      adminLang,
     } = this.context;
     const className = this.state.activeEditMode ? 'edit-mode edit-mode--active' : 'edit-mode edit-mode--not-active';
     const activeEditModeProps = this.state.componentEditButton ? this.state.activeEditMode : true;
     const childWithProps = React.cloneElement(children, {
       activeEditMode: activeEditModeProps,
     });
-    const translatedLabel = dictionary(i18n, label, lang);
+    const translatedLabel = dictionary(i18n, label, adminLang);
     return (
       <div className={className} onClick={this.onEditClick}>
         <div className="edit-mode__label">
@@ -65,6 +65,6 @@ EditableComponent.propTypes = {
 };
 
 EditableComponent.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   i18n: PropTypes.object,
 };

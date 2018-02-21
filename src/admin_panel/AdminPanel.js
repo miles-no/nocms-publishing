@@ -80,7 +80,7 @@ export default class AdminPanel extends Component {
 
   render() {
     const { templates, languages, pageData, folders, applications } = this.props;
-    const { lang, i18n } = this.context;
+    const { adminLang, i18n } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
     const template = templates.find((obj) => {
       return obj.id === pageData.templateId;
@@ -103,7 +103,7 @@ export default class AdminPanel extends Component {
               {this.state.adminDropdownOpen ?
                 <ul className="unstyled-list">
                   <li className="admin-menu__admin-dropdown-item">Språk: Norsk</li>
-                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary(i18n, 'Logg ut', lang)}</a></li>
+                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary(i18n, 'Logg ut', adminLang)}</a></li>
                 </ul> : null}
             </nav>
           </div>
@@ -113,22 +113,22 @@ export default class AdminPanel extends Component {
             <AdminMenuDialog
               vertical
               iconSize="large"
-              text={dictionary(i18n, 'Alle sider', lang)}
+              text={dictionary(i18n, 'Alle sider', adminLang)}
               icon="layers"
               showTitle
-              title={dictionary(i18n, 'Oversikt alle sider', lang)}
+              title={dictionary(i18n, 'Oversikt alle sider', adminLang)}
               centered
             >
               <PageList />
             </AdminMenuDialog>
             <AdminMenuDialog
-              vertical iconSize="large" text={dictionary(i18n, 'Ny side', lang)} icon="note_add" showTitle title="Opprett en ny side" centered widthConstrained
+              vertical iconSize="large" text={dictionary(i18n, 'Ny side', adminLang)} icon="note_add" showTitle title="Opprett en ny side" centered widthConstrained
             >
               <CreatePage templates={templates} languages={languages} />
             </AdminMenuDialog>
           </div>
         </div>
-        <MenuSectionWrapper folderName={dictionary(i18n, 'Rediger side', lang)} startOpen>
+        <MenuSectionWrapper folderName={dictionary(i18n, 'Rediger side', adminLang)} startOpen>
           <EditPage pageData={pageData} />
           <div className="button-container button-container--center">
             <div className="admin_menu__add-section-container">
@@ -143,10 +143,10 @@ export default class AdminPanel extends Component {
             </div>
           </div>
         </MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary(i18n, 'Sideinformasjon', lang)}>
+        <MenuSectionWrapper folderName={dictionary(i18n, 'Sideinformasjon', adminLang)}>
           <SiteInfo {...pageData} templates={templates} />
         </MenuSectionWrapper>
-        <MenuSectionWrapper folderName={dictionary(i18n, 'Forhåndsvis', lang)}>
+        <MenuSectionWrapper folderName={dictionary(i18n, 'Forhåndsvis', adminLang)}>
           <PreviewPage pageData={pageData} />
         </MenuSectionWrapper>
         {applications && applications.length !== 0 ? <Applications claims={publisherInfo.claims} applications={applications} /> : null }
@@ -168,6 +168,6 @@ AdminPanel.propTypes = {
 };
 
 AdminPanel.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   i18n: PropTypes.object,
 };

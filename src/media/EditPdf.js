@@ -39,9 +39,9 @@ export default class EditPdf extends Component {
 
 
   render() {
-    const { i18n, lang, editMode } = this.context;
-    const title = dictionary(i18n, 'Jeg ønsker å legge til en PDF-fil', lang);
-    const instructionContent = dictionary(i18n, 'Legg til pdf-instruksjoner', lang);
+    const { adminLang, editMode } = this.context;
+    const title = dictionary(i18n, 'Jeg ønsker å legge til en PDF-fil', adminLang);
+    const instructionContent = dictionary(i18n, 'Legg til pdf-instruksjoner', adminLang);
     return (
       <span> {this.props.activeEditMode && editMode ?
         <span className="admin-button__add-image">
@@ -56,7 +56,7 @@ export default class EditPdf extends Component {
             titleIcon="picture_as_pdf"
             title={title}
             instructionContent={instructionContent}
-            titleText={dictionary(i18n, 'PDF-filer', lang)}
+            titleText={dictionary(i18n, 'PDF-filer', adminLang)}
             showTitle
           >
             <Pdf
@@ -86,7 +86,7 @@ EditPdf.defaultProps = {
 };
 
 EditPdf.contextTypes = {
-  lang: PropTypes.string,
+  adminLang: PropTypes.string,
   editMode: PropTypes.bool,
 };
 
