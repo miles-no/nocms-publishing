@@ -191,7 +191,7 @@ export default class Media extends Component {
     }
     const src = this.getImageSrcForCropper(publicId);
     return (
-      <ImageCropper src={src} aspectRatio={appliedAspectRatio} ref="cropper" />
+      <ImageCropper src={src} aspectRatio={appliedAspectRatio} ref="cropper" /> // eslint-disable-line react/no-string-refs
     );
   }
 
@@ -205,8 +205,8 @@ export default class Media extends Component {
   }
 
   setCropperData() {
-    const cropperData = this.refs.cropper.getData();
-    if (this.props.targetDevices && this.state.selectedTab === 'large' || !this.props.targetDevices) {
+    const cropperData = this.refs.cropper.getData(); // eslint-disable-line react/no-string-refs
+    if (this.props.targetDevices && this.state.selectedTab === 'large' || !this.props.targetDevices) { // eslint-disable-line no-mixed-operators
       const largeDeviceData = Object.assign(this.state.largeDevice, cropperData);
       this.setState({ largeDevice: largeDeviceData });
     } else {
@@ -262,7 +262,7 @@ export default class Media extends Component {
     let imageMetaMarkup = null;
     let activeImageId = null;
     let fileName;
-    if (this.props.targetDevices && this.state.selectedTab === 'large' || !this.props.targetDevices) {
+    if (this.props.targetDevices && this.state.selectedTab === 'large' || !this.props.targetDevices) { // eslint-disable-line no-mixed-operators
       imageMarkup = this.state.enableLarge ? this.getCropperMarkup(this.state.largeDevice.publicId) : this.getImagePreviewMarkup();
       fileName = this.state.largeDevice.publicId ? `${this.state.largeDevice.publicId}.${this.state.largeDevice.format}` : 'Ingen valgt';
       if (this.state.largeDevice.publicId) {

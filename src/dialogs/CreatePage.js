@@ -37,7 +37,7 @@ export default class CreatePage extends Component {
 
     this.state = {
       lang: context.lang,
-      overrideUri: false
+      overrideUri: false,
     };
   }
 

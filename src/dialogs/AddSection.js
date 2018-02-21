@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SectionFolderList from '../section/SectionFolderList';
 
 const AddSection = (props) => {
-  console.log(props);
   const { onClick, template, folders } = props;
 
   return (

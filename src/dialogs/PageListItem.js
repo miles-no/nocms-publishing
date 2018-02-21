@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/no-static-element-interactions: off */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';

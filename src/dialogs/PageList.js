@@ -21,7 +21,7 @@ export default class PageList extends Component {
     if (webApi) {
       ajax.get(`${webApi}/pages`, (err, pages) => {
         if (err) {
-          console.warn(err);
+          console.warn(err); // eslint-disable-line no-console
           return;
         }
         this.setState({ pages });

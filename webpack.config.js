@@ -1,7 +1,8 @@
+/* eslint no-console: off */
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const host = '0.0.0.0';
 const port = '9000';

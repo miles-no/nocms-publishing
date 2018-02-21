@@ -40,7 +40,7 @@ export default class EditableComponentWrapper extends Component {
       </div>
     );
   }
-};
+}
 
 EditableComponentWrapper.propTypes = {
   children: PropTypes.array,

@@ -20,7 +20,7 @@ const SectionFolderList = (props) => {
       if (typeof parentCategory !== 'undefined') {
         parentCategory.sections.push(section);
       } else {
-        console.log(`Couldn't find category for type ${category.id}`);
+        console.log(`Couldn't find category for type ${category.id}`); // eslint-disable-line no-console
       }
     });
   });

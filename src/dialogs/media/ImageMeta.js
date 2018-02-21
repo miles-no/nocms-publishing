@@ -50,4 +50,4 @@ ImageMeta.defaultProps = {
 ImageMeta.contextTypes = {
   adminLang: PropTypes.string,
   i18n: PropTypes.object,
-}
+};
