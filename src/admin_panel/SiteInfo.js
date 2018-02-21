@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { I } from 'nocms-i18n';
@@ -13,11 +13,20 @@ const SiteInfo = (props) => {
         <dd>{revision}</dd>
         <dt><I>Maltype</I></dt>
         <dd><I>{template.name}</I></dd>
-        <dt><I>Endret</I></dt>
+        <dt><I>Opprettet</I></dt>
         <dd>{moment(created.time).format('L')}</dd>
-        <dt><I>Endret av</I></dt>
+        <dt><I>Opprettet av</I></dt>
         <dd>{created.user}</dd>
-        
+        <dt><I>Publisert</I></dt>
+        <dd>{Object.keys(published).length === 0 ?
+          <I>Denne versjonen er ikke publisert</I>
+          : `${moment(published.time).format('L')}`}
+        </dd>
+        <dt><I>Publisert av</I></dt>
+        <dd>{Object.keys(published).length === 0 ?
+          <I>Denne versjonen er ikke publisert</I>
+          : `${published.user}`}
+        </dd>
       </dl>
     </div>
   );
