@@ -149,6 +149,7 @@ CreatePage.contextTypes = {
   lang: PropTypes.string,
   config: PropTypes.object,
   adminConfig: PropTypes.object,
+  i18n: PropTypes.object,
 };
 
 CreatePage.propTypes = {
