@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { I } from 'nocms-i18n';
-import cloudinary from '../utils/cloudinary';
+import cloudinary from 'nocms-cloudinary-utils';
 
 export default class PdfThumbnail extends Component {
   constructor(props) {

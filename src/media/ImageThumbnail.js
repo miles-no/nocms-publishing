@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { I } from 'nocms-i18n';
 import { triggerGlobal } from 'nocms-events';
-import cloudinary from '../utils/cloudinary';
+import cloudinary from 'nocms-cloudinary-utils';
 
 export default class ImageThumbnail extends Component {
   constructor(props) {

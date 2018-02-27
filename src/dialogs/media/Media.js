@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { I, dictionary } from 'nocms-i18n';
+import cloudinary from 'nocms-cloudinary-utils';
 import { listenToGlobal, stopListenToGlobal, triggerGlobal } from 'nocms-events';
 import ImageFolders from '../../media/ImageFolders';
 import Button from '../../atoms/Button';
 import CloudinaryImage from '../../media/CloudinaryImage';
-import cloudinary from '../../utils/cloudinary';
 import TabHeader from '../../atoms/TabHeader';
 import ImageMeta from './ImageMeta';
 import Spinner from '../../atoms/Spinner';

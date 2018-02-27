@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cloudinary from '../utils/cloudinary';
+import cloudinary from 'nocms-cloudinary-utils';
 
 const CloudinaryImage = (props, context) => {
   const {

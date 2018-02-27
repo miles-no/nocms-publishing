@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TextArea, LinkButton } from 'nocms-atoms';
-import { EditImage } from 'nocms-publishing';
-import cloudinary from '../../src/utils/cloudinary';
+import { EditImage } from 'nocms-publishing'; // eslint-disable-line
+import cloudinary from 'nocms-cloudinary-utils';
 
 const Banner = (props) => {
   const {

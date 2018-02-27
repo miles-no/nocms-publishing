@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I, { dictionary } from 'nocms-i18n';
+import cloudinary from 'nocms-cloudinary-utils';
 import { listenToGlobal, stopListenToGlobal, triggerGlobal } from 'nocms-events';
 import Button from '../../atoms/Button';
 import ImageMeta from './ImageMeta';
 import ImageFolders from '../../media/ImageFolders';
-import cloudinary from '../../utils/cloudinary';
 
 export default class SimpleImage extends Component {
   constructor(props) {
