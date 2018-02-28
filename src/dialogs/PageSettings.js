@@ -19,7 +19,13 @@ export default class PageSettings extends Component {
   }
 
   handleUpdatePageSettings(formData) {
-    triggerGlobal('nocms.store-page-values', formData);
+    const data = {
+      lang: formData.lang || this.props.languages[0],
+      pageTitle: formData.pageTitle,
+      metaDescription: formData.metaDescription,
+    };
+
+    triggerGlobal('nocms.store-page-values', data);
     this.props.onClose();
   }
 
