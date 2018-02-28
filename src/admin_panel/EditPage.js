@@ -10,7 +10,7 @@ import MovePage from '../dialogs/MovePage';
 // import smoothscroll from 'smoothscroll';
 
 const EditPage = (props, context) => {
-  const { pageData } = props;
+  const { pageData, languages } = props;
   const { adminLang, i18n } = context;
   const menuItemClass = 'admin-menu__item';
   return (
@@ -48,7 +48,7 @@ const EditPage = (props, context) => {
               centered
               widthConstrained
             >
-              <PageSettings {...pageData} />
+              <PageSettings {...pageData} languages={languages} />
             </AdminMenuDialog>
           </li>
           <li className={menuItemClass}>
@@ -80,6 +80,7 @@ const EditPage = (props, context) => {
 
 EditPage.propTypes = {
   pageData: PropTypes.object,
+  languages: PropTypes.array,
 };
 
 EditPage.contextTypes = {

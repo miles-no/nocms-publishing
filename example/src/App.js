@@ -51,7 +51,7 @@ const folders = [
   {
     id: 'all',
     title: 'Alle typer',
-  }
+  },
 ];
 
 const applications = [

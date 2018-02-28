@@ -129,7 +129,7 @@ export default class AdminPanel extends Component {
           </div>
         </div>
         <MenuSectionWrapper folderName={dictionary(i18n, 'Rediger side', adminLang)} startOpen>
-          <EditPage pageData={pageData} />
+          <EditPage pageData={pageData} languages={languages} />
           <div className="button-container button-container--center">
             <div className="admin_menu__add-section-container">
               {template.sections.length > 0 ?

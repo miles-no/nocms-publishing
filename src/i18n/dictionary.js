@@ -132,6 +132,14 @@ const i18n = {
     no: 'Det finnes allerede en side på uri. Velg annen eller avbryt',
     en: 'Uri taken, choose another one or abort',
   },
+  no: {
+    no: 'Norsk',
+    en: 'Norwegian',
+  },
+  en: {
+    no: 'Engelsk',
+    en: 'English',
+  },
 };
 
 export default i18n;

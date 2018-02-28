@@ -24,9 +24,9 @@ export default class PageSettings extends Component {
   }
 
   render() {
-    // @TODO: from props/context
-    const languages = ['no', 'en'];
+    const { languages } = this.props;
     const { adminLang, i18n } = this.context;
+    const languageOptions = languages.map((language) => { return { label: dictionary(this.context.i18n, language, this.context.adminLang), value: language }; });
     return (
       <div>
         <div className="modal__content modal__content--centered">
@@ -52,7 +52,7 @@ export default class PageSettings extends Component {
               type="select"
               store={storeName}
               label={dictionary(i18n, 'Sidespråk', adminLang)}
-              options={languages}
+              options={languageOptions}
               name="lang"
               required
               errorText="Siden må ha et språk"
@@ -75,6 +75,7 @@ PageSettings.propTypes = {
   lang: PropTypes.string,
   metaDescription: PropTypes.string,
   onClose: PropTypes.func,
+  languages: PropTypes.array,
 };
 
 PageSettings.defaultProps = {
