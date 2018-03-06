@@ -1,3 +1,25 @@
+html {
+  font-family: var(--sans-serif);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5em;
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--sans-serif);
+  min-height: 100%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: var(--sans-serif);
+}
+
 .admin-panel,
 .edit-mode__widget-menu {
   font-family: var(--sans-serif);
