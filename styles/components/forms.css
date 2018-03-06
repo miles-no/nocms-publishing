@@ -1,9 +1,14 @@
 .admin-form {
   margin-top: var(--spacing-small);
+   & .admin-form__label {
+    color: var(--text-color) !important;
+  }
   & input[type=text],
   & select {
     height: 48px;
     border: 1px solid #d5d5d5;
+    
+
   }
 
   & input[type=text]:focus,

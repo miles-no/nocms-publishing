@@ -53,6 +53,7 @@
 .modal__title {
   text-align: center;
   font-size: 1.5rem;
+  color: var(--black);
 }
 
 .modal__body-title {
