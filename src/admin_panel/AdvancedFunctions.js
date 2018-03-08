@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { IconButton } from 'nocms-atoms';
 import { dictionary } from 'nocms-i18n';
 import ImportPages from './advanced_functions/ImportPages';
+import PatchPageData from './advanced_functions/PatchPageData';
 import MenuSectionWrapper from './MenuSectionWrapper';
 
 
@@ -22,7 +23,7 @@ export default class AdvancedFunctions extends Component {
   }
 
   render() {
-    const { admin: isAdmin } = this.props.claims;
+    const { admin: isAdmin, developer } = this.props.claims;
     const { adminLang, i18n } = this.context;
     if (!isAdmin) {
       return null;
@@ -44,6 +45,11 @@ export default class AdvancedFunctions extends Component {
             <li className={menuItemClass}>
               <ImportPages />
             </li>
+            { developer &&
+              <li className={menuItemClass}>
+                <PatchPageData />
+              </li>
+            }
           </ul>
         </div>
       </MenuSectionWrapper>
