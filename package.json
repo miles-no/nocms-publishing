@@ -42,7 +42,7 @@
     "nocms-base-styles": "^1.1.1",
     "nocms-cloudinary-utils": "^2.0.0",
     "nocms-events": "^1.2.0",
-    "nocms-forms": "^4.1.1",
+    "nocms-forms": "^4.2.8",
     "nocms-i18n": "^1.0.3",
     "nocms-image-cropper": "^1.2.1",
     "nocms-shortcuts": "^1.0.1",
