@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
-import { Icon } from 'nocms-atoms';
 import { triggerGlobal } from 'nocms-events';
 import { I, dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
+import Message from '../admin_panel/Message';
 
 export default class DeletePage extends Component {
   constructor(props) {
@@ -50,13 +50,10 @@ export default class DeletePage extends Component {
         onSubmit={this.handleDeletePage}
         initialData={initialData}
       >
-        <div className="message message__warning">
-          <Icon type="warning" size="large" />
-          <div className="message__body">
-            <p><I>Ved å slette siden, vil den fjernes fra websidene og alle aktuelle grensesnitt.</I></p>
-            <p><I>Er du sikker på at du vil slette siden?</I></p>
-          </div>
-        </div>
+        <Message type="warning">
+          <p><I>Ved å slette siden, vil den fjernes fra websidene og alle aktuelle grensesnitt.</I></p>
+          <p><I>Er du sikker på at du vil slette siden?</I></p>
+        </Message>
         <Field
           type="checkbox"
           label={dictionary(i18n, 'Ja, jeg ønsker å slette siden', adminLang)}
