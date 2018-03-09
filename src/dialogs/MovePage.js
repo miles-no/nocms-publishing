@@ -6,6 +6,8 @@ import uuid from 'uuid';
 import { dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
+import Message from '../admin_panel/Message';
+import getErrorMsgForStatusCode from '../utils/get_error_message';
 
 const store = 'nocms-move-page-dialog';
 
@@ -15,18 +17,29 @@ export default class MovePage extends Component {
     this.state = {
       originalUri: props.uri,
       errorText: null,
+      error: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(formData) {
+  handleSubmit(formData, cb) {
     const originalUri = this.state.originalUri;
     const newUri = formData.uri;
     if (originalUri === newUri) {
-      this.setState({ errorText: 'Du må endre URLen før siden kan flyttes.' });
+      this.setState({
+        error: {
+          ...this.state.error,
+          message: dictionary(
+            this.context.i18n,
+            'Du må endre URLen før siden kan flyttes.',
+            this.context.adminLang,
+          ),
+        },
+      });
+      cb();
       return;
     }
-    this.setState({ errorText: null });
+
     const defaults = {
       newPageId: uuid.v4(),
       site: this.context.adminConfig.site,
@@ -41,11 +54,21 @@ export default class MovePage extends Component {
     };
     ajax.post(this.context.config.messageApi, messageObj, options, (err, res) => {
       if (err) {
-        this.setState({ error: 'Flytting av side feilet.' });
+        this.setState({
+          error: {
+            message: getErrorMsgForStatusCode(
+              this.context.i18n,
+              err.status,
+              this.context.adminLang,
+            ),
+          },
+        });
+        cb();
         return;
       }
       triggerGlobal('notify', { duration: 4, message: `Siden er flyttet fra ${originalUri} til ${newUri}` });
       triggerGlobal('navigate', res.newPageUri);
+      cb();
     });
   }
 
@@ -58,10 +81,18 @@ export default class MovePage extends Component {
           <Form
             submitButtonText={dictionary(i18n, 'Flytt siden', adminLang)}
             store={store}
-            errorText={this.state.errorText}
+            errorText={
+              <Message type="error">
+                {this.state.errorText}
+              </Message>
+            }
             initialState={initialState}
             onSubmit={this.handleSubmit}
           >
+            { this.state.error &&
+            <Message type="error">
+              <p>{ this.state.error.message }</p>
+            </Message> }
             <Field
               name="uri"
               required
