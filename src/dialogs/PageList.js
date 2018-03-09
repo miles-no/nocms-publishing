@@ -18,6 +18,11 @@ export default class PageList extends Component {
 
   componentDidMount() {
     const webApi = this.context.config.webApi;
+    if (!webApi) {
+      console.warn('Could not load all pages because you have not specified a config value for "webApi"');
+      return;
+    }
+
     if (webApi) {
       ajax.get(`${webApi}/pages`, (err, pages) => {
         if (err) {
