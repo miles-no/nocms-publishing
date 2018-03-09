@@ -6,6 +6,8 @@ import { I, dictionary } from 'nocms-i18n';
 import uuid from 'uuid';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
+import Message from '../admin_panel/Message';
+import getErrorMsgForStatusCode from '../utils/get_error_message';
 
 const store = 'nocms-create-page-dialog';
 
@@ -38,6 +40,7 @@ export default class CreatePage extends Component {
     this.state = {
       lang: context.lang,
       overrideUri: false,
+      error: null,
     };
   }
 
@@ -63,13 +66,16 @@ export default class CreatePage extends Component {
     };
     ajax.post(this.context.config.messageApi, messageObj, options, (err, res) => {
       if (err) {
-        let message;
-        if (!err.message) {
-          message = dictionary(this.context.i18n, `${err.status}`, this.context.lang);
-        } else {
-          message = err.message;
-        }
-        cb(message);
+        this.setState({
+          error: {
+            message: getErrorMsgForStatusCode(
+              this.context.i18n,
+              err.status,
+              this.context.adminLang,
+            ),
+          },
+        });
+        cb();
         return;
       }
 
@@ -98,6 +104,10 @@ export default class CreatePage extends Component {
           submitButtonText={dictionary(i18n, 'Opprett ny side', adminLang)}
           onSubmit={this.handleCreatePage}
         >
+          { this.state.error &&
+          <Message type="error">
+            <p>{ this.state.error.message }</p>
+          </Message> }
           <Field
             name="pageTitle"
             required
