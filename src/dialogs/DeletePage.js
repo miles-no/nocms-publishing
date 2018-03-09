@@ -6,13 +6,14 @@ import { I, dictionary } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
 import Message from '../admin_panel/Message';
+import getErrorMsgForStatusCode from '../utils/get_error_message';
 
 export default class DeletePage extends Component {
   constructor(props) {
     super(props);
     this.handleDeletePage = this.handleDeletePage.bind(this);
     this.state = {
-      hasError: false,
+      error: null,
     };
   }
 
@@ -27,7 +28,16 @@ export default class DeletePage extends Component {
     };
     ajax.post(this.context.config.messageApi, messageObj, options, (err) => {
       if (err) {
-        this.setState({ hasError: true });
+        this.setState({
+          error: {
+            message: getErrorMsgForStatusCode(
+              this.context.i18n,
+              err.status,
+              this.context.adminLang,
+            ),
+          },
+        });
+        cb();
         return;
       }
 
@@ -50,17 +60,21 @@ export default class DeletePage extends Component {
         onSubmit={this.handleDeletePage}
         initialData={initialData}
       >
-        <Message type="warning">
-          <p><I>Ved å slette siden, vil den fjernes fra websidene og alle aktuelle grensesnitt.</I></p>
-          <p><I>Er du sikker på at du vil slette siden?</I></p>
-        </Message>
+        { this.state.error ?
+          <Message type="error">
+            { this.state.error.message }
+          </Message>
+          : <Message type="warning">
+            <p><I>Ved å slette siden, vil den fjernes fra websidene og alle aktuelle grensesnitt.</I></p>
+            <p><I>Er du sikker på at du vil slette siden?</I></p>
+          </Message> }
         <Field
           type="checkbox"
           label={dictionary(i18n, 'Ja, jeg ønsker å slette siden', adminLang)}
           name="confirm"
           required
           validate={confirmValidate}
-          errorText="Du må bekrefte at du vil slette siden"
+          errorText={dictionary(i18n, 'Du må bekrefte at du vil slette siden', adminLang)}
         />
       </Form>
     );
