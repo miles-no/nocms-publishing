@@ -105,7 +105,7 @@
     width: 50px;
     display: inline-block;
   }
-  & .button-container {
+  & .admin-button-container {
     padding: 15px;
     & button {
       margin: 0 auto;
