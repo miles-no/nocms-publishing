@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextArea, LinkButton } from 'nocms-atoms';
+import { LinkButton, Text } from 'nocms-atoms';
 import { EditImage } from 'nocms-publishing'; // eslint-disable-line
 import cloudinary from 'nocms-cloudinary-utils';
 
@@ -24,8 +24,16 @@ const Banner = (props) => {
     crop: 'crop',
   };
   const imgBgUrl = cloudinary.getResponsiveImgBg('miles', transformation, image, aspectRatio);
-  const textArea = <TextArea text={header} paragraph={false} autoresize={false} activeEditMode={activeEditMode} editMode scope={`${scope}.header`} />;
-  const headerMarkup = heroBanner ? <h1 className="banner__title">{textArea}</h1> : <h2 className="banner__title">{textArea}</h2>;
+  const text = (<Text
+    text={header}
+    placeholder="skriv i vei"
+    activeEditMode={activeEditMode}
+    editMode
+    editorType="simpleWithLink"
+    scope={`${scope}.header`}
+    className="product__practical-information-description"
+  />);
+  const headerMarkup = heroBanner ? <h1 className="banner__title">{text}</h1> : <h2 className="banner__title">{text}</h2>;
   const bannerClassName = heroBanner ? `banner ${className}` : 'banner';
 
   return (
