@@ -18,7 +18,7 @@ export default class AdvancedFunctions extends Component {
   }
 
   openFilePath() {
-    const url = `${this.context.config.widgetApi}/nocms/export-pages`;
+    const url = `${this.context.config.webApi}/nocms/export-pages`;
     window.open(url, 'Download page data');
   }
 
