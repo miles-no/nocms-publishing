@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { I } from 'nocms-i18n';
+import { I, dictionary } from 'nocms-i18n';
+import AdminMenuDialog from '../AdminMenuDialog';
+import PageHistory from '../dialogs/PageHistory';
 
-const SiteInfo = (props) => {
-  const { templateId, created, published, revision, templates } = props;
+const SiteInfo = (props, context) => {
+  const { templateId, created, published, revision, templates, uri, site } = props;
+  const { adminLang, i18n } = context;
   const template = templates.find((obj) => { return obj.id === templateId; });
   return (
     <div className="admin-menu__site-info">
@@ -28,13 +31,29 @@ const SiteInfo = (props) => {
           : `${published.user}`}
         </dd>
       </dl>
+      <AdminMenuDialog
+        title={dictionary(i18n, 'Jeg ønsker å se historikken til siden', adminLang)}
+        text={dictionary(i18n, 'Sidehistorikk', adminLang)}
+        icon="history"
+        centered
+        widthConstrained
+      >
+        <PageHistory uri={uri} site={site} />
+      </AdminMenuDialog>
     </div>
   );
+};
+
+SiteInfo.contextTypes = {
+  adminLang: PropTypes.string,
+  i18n: PropTypes.object,
 };
 
 SiteInfo.propTypes = {
   templateId: PropTypes.string,
   published: PropTypes.object,
+  uri: PropTypes.string,
+  site: PropTypes.string,
   created: PropTypes.object,
   revision: PropTypes.number,
   templates: PropTypes.array,
