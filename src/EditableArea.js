@@ -6,8 +6,8 @@ import SectionMenu from './SectionMenu';
 import i18n from './i18n/dictionary';
 
 export default class EditableArea extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.onEditClick = this.onEditClick.bind(this);
     this.onEditAbortClick = this.onEditAbortClick.bind(this);
     this.state = {
@@ -19,7 +19,10 @@ export default class EditableArea extends Component {
   getChildContext() {
     return {
       adminLang: 'no',
-      i18n,
+      i18n: {
+        ...i18n,
+        ...this.context.i18n || {},
+      },
     };
   }
 
@@ -62,6 +65,10 @@ EditableArea.propTypes = {
   children: PropTypes.object,
   label: PropTypes.string,
   areaClassName: PropTypes.string,
+};
+
+EditableArea.contextTypes = {
+  i18n: PropTypes.object,
 };
 
 EditableArea.defaultProps = {

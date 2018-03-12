@@ -8,7 +8,10 @@ export default class EditableComponentWrapper extends Component {
   getChildContext() {
     return {
       adminLang: 'no',
-      i18n,
+      i18n: {
+        ...i18n,
+        ...this.context.i18n || {},
+      },
     };
   }
 
@@ -46,6 +49,10 @@ EditableComponentWrapper.propTypes = {
   children: PropTypes.array,
   components: PropTypes.array,
   sections: PropTypes.array,
+};
+
+EditableComponentWrapper.contextTypes = {
+  i18n: PropTypes.object,
 };
 
 EditableComponentWrapper.childContextTypes = {
