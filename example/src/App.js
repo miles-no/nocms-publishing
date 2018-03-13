@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { listenToGlobal } from 'nocms-events';
 import { AdminContent } from 'nocms-publishing';
 import Template from './Template';
+
+listenToGlobal('nocms.value-changed', (scope, data) => {
+  console.log('nocms.value-changed', scope, data);
+});
 
 const lang = ['no', 'en'];
 const templates = [

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { EditableArea } from 'nocms-publishing';
 import Banner from './Banner';
+import Images from './Images';
 
 const aspectRatioTopBanner = {
   large: {
@@ -16,9 +17,11 @@ const aspectRatioTopBanner = {
 
 const Template = (props) => {
   const topBanner = <Banner heroBanner scope="banner" {...props.banner} className="banner--hero" aspectRatio={aspectRatioTopBanner} />;
+  const images = <Images scope="images" />;
   return (
     <div>
       <EditableArea label="Banner">{topBanner}</EditableArea>
+      <EditableArea label="Banner">{images}</EditableArea>
     </div>
   );
 };
