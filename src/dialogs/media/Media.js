@@ -81,12 +81,16 @@ export default class Media extends Component {
     // @TODO Display loader spinner before image is fetched.
     // @TODO: Prevent image loading multiple times when switching tabs?
     event.preventDefault();
-    if (this.state.selectedTab === 'large' && this.state.enableLarge) {
-      this.setCropperData();
-    } else if (this.state.selectedTab === 'small' && this.state.enableSmall) {
+
+    if (this.state.enableLarge || this.state.enableSmall) {
       this.setCropperData();
     }
-    this.setState({ selectedTab: id });
+
+    this.setState({
+      selectedTab: id,
+      enableLarge: false,
+      enableSmall: false,
+    });
   }
 
   onMetaChange(e, type, size) {
@@ -105,10 +109,14 @@ export default class Media extends Component {
   }
 
   onChangeSameImagesAcrossDevices() {
-    this.setState({ sameImageAcrossDevices: !this.state.sameImageAcrossDevices, smallDevice: this.state.largeDevice });
+    this.setState({
+      sameImageAcrossDevices: !this.state.sameImageAcrossDevices,
+      smallDevice: this.state.largeDevice,
+    });
   }
 
   onEnableCropperClick() {
+    this.setCropperData();
     if (this.state.selectedTab === 'large') {
       this.setState({
         enableLarge: true,
@@ -205,13 +213,19 @@ export default class Media extends Component {
   }
 
   setCropperData() {
+    if (!this.state.enableLarge && !this.state.enableSmall) {
+      return;
+    }
+
     const cropperData = this.refs.cropper.getData(); // eslint-disable-line react/no-string-refs
-    if (this.props.targetDevices && this.state.selectedTab === 'large' || !this.props.targetDevices) { // eslint-disable-line no-mixed-operators
-      const largeDeviceData = Object.assign(this.state.largeDevice, cropperData);
-      this.setState({ largeDevice: largeDeviceData });
-    } else {
-      const smallDeviceData = Object.assign(this.state.smallDevice, cropperData);
+    const smallDeviceData = Object.assign({}, this.state.smallDevice, cropperData);
+    const largeDeviceData = Object.assign({}, this.state.largeDevice, cropperData);
+    if (this.state.sameImageAcrossDevices) {
+      this.setState({ largeDevice: largeDeviceData, smallDevice: smallDeviceData });
+    } else if (this.state.enableSmall) {
       this.setState({ smallDevice: smallDeviceData });
+    } else {
+      this.setState({ largeDevice: largeDeviceData });
     }
   }
 
