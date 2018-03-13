@@ -13,7 +13,7 @@ export default class PageHistory extends Component {
       error: null,
     };
 
-    ajax.get(`${context.config.widgetApi}/nocms/page-history?uri=${props.uri}&site=${props.site}`, (err, res) => {
+    ajax.get(`${context.config.webApi}/nocms/page-history?uri=${props.uri}&site=${props.site}`, (err, res) => {
       if (err) {
         this.setState({ error: dictionary(context.i18n, 'Lasting av sidehistorikk feilet', context.adminLang) });
         return;
@@ -32,10 +32,10 @@ export default class PageHistory extends Component {
 
     return (
       <div>
-        <h1>
+        <h3>
           <I>Sidehistorikk for </I>
           {this.props.uri}
-        </h1>
+        </h3>
         <table>
           <thead>
             <tr>
