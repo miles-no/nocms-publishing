@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --watch",
+    "dev:backend": "node example/server.js",
     "prepare": "npm run build-js && npm run build-css",
     "eslint": "eslint --ext .js, .jsx .",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
@@ -61,6 +62,7 @@
     "babel-eslint": "^8.0.3",
     "babel-loader": "^8.0.0-beta.0",
     "condition-circle": "1.5.0",
+    "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "eslint": "^4.12.1",
     "eslint-config-webteam": "^2.0.0",
@@ -68,6 +70,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
+    "express": "^4.16.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "husky": "^0.15.0-rc.8",
     "postcss-cli": "^4.1.1",

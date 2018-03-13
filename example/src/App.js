@@ -81,16 +81,16 @@ const applications = [
   },
 ];
 
-const config = document.getElementById('nocms.config');
+const config = JSON.parse(document.getElementById('nocms.config').innerHTML);
 
-export default class App extends React.Component {
+export default class App extends Component {
   getChildContext() {
     return {
       editMode: true,
       lang: 'no',
       isNoCMSUser: true,
       adminLang: 'no',
-      config: { config },
+      config,
 
     };
   }
