@@ -43,37 +43,32 @@ export default class Media extends Component {
   }
 
   onFinish() {
-    let image;
-    if (this.props.targetDevices) {
-      if (this.state.selectedTab === 'large' && this.state.enableLarge) {
-        this.setCropperData();
-      } else if (this.state.selectedTab === 'small' && this.state.enableSmall) {
-        this.setCropperData();
-      }
-      if (this.state.sameImageAcrossDevices) {
-        // @TODO: Rewrite logic for displaying images, and save once only?
-        image = {
-          sameImageAcrossDevices: this.state.sameImageAcrossDevices,
-          large: this.state.largeDevice,
-          small: this.state.largeDevice,
-        };
-      } else {
-        image = {
-          sameImageAcrossDevices: this.state.sameImageAcrossDevices,
-          large: this.state.largeDevice,
-          small: this.state.smallDevice,
-        };
-      }
-    } else {
-      if (this.state.enableLarge) {
-        this.setCropperData();
-      }
-      image = {
-        large: this.state.largeDevice,
+    this.setCropperData(() => {
+      const {
+        targetDevices,
+      } = this.props;
+
+      const {
+        largeDevice,
+        smallDevice,
+        sameImageAcrossDevices,
+      } = this.state;
+
+      const image = {
+        large: largeDevice,
       };
-    }
-    triggerGlobal('nocms.value-changed', `${this.props.scope}`, image);
-    this.props.onClose();
+
+      if (targetDevices) {
+        if (sameImageAcrossDevices) {
+          image.small = largeDevice;
+        } else {
+          image.small = smallDevice;
+        }
+      }
+
+      triggerGlobal('nocms.value-changed', `${this.props.scope}`, image);
+      this.props.onClose();
+    });
   }
 
 
@@ -82,14 +77,12 @@ export default class Media extends Component {
     // @TODO: Prevent image loading multiple times when switching tabs?
     event.preventDefault();
 
-    if (this.state.enableLarge || this.state.enableSmall) {
-      this.setCropperData();
-    }
-
-    this.setState({
-      selectedTab: id,
-      enableLarge: false,
-      enableSmall: false,
+    this.setCropperData(() => {
+      this.setState({
+        selectedTab: id,
+        enableLarge: false,
+        enableSmall: false,
+      });
     });
   }
 
@@ -116,16 +109,17 @@ export default class Media extends Component {
   }
 
   onEnableCropperClick() {
-    this.setCropperData();
-    if (this.state.selectedTab === 'large') {
-      this.setState({
-        enableLarge: true,
-      });
-    } else {
-      this.setState({
-        enableSmall: true,
-      });
-    }
+    this.setCropperData(() => {
+      if (this.state.selectedTab === 'large') {
+        this.setState({
+          enableLarge: true,
+        });
+      } else {
+        this.setState({
+          enableSmall: true,
+        });
+      }
+    });
   }
 
   onImageSelect(info) {
@@ -212,8 +206,9 @@ export default class Media extends Component {
     return publicId ? cloudinary.url(publicId, cloudinaryCloudName, options) : '/assets/img/dummy.jpg';
   }
 
-  setCropperData() {
+  setCropperData(callback) {
     if (!this.state.enableLarge && !this.state.enableSmall) {
+      callback();
       return;
     }
 
@@ -221,11 +216,11 @@ export default class Media extends Component {
     const smallDeviceData = Object.assign({}, this.state.smallDevice, cropperData);
     const largeDeviceData = Object.assign({}, this.state.largeDevice, cropperData);
     if (this.state.sameImageAcrossDevices) {
-      this.setState({ largeDevice: largeDeviceData, smallDevice: smallDeviceData });
+      this.setState({ largeDevice: largeDeviceData, smallDevice: smallDeviceData }, callback);
     } else if (this.state.enableSmall) {
-      this.setState({ smallDevice: smallDeviceData });
+      this.setState({ smallDevice: smallDeviceData }, callback);
     } else {
-      this.setState({ largeDevice: largeDeviceData });
+      this.setState({ largeDevice: largeDeviceData }, callback);
     }
   }
 
