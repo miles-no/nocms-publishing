@@ -59,11 +59,8 @@ export default class Media extends Component {
       };
 
       if (targetDevices) {
-        if (sameImageAcrossDevices) {
-          image.small = largeDevice;
-        } else {
-          image.small = smallDevice;
-        }
+        image.sameImageAcrossDevices = sameImageAcrossDevices;
+        image.small = sameImageAcrossDevices ? largeDevice : smallDevice;
       }
 
       triggerGlobal('nocms.value-changed', `${this.props.scope}`, image);
