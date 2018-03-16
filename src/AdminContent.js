@@ -6,6 +6,8 @@ import moment from 'moment';
 import { Icon } from 'nocms-atoms';
 import shortcuts from 'nocms-shortcuts';
 import utils from 'nocms-utils';
+import ajax from 'nocms-ajax';
+
 import ToolBarIcon from './atoms/ToolBarIcon';
 import AdminPanel from './admin_panel/AdminPanel';
 import i18n from './i18n/dictionary';
@@ -52,6 +54,22 @@ export default class AdminContent extends Component {
     });
 
     shortcuts.addHandler('ctrl-e', dictionary(i18n, 'Åpne/lukke NoCMS-menyen', adminConfig.lang), this.toggleEdit);
+
+    ajax.applyOnResponse((req, err, res, next) => {
+      if (req[0] === '/') {
+        if (err.status === 401) {
+          ajax.get(adminConfig.publisherLoginUrl, (reauthError) => {
+            if (reauthError) {
+              window.location = adminConfig.publisherLoginUrl;
+            }
+            next({ replay: true });
+          });
+          next({ interrupt: true });
+          return;
+        }
+      }
+      next();
+    });
   }
 
   getChildContext() {
@@ -69,6 +87,10 @@ export default class AdminContent extends Component {
     if (isIdUrl) {
       triggerGlobal('notify', { message: `Viser versjon ${isIdUrl[1]} av denne siden.` });
     }
+  }
+
+  componentWillUnmount() {
+    ajax.clearResponseFunctions();
   }
 
   onAddSection() {
