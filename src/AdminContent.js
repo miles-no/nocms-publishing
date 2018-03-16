@@ -61,6 +61,7 @@ export default class AdminContent extends Component {
           ajax.get(adminConfig.publisherLoginUrl, (reauthError) => {
             if (reauthError) {
               window.location = adminConfig.publisherLoginUrl;
+              return;
             }
             next({ replay: true });
           });
