@@ -17,12 +17,10 @@ const PageListItem = (props, context) => {
     iconClass = 'admin_pagelist__item__page-status-icon--success';
     statusText = dictionary(i18n, 'Denne siden er publisert', adminLang);
   }
-
   if (page.hasUnpublishedChanges) {
     iconClass = 'admin_pagelist__item__page-status-icon--alert';
     statusText = dictionary(i18n, 'Denne siden har upubliserte endringer', adminLang);
   }
-
   return (
     <div className="admin-pagelist__item" onClick={onItemClick}>
       <Icon
