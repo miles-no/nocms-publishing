@@ -59,4 +59,8 @@ SiteInfo.propTypes = {
   templates: PropTypes.array,
 };
 
+SiteInfo.defaultProps = {
+  published: {},
+};
+
 export default SiteInfo;
