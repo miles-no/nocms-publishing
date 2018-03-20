@@ -10,8 +10,8 @@ const PageListItem = (props, context) => {
   const notificationIconType = page.published ? 'notifications' : 'notifications_none';
   let iconClass = '';
   let statusText = dictionary(i18n, 'Denne siden er ikke publisert', adminLang);
-
-  if (Object.keys(page.published).length !== 0) {
+  const published = page.published || {};
+  if (Object.keys(published).length !== 0) {
     iconClass = 'admin_pagelist__item__page-status-icon--success';
     statusText = dictionary(i18n, 'Denne siden er publisert', adminLang);
   }
