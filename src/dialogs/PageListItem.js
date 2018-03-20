@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'nocms-atoms';
-import moment from 'moment';
 import { dictionary } from 'nocms-i18n';
 
 const PageListItem = (props, context) => {
@@ -12,7 +11,7 @@ const PageListItem = (props, context) => {
   let iconClass = '';
   let statusText = dictionary(i18n, 'Denne siden er ikke publisert', adminLang);
 
-  if (page.published) {
+  if (Object.keys(page.published).length !== 0) {
     iconClass = 'admin_pagelist__item__page-status-icon--success';
     statusText = dictionary(i18n, 'Denne siden er publisert', adminLang);
   }
@@ -31,9 +30,6 @@ const PageListItem = (props, context) => {
       />
       <div className="admin-pagelist__item__content">
         <span className="admin-pagelist__pagetitle">{page.pageTitle}</span>
-        <span className="admin-pagelist__item__content--sub">
-          {dictionary(i18n, 'Sist endret', adminLang)} { moment(page.created).format('DD.MM.YYYY [kl] HH:mm:ss') }
-        </span>
       </div>
       <div className="admin-pagelist__item__page-status">
         <Icon
