@@ -1,17 +1,19 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Icon } from 'nocms-atoms';
 import { dictionary } from 'nocms-i18n';
 
 const PageListItem = (props, context) => {
   const { page, iconSize, onItemClick } = props;
+  const published = page.published || {};
+  const isPublished = Object.keys(published).length !== 0;
   const { adminLang, i18n } = context;
-  const notificationIconType = page.published ? 'notifications' : 'notifications_none';
+  const notificationIconType = isPublished ? 'notifications' : 'notifications_none';
   let iconClass = '';
   let statusText = dictionary(i18n, 'Denne siden er ikke publisert', adminLang);
-  const published = page.published || {};
-  if (Object.keys(published).length !== 0) {
+  if (isPublished) {
     iconClass = 'admin_pagelist__item__page-status-icon--success';
     statusText = dictionary(i18n, 'Denne siden er publisert', adminLang);
   }
@@ -30,6 +32,14 @@ const PageListItem = (props, context) => {
       />
       <div className="admin-pagelist__item__content">
         <span className="admin-pagelist__pagetitle">{page.pageTitle}</span>
+        { page.created ?
+          <span className="admin-pagelist__item__content--sub">
+-          {dictionary(i18n, 'Opprettet', adminLang)} { moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+-        </span> : null}
+        { isPublished ?
+          <span className="admin-pagelist__item__content--sub">
+-          {dictionary(i18n, 'Publisert', adminLang)} { moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+-        </span> : null}
       </div>
       <div className="admin-pagelist__item__page-status">
         <Icon
