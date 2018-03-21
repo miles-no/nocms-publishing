@@ -91,7 +91,7 @@ export default class PublishPage extends Component {
         cb(err.message);
         return;
       }
-      triggerGlobal('nocms.new-page-version', res.newPageId, res.newPageRevision);
+      triggerGlobal('nocms.new-page-version', res.pageData);
       onClose();
     });
   }
