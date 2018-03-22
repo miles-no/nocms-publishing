@@ -12,7 +12,7 @@ export default class ImageThumbnail extends Component {
   }
 
   onClick() {
-    triggerGlobal('nocms.image-selected', { publicId: this.props.publicId, format: this.props.format });
+    triggerGlobal('nocms.image-selected', { publicId: this.props.publicId, format: this.props.format, metaData: this.props.metaData });
   }
 
   render() {
@@ -66,6 +66,7 @@ ImageThumbnail.propTypes = {
   height: PropTypes.number,
   format: PropTypes.string,
   isPdf: PropTypes.bool,
+  metaData: PropTypes.object,
 };
 
 ImageThumbnail.contextTypes = {

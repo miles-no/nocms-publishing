@@ -62,6 +62,28 @@ const Images = (props) => {
           aspectRatio={aspectRatio1}
         />
       </div>
+      <h2>disableCaption</h2>
+      <div style={style}>
+        <EditImage
+          scope="image4"
+          data={{}}
+          activeEditMode={activeEditMode}
+          targetDevices
+          aspectRatio={aspectRatio1}
+          disableCaption
+        />
+      </div>
+      <h2>disableAttribution</h2>
+      <div style={style}>
+        <EditImage
+          scope="image5"
+          data={{}}
+          activeEditMode={activeEditMode}
+          targetDevices
+          aspectRatio={aspectRatio1}
+          disableAttribution
+        />
+      </div>
     </div>
   );
 };

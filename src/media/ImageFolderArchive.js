@@ -64,6 +64,14 @@ export default class ImageFolderArchive extends Component {
       images = this.state.data.map((image, idx) => { return <PdfThumbnail publicId={image.public_id} onClick={onClick} format={image.format} key={idx} activeImageId />; });
     } else {
       images = this.state.data.map((image, idx) => {
+        const {
+          context = {},
+        } = image;
+
+        const {
+          custom = {},
+        } = context;
+
         return (<ImageThumbnail
           publicId={image.public_id}
           width={image.width}
@@ -71,6 +79,7 @@ export default class ImageFolderArchive extends Component {
           format={image.format}
           key={idx}
           activeImageId={activeImageId}
+          metaData={custom}
         />);
       });
     }

@@ -24,7 +24,14 @@
       "width": 1600,
       "height": 800,
       "url": "http://res.cloudinary.com/miles/image/upload/v1495438891/Backgrounds/atle_opvgim.jpg",
-      "secure_url": "https://res.cloudinary.com/miles/image/upload/v1495438891/Backgrounds/atle_opvgim.jpg"
+      "secure_url": "https://res.cloudinary.com/miles/image/upload/v1495438891/Backgrounds/atle_opvgim.jpg",
+      "context": {
+        "custom": {
+          "alt": "alt test",
+          "attribution": "Name of author/[Shutterstoc.com](http://shutterstock.com)",
+          "caption": "caption test"
+        }
+      }
     },
     {
       "public_id": "Backgrounds/betingelser",
@@ -37,7 +44,14 @@
       "width": 1600,
       "height": 400,
       "url": "http://res.cloudinary.com/miles/image/upload/v1503046129/Backgrounds/betingelser.jpg",
-      "secure_url": "https://res.cloudinary.com/miles/image/upload/v1503046129/Backgrounds/betingelser.jpg"
+      "secure_url": "https://res.cloudinary.com/miles/image/upload/v1503046129/Backgrounds/betingelser.jpg",
+      "context": {
+        "custom": {
+          "alt": "alt test 2",
+          "attribution": "Name of author2/[Shutterstoc.com](http://shutterstock.com)",
+          "caption": "caption test 2"
+        }
+      }
     },
     {
       "public_id": "Backgrounds/bg-blue",

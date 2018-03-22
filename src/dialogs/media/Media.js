@@ -84,7 +84,7 @@ export default class Media extends Component {
   }
 
   onMetaChange(e, type, size) {
-    const updateObj = (type === 'alt') ? { alt: e } : { caption: e };
+    const updateObj = { [type]: e };
     if (this.state.sameImageAcrossDevices) {
       const smallObj = Object.assign({}, this.state.smallDevice, updateObj);
       const largeObj = Object.assign({}, this.state.largeDevice, updateObj);
@@ -121,6 +121,18 @@ export default class Media extends Component {
 
   onImageSelect(info) {
     const newImage = { publicId: info.publicId, format: info.format };
+    if (info.metaData.alt) {
+      newImage.alt = info.metaData.alt;
+    }
+
+    if (!this.props.disableCaption && info.metaData.caption) {
+      newImage.caption = info.metaData.caption;
+    }
+
+    if (!this.props.disableAttribution && info.metaData.attribution) {
+      newImage.attribution = info.metaData.attribution;
+    }
+
     if (this.props.targetDevices) {
       const selectedTab = this.state.selectedTab;
       if (selectedTab === 'large') {
@@ -275,7 +287,7 @@ export default class Media extends Component {
         activeImageId = this.state.largeDevice.publicId;
       }
       if (!this.props.presentationalImage) {
-        imageMetaMarkup = <ImageMeta onMetaChange={this.onMetaChange} onChangeSameImagesAcrossDevices={this.onChangeSameImagesAcrossDevices} {...this.state.largeDevice} size="large" />;
+        imageMetaMarkup = <ImageMeta onMetaChange={this.onMetaChange} onChangeSameImagesAcrossDevices={this.onChangeSameImagesAcrossDevices} {...this.state.largeDevice} size="large" disableCaption={this.props.disableCaption} disableAttribution={this.props.disableAttribution} />;
       }
     } else {
       imageMarkup = this.state.enableSmall ? this.getCropperMarkup(this.state.smallDevice.publicId) : this.getImagePreviewMarkup();
@@ -284,7 +296,7 @@ export default class Media extends Component {
         activeImageId = this.state.smallDevice.publicId;
       }
       if (!this.props.presentationalImage) {
-        imageMetaMarkup = <ImageMeta onMetaChange={this.onMetaChange} onChangeSameImagesAcrossDevices={this.onChangeSameImagesAcrossDevices} {...this.state.smallDevice} size="small" />;
+        imageMetaMarkup = <ImageMeta onMetaChange={this.onMetaChange} onChangeSameImagesAcrossDevices={this.onChangeSameImagesAcrossDevices} {...this.state.smallDevice} size="small" disableCaption={this.props.disableCaption} disableAttribution={this.props.disableAttribution} />;
       }
     }
     const tabs = [
@@ -347,6 +359,8 @@ Media.propTypes = {
   placeholderImage: PropTypes.string,
   transformation: PropTypes.array,
   targetDevices: PropTypes.bool,
+  disableCaption: PropTypes.bool,
+  disableAttribution: PropTypes.bool,
 };
 
 Media.defaultProps = {

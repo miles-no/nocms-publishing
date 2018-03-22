@@ -60,6 +60,8 @@ export default class EditImage extends Component {
               placeholderImage={this.props.placeholderImage}
               transformation={this.props.transformation}
               targetDevices={this.props.targetDevices}
+              disableCaption={this.props.disableCaption}
+              disableAttribution={this.props.disableAttribution}
             />
           </ModalDialog>
         </span> : null}
@@ -77,6 +79,8 @@ EditImage.propTypes = {
   placeholderImage: PropTypes.string,
   transformation: PropTypes.array,
   targetDevices: PropTypes.bool,
+  disableCaption: PropTypes.bool,
+  disableAttribution: PropTypes.bool,
 };
 
 EditImage.defaultProps = {
