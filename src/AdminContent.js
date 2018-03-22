@@ -11,6 +11,7 @@ import ajax from 'nocms-ajax';
 import ToolBarIcon from './atoms/ToolBarIcon';
 import AdminPanel from './admin_panel/AdminPanel';
 import i18n from './i18n/dictionary';
+import pageStore from './page_store';
 
 const menuOpenClass = 'admin-menu--open';
 
@@ -21,20 +22,23 @@ export default class AdminContent extends Component {
     const config = JSON.parse(document.getElementById('nocms.config').innerHTML);
     const adminConfig = JSON.parse(document.getElementById('nocms.adminConfig').innerHTML);
 
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.togglePanel = this.togglePanel.bind(this);
+    this.onAddSection = this.onAddSection.bind(this);
+
+    const pageData = pageStore.init(config)
+      .getPageData();
+
     this.state = {
       showCreateNotFound: false,
       notFoundUri: null,
       editMode: false,
       hidePanel: false,
-      pageData: global.NoCMS && global.NoCMS.getPageData ? global.NoCMS.getPageData() : {},
+      pageData,
       config,
       adminConfig,
       adminLang: adminConfig.lang,
     };
-
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.togglePanel = this.togglePanel.bind(this);
-    this.onAddSection = this.onAddSection.bind(this);
 
     listenToGlobal('edit-mode-changed', (editMode) => {
       this.setState({ editMode });
@@ -43,14 +47,14 @@ export default class AdminContent extends Component {
       const notFoundUri = e.pageData.exception && e.pageData.exception.statusCode === 404 ? e.pageData.exception.uri || '/' : null;
       this.setState({ pageData: e.pageData, notFoundUri, showCreateNotFound: notFoundUri !== null });
     });
-    listenToGlobal('nocms.pagedata-updated', (pageData) => {
-      this.setState({ pageData });
+    listenToGlobal('nocms.pagedata-updated', (updatedPageData) => {
+      this.setState({ updatedPageData });
     });
     listenToGlobal('page_not_found', (url) => {
       this.setState({ showCreateNotFound: true, notFoundUri: url });
     });
-    listenToGlobal('nocms.client-loaded', (url, pageData) => {
-      this.setState({ showCreateNotFound: false, notFoundUri: null, pageData });
+    listenToGlobal('nocms.client-loaded', (url, loadedPageData) => {
+      this.setState({ showCreateNotFound: false, notFoundUri: null, loadedPageData });
     });
 
     shortcuts.addHandler('ctrl-e', dictionary(i18n, 'Åpne/lukke NoCMS-menyen', adminConfig.lang), this.toggleEdit);
