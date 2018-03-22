@@ -65,6 +65,7 @@ export default class AdminContent extends Component {
           ajax.get(config.tokenRefreshUrl, { skipResponseFunctions: true }, (reauthError) => {
             if (reauthError) {
               window.location = config.publisherLoginUrl;
+              next({ interrupt: true });
               return;
             }
             next({ replay: true });
