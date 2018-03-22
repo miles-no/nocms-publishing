@@ -60,7 +60,7 @@ export default class AdminContent extends Component {
     shortcuts.addHandler('ctrl-e', dictionary(i18n, 'Åpne/lukke NoCMS-menyen', adminConfig.lang), this.toggleEdit);
 
     ajax.applyOnResponse((req, err, res, next) => {
-      if (req[0] === '/') {
+      if (req.url[0] === '/') {
         if (err.status === 401) {
           ajax.get(`${config.publisherLoginUrl}/refresh`, (reauthError) => {
             if (reauthError) {
