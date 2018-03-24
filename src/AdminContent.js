@@ -48,7 +48,7 @@ export default class AdminContent extends Component {
       this.setState({ pageData: e.pageData, notFoundUri, showCreateNotFound: notFoundUri !== null });
     });
     listenToGlobal('nocms.pagedata-updated', (updatedPageData) => {
-      this.setState({ updatedPageData });
+      this.setState({ pageData: updatedPageData });
     });
     listenToGlobal('page_not_found', (url) => {
       this.setState({ showCreateNotFound: true, notFoundUri: url });
