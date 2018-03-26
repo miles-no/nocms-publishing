@@ -1,100 +1,104 @@
-.thumbnails {
-  display: flex;
-  flex: 0 0 0;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: var(--spacing-xlarge) 0;
-}
+.admin-modal {
+  & .thumbnails {
+    display: flex;
+    flex: 0 0 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+  }
 
-.thumbnail {
-  position: relative;
-  margin: var(--spacing-xlarge) var(--spacing-large) 0 var(--spacing-large);
-  border: 1px solid var(--admin-dialog);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  background-color: var(--white);
-  border: 2px solid transparent;
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    cursor: pointer;
-    & .thumbnail__content {
-      background-color: var(--white);
-      opacity: 0.3;
-    }
-    & .thumbnail__select-button {
-      font-size: 14px;
-      z-index: 10;
-      position: absolute;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      top: 0;
-      width: 100px;
-      margin: auto;
-      height: 38px;
-      padding: 10px 5px;
-      display: inline-block;
-      line-height: 1;
-      text-align: center;
-      border: 1px solid var(--admin-green);
-    }
-    &.thumbnail--dark {
-      color: var(--text-color);
+  & .thumbnail {
+    position: relative;
+    margin: var(--spacing-large) var(--spacing-large) 0 0;
+    border: 1px solid var(--admin-dialog);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    background-color: var(--white);
+    border: 2px solid transparent;
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      cursor: pointer;
+      & .thumbnail__content {
+        background-color: var(--white);
+        opacity: 0.3;
+      }
+      & .thumbnail__select-button {
+        font-size: 14px;
+        z-index: 10;
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        width: 100px;
+        margin: auto;
+        height: 38px;
+        padding: 10px 5px;
+        display: inline-block;
+        line-height: 1;
+        text-align: center;
+        border: 1px solid var(--admin-green);
+      }
+      &.thumbnail--dark {
+        color: var(--text-color);
+      }
     }
   }
-}
 
-.thumbnail__text {
-  font-size: 80%;
-  line-height: 1.5em;
-}
+  & .thumbnail__text {
+    font-size: 80%;
+    line-height: 1.5em;
+  }
 
-.thumbnail--dark {
-  background-color: var(--admin-primary);
-  color: var(--white);
-}
+  & .thumbnail--dark {
+    background-color: var(--admin-primary);
+    color: var(--white);
+  }
 
-.thumbnail--active {
-  border: 2px solid var(--admin-green);
-}
+  & .thumbnail--active {
+    border: 2px solid var(--admin-green);
+  }
 
-.thumbnail__select-button {
-  display: none;
-  align-items: center;
-}
+  & .thumbnail__select-button {
+    display: none;
+    align-items: center;
+  }
 
-.thumbnail__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: var(--spacing-small);
-  height: 100%;
-}
-
-.thumbnail__icon-and-text {
-  text-align: center;
-  overflow: hidden;
   & .thumbnail__content {
-    width: 120px;
-    height: 120px;
-    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--spacing-small);
+    height: 100%;
   }
-}
 
-.thumbnail__image {
-  width: 200px;
-  text-align: center;
-  & img {
-    max-width: 100%;
+  & .thumbnail__icon-and-text {
+    text-align: center;
+    overflow: hidden;
+    & .thumbnail__content {
+      width: 120px;
+      height: 120px;
+      padding: 12px;
+    }
   }
-}
 
-.thumbnail__name {
-  max-width: 200px;
-  word-break: break-all;
-}
+  & .thumbnail__image {
+    width: 200px;
+    text-align: center;
+    & img {
+      max-width: 100%;
+    }
+  }
 
-.thumbnail__image-info {
-  margin-top: var(--spacing-large);
-  text-align: center;
+  & .thumbnail__name {
+    max-width: 200px;
+    word-break: break-all;
+  }
+
+  & .thumbnail__image-info {
+    margin-top: var(--spacing-large);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.3;
+  }
 }
