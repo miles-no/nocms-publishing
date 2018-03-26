@@ -35,7 +35,7 @@ export default class PageSettings extends Component {
     const languageOptions = languages.map((language) => { return { label: dictionary(this.context.i18n, language, this.context.adminLang), value: language }; });
     return (
       <div>
-        <div className="modal__content modal__content--centered">
+        <div className="admin-modal__content admin-modal__content--centered">
           <Form
             store={storeName}
             submitButtonText={dictionary(i18n, 'OK, jeg er ferdig', adminLang)}

@@ -81,7 +81,7 @@
     justify-content: center;
   }
 
-  & .modal .form__button-container {
+  & .admin-modal .form__button-container {
     margin-left: 0 !important;
     left: 0;
   }

@@ -119,7 +119,7 @@ export default class PublishPage extends Component {
 
     return (
       <div>
-        <div className="modal__content modal__content--centered">
+        <div className="admin-modal__content admin-modal__content--centered">
           <Form
             store={storeName}
             submitButtonText={dictionary(i18n, 'Publiser side', adminLang)}

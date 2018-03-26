@@ -339,7 +339,7 @@ export default class Media extends Component {
           </div>
         </div>
         <ImageFolders firstDefaultOpen activeImageId={activeImageId} />
-        <footer className="modal__footer">
+        <footer className="admin-modal__footer">
           <Button primary text={dictionary(i18n, 'OK, jeg er ferdig', adminLang)} onClick={this.onFinish} />
         </footer>
       </div>

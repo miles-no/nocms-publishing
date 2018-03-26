@@ -76,7 +76,7 @@ export default class MovePage extends Component {
     const initialState = { pageId: this.props.pageId, uri: this.props.uri };
     const { adminLang, i18n } = this.context;
     return (
-      <div className="modal__content modal__content--centered">
+      <div className="admin-modal__content admin-modal__content--centered">
         <div className="nocms-admin-form">
           <Form
             submitButtonText={dictionary(i18n, 'Flytt siden', adminLang)}
