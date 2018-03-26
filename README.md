@@ -108,8 +108,23 @@ const ImageDemo = (props, context) => {
     </Fragment>
   )
 };
+```
+## Run the example
+The example can be useful for more examples and demo. As a standalone example, most site interaction will fail in lack of a real web server, page and message api.
 
+```
+git clone https://github.com/miles-no/nocms-publishing.git
+cd nocms-publishing
+npm i
+npm run dev
+```
 
+In another terminal window for images
+```
+npm run dev:backend
+```
+
+Go to http://localhost:9000/
 
 ## Commit message format and publishing
 
