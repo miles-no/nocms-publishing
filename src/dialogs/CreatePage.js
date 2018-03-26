@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ajax from 'nocms-ajax';
 import { triggerGlobal } from 'nocms-events';
 import { I, dictionary } from 'nocms-i18n';
+import { urlify } from 'nocms-utils';
 import uuid from 'uuid';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
@@ -18,15 +19,7 @@ const getParentPageUrl = () => {
 const getUriForPageTitle = (fields) => {
   const pageTitle = fields.pageTitle.value;
 
-  const replace = {
-    '-': '-',
-    ' ': '-',
-    æ: 'ae',
-    ø: 'oe',
-    å: 'aa',
-  };
-
-  const uriifiedTitle = pageTitle.replace(/[^\w]/ig, (chr) => { return replace[chr] || ''; }).toLowerCase();
+  const uriifiedTitle = urlify(pageTitle);
   return `${getParentPageUrl()}/${uriifiedTitle}`;
 };
 
