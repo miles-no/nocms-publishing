@@ -35,7 +35,7 @@ export default class ImageMeta extends Component {
             <div className="admin-form__control-group">
               <label>
                 <span className="admin-form__label"><I>Bildetekst</I></span>
-                <input type="text" value={caption} onChange={(e) => { return this.onMetaChange(e, 'caption'); }} />
+                <input type="text" value={caption} placeholder={dictionary(i18n, 'Bildetekst/caption med informasjon om bildet', adminLang)} onChange={(e) => { return this.onMetaChange(e, 'caption'); }} />
               </label>
             </div>
             : null}
@@ -43,7 +43,7 @@ export default class ImageMeta extends Component {
             <div className="admin-form__control-group">
               <label>
                 <span className="admin-form__label"><I>Attribusjon</I></span>
-                <input type="text" value={attribution} onChange={(e) => { return this.onMetaChange(e, 'attribution'); }} />
+                <input type="text" value={attribution} placeholder={dictionary(i18n, 'Kreditering til fotograf/byrå', adminLang)} onChange={(e) => { return this.onMetaChange(e, 'attribution'); }} />
               </label>
             </div>
             : null}
