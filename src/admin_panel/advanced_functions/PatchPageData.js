@@ -46,7 +46,7 @@ export default class PatchPageData extends Component {
         <div>
           <Form
             store="patch-page-data"
-            submitButtonText={dictionary(i18n, 'Opprett ny side', adminLang)}
+            submitButtonText={dictionary(i18n, 'Endre sideverdier', adminLang)}
             onSubmit={this.patchPageData}
           >
             <Field
