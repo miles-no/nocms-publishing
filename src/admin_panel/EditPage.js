@@ -13,6 +13,7 @@ const EditPage = (props, context) => {
   const { pageData, languages } = props;
   const { adminLang, i18n } = context;
   const menuItemClass = 'admin-menu__item';
+  const hasChanges = pageData.changed && pageData.changed.time;
   return (
     <div className="admin-menu__edit">
       <div className="admin-menu__about-page">
@@ -21,8 +22,8 @@ const EditPage = (props, context) => {
             <div>{pageData.pageTitle}</div>
             <div className="admin-menu__page-info-uri">{pageData.uri}</div>
             <div className="admin-menu__content-status">
-              {pageData.hasUnpublishedChanges ? <Icon size="small" type="notifications" /> : null }
-              {pageData.hasUnpublishedChanges ? 'Denne siden har upubliserte endringer' : null}
+              {hasChanges ? <Icon size="small" type="notifications" /> : null }
+              {hasChanges ? 'Denne siden har upubliserte endringer' : null}
             </div>
           </span>
         </div>

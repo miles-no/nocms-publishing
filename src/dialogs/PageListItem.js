@@ -13,11 +13,13 @@ const PageListItem = (props, context) => {
   const notificationIconType = isPublished ? 'notifications' : 'notifications_none';
   let iconClass = '';
   let statusText = dictionary(i18n, 'Denne siden er ikke publisert', adminLang);
+  const hasChanges = page.changed && page.changed.time;
   if (isPublished) {
     iconClass = 'admin_pagelist__item__page-status-icon--success';
     statusText = dictionary(i18n, 'Denne siden er publisert', adminLang);
   }
-  if (page.hasUnpublishedChanges) {
+
+  if (hasChanges) {
     iconClass = 'admin_pagelist__item__page-status-icon--alert';
     statusText = dictionary(i18n, 'Denne siden har upubliserte endringer', adminLang);
   }
@@ -32,12 +34,12 @@ const PageListItem = (props, context) => {
         <span className="admin-pagelist__pagetitle">{page.pageTitle}</span>
         { page.created ?
           <span className="admin-pagelist__item__content--sub">
--          {dictionary(i18n, 'Opprettet', adminLang)} { moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
--        </span> : null}
+          {dictionary(i18n, 'Opprettet', adminLang)} { moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+        </span> : null}
         { isPublished ?
           <span className="admin-pagelist__item__content--sub">
--          {dictionary(i18n, 'Publisert', adminLang)} { moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
--        </span> : null}
+          {dictionary(i18n, 'Publisert', adminLang)} { moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+        </span> : null}
       </div>
       <div className="admin-pagelist__item__page-status">
         <Icon
