@@ -140,6 +140,10 @@ const i18n = {
     no: 'Engelsk',
     en: 'English',
   },
+  zh: {
+    no: 'Kinesisk',
+    en: 'Chinese',
+  },
 };
 
 export default i18n;
