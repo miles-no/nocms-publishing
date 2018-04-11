@@ -34,12 +34,13 @@ const PageListItem = (props, context) => {
         <span className="admin-pagelist__pagetitle">{page.pageTitle}</span>
         { page.created ?
           <span className="admin-pagelist__item__content--sub">
-          {dictionary(i18n, 'Opprettet', adminLang)} { moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
-        </span> : null}
+            <div className="admin-pagelist__pageuri">{page.uri}</div>
+            {dictionary(i18n, 'Opprettet', adminLang)} { moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+          </span> : null}
         { isPublished ?
           <span className="admin-pagelist__item__content--sub">
-          {dictionary(i18n, 'Publisert', adminLang)} { moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
-        </span> : null}
+            {dictionary(i18n, 'Publisert', adminLang)} { moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+          </span> : null}
       </div>
       <div className="admin-pagelist__item__page-status">
         <Icon

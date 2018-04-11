@@ -29,6 +29,7 @@
 .admin-pagelist__item__content--sub {
   opacity: 0.6;
   font-size: var(--font-size-xsmalltext);
+  word-break: break-word;
 }
 
 .admin-pagelist__item__page-status {
