@@ -26,10 +26,12 @@
   min-width: 80%;
 }
 
-.admin-pagelist__item__content--sub {
+.admin-pagelist__item__content--sub,
+.admin-pagelist__pageuri {
   opacity: 0.6;
   font-size: var(--font-size-xsmalltext);
   word-break: break-word;
+  line-height: 12px;
 }
 
 .admin-pagelist__item__page-status {
