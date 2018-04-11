@@ -34,7 +34,7 @@ const PageListItem = (props, context) => {
         <div className="admin-pagelist__pageuri">{page.uri}</div>
         { page.created ?
           <span className="admin-pagelist__item__content--sub">
-            {`${dictionary(i18n, 'Opprettet', adminLang)} ${moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
+            {`${dictionary(i18n, 'Denne versjonen opprettet', adminLang)} ${moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
           ${page.created.user}`}
           </span> : null}
         { isPublished ?

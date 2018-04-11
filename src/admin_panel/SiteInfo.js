@@ -14,9 +14,7 @@ const SiteInfo = (props, context) => {
       <dl>
         <dt><I>Versjon</I></dt>
         <dd>{revision}</dd>
-        <dt><I>Maltype</I></dt>
-        <dd><I>{template.name}</I></dd>
-        <dt><I>Opprettet</I></dt>
+        <dt><I>Denne versjon opprettet</I></dt>
         <dd>{moment(created.time).format('L')}</dd>
         <dt><I>Opprettet av</I></dt>
         <dd>{created.user}</dd>
@@ -30,6 +28,8 @@ const SiteInfo = (props, context) => {
           <I>Ikke publisert</I>
           : `${firstPublished.publishedBy}`}
         </dd>
+        <dt><I>Maltype</I></dt>
+        <dd><I>{template.name}</I></dd>
       </dl>
       <AdminMenuDialog
         title={dictionary(i18n, 'Jeg ønsker å se historikken til siden', adminLang)}
