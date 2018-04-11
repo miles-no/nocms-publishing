@@ -20,14 +20,14 @@ const SiteInfo = (props, context) => {
         <dd>{moment(created.time).format('L')}</dd>
         <dt><I>Opprettet av</I></dt>
         <dd>{created.user}</dd>
-        <dt><I>Første gang publisert</I></dt>
+        <dt><I>Publisert 1. gang</I></dt>
         <dd>{Object.keys(firstPublished).length === 0 ?
-          <I>Denne versjonen er ikke publisert</I>
+          <I>Ikke publisert</I>
           : `${moment(firstPublished.time).format('L')}`}
         </dd>
-        <dt><I>Første gang publisert av</I></dt>
+        <dt><I>Publisert 1. gang av</I></dt>
         <dd>{Object.keys(firstPublished).length === 0 ?
-          <I>Denne versjonen er ikke publisert</I>
+          <I>Ikke publisert</I>
           : `${firstPublished.user}`}
         </dd>
       </dl>
