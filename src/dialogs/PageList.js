@@ -36,9 +36,21 @@ export default class PageList extends Component {
 
 
   render() {
-    const filteredPages = this.state.pages.filter((page) => {
-      return !page.hasOwnProperty('movedTo'); // eslint-disable-line
-    });
+    const filteredPages = this.state.pages
+      .filter((page) => {
+        return !page.hasOwnProperty('movedTo'); // eslint-disable-line
+      })
+      .sort((a, b) => {
+        const uriA = a.uri;
+        const uriB = b.uri;
+        if (uriA < uriB) {
+          return -1;
+        }
+        if (uriA > uriB) {
+          return 1;
+        }
+        return 0;
+      });
     return (
       <div className="admin-pagelist__wrapper">
         {
