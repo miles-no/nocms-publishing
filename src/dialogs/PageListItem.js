@@ -7,8 +7,8 @@ import { dictionary } from 'nocms-i18n';
 
 const PageListItem = (props, context) => {
   const { page, iconSize, onItemClick } = props;
-  const published = page.published || {};
-  const isPublished = Object.keys(published).length !== 0;
+  const published = page.firstPublished || {};
+  const isPublished = Object.keys('firstPublished').length !== 0;
   const { adminLang, i18n } = context;
   const notificationIconType = isPublished ? 'notifications' : 'notifications_none';
   let iconClass = '';
@@ -35,11 +35,13 @@ const PageListItem = (props, context) => {
         <div className="admin-pagelist__pageuri">{page.uri}</div>
         { page.created ?
           <span className="admin-pagelist__item__content--sub">
-            {dictionary(i18n, 'Opprettet', adminLang)} { moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+            {`${dictionary(i18n, 'Opprettet', adminLang)} ${moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
+          ${page.created.user}`}
           </span> : null}
         { isPublished ?
           <span className="admin-pagelist__item__content--sub">
-            {dictionary(i18n, 'Publisert', adminLang)} { moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss') }
+            {`${dictionary(i18n, 'Publisert første gang den', adminLang)} ${moment(published.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
+            ${published.user}`}
           </span> : null}
       </div>
       <div className="admin-pagelist__item__page-status">
