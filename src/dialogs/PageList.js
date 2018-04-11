@@ -34,11 +34,15 @@ export default class PageList extends Component {
     }
   }
 
+
   render() {
+    const filteredPages = this.state.pages.filter((page) => {
+      return !page.hasOwnProperty('movedTo'); // eslint-disable-line
+    });
     return (
       <div className="admin-pagelist__wrapper">
         {
-          this.state.pages.map((page) => {
+          filteredPages.map((page) => {
             return (
               <PageListItem
                 key={page.pageId}
