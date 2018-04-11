@@ -28,7 +28,7 @@ const SiteInfo = (props, context) => {
         <dt><I>Publisert 1. gang av</I></dt>
         <dd>{Object.keys(firstPublished).length === 0 ?
           <I>Ikke publisert</I>
-          : `${firstPublished.user}`}
+          : `${firstPublished.publishedBy}`}
         </dd>
       </dl>
       <AdminMenuDialog
