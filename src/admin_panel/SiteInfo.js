@@ -6,7 +6,7 @@ import AdminMenuDialog from '../AdminMenuDialog';
 import PageHistory from '../dialogs/PageHistory';
 
 const SiteInfo = (props, context) => {
-  const { templateId, created, published, revision, templates, uri, site } = props;
+  const { templateId, created, firstPublished, revision, templates, uri, site } = props;
   const { adminLang, i18n } = context;
   const template = templates.find((obj) => { return obj.id === templateId; });
   return (
@@ -20,15 +20,15 @@ const SiteInfo = (props, context) => {
         <dd>{moment(created.time).format('L')}</dd>
         <dt><I>Opprettet av</I></dt>
         <dd>{created.user}</dd>
-        <dt><I>Publisert</I></dt>
-        <dd>{Object.keys(published).length === 0 ?
+        <dt><I>Første gang publisert</I></dt>
+        <dd>{Object.keys(firstPublished).length === 0 ?
           <I>Denne versjonen er ikke publisert</I>
-          : `${moment(published.time).format('L')}`}
+          : `${moment(firstPublished.time).format('L')}`}
         </dd>
-        <dt><I>Publisert av</I></dt>
-        <dd>{Object.keys(published).length === 0 ?
+        <dt><I>Første gang publisert av</I></dt>
+        <dd>{Object.keys(firstPublished).length === 0 ?
           <I>Denne versjonen er ikke publisert</I>
-          : `${published.user}`}
+          : `${firstPublished.user}`}
         </dd>
       </dl>
       <AdminMenuDialog
@@ -51,7 +51,7 @@ SiteInfo.contextTypes = {
 
 SiteInfo.propTypes = {
   templateId: PropTypes.string,
-  published: PropTypes.object,
+  firstPublished: PropTypes.object,
   uri: PropTypes.string,
   site: PropTypes.string,
   created: PropTypes.object,
@@ -61,6 +61,7 @@ SiteInfo.propTypes = {
 
 SiteInfo.defaultProps = {
   published: {},
+  firstPublished: {},
 };
 
 export default SiteInfo;
