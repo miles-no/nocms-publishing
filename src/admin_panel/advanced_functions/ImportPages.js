@@ -61,7 +61,6 @@ export default class ImportPages extends Component {
         <Dropzone
           multiple={false}
           name="pageDataFile"
-          accept="application/json"
           onDrop={this.onUploadPageDataFile}
         >
           <I>Last opp filen ved å slippe den over området</I>
