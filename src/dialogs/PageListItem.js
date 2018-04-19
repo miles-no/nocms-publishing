@@ -40,7 +40,7 @@ const PageListItem = (props, context) => {
         { isPublished ?
           <span className="admin-pagelist__item__content--sub">
             {`${dictionary(i18n, 'Publisert første gang den', adminLang)} ${moment(page.firstPublished.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
-            ${page.firstPublished.publishedBy}`}
+            ${page.firstPublished.publishedBy || '-'}`}
           </span> : null}
       </div>
       <div className="admin-pagelist__item__page-status">
