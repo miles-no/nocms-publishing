@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditImage } from 'nocms-publishing'; // eslint-disable-line
+import { EditImage, EditSimpleImage } from 'nocms-publishing'; // eslint-disable-line
 
 const aspectRatio1 = {
   large: {
@@ -49,6 +49,14 @@ const Images = (props) => {
           data={{}}
           activeEditMode={activeEditMode}
           aspectRatio={aspectRatio2}
+        />
+      </div>
+      <h2>Edit simple image</h2>
+      <div style={style}>
+        <EditSimpleImage
+          scope="image6"
+          image={{}}
+          activeEditMode={activeEditMode}
         />
       </div>
       <h2>Presentational image</h2>

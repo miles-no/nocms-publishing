@@ -33,7 +33,16 @@ export default class SimpleImage extends Component {
   }
 
   onMetaChange(e, type) {
-    const updateObj = (type === 'alt') ? { alt: e } : { caption: e };
+    let updateObj;
+    if (type === 'alt') {
+      updateObj = { alt: e };
+    } else if (type === 'caption') {
+      updateObj = { caption: e };
+    } else {
+      updateObj = {
+        attribution: e,
+      };
+    }
     const imageObj = Object.assign({}, this.state.image, updateObj);
     this.setState({ image: imageObj });
   }
