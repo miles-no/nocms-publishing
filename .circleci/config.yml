@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install npm packages
-          command: npm install
+          command: npm ci
       - run:
           name: Linting
           command: npm run eslint
@@ -22,7 +22,7 @@ jobs:
       - image: circleci/node:9.5.0
     steps:
       - checkout
-      - run: npm install
+      - run: npm ci
       - run: npx semantic-release
 
 workflows:
