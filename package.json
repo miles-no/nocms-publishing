@@ -65,7 +65,7 @@
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-webteam": "^2.0.0",
-    "eslint-loader": "^1.9.0",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
@@ -73,7 +73,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "husky": "^0.15.0-rc.8",
     "nsp": "^3.2.1",
-    "postcss-cli": "^4.1.1",
+    "postcss-cli": "^5.0.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.4",
@@ -83,8 +83,8 @@
     "semantic-release": "^15.1.7",
     "style-loader": "^0.21.0",
     "watch": "^1.0.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.2"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",

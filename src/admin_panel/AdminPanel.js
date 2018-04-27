@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
-import { IconButton } from 'nocms-atoms';
-import { dictionary } from 'nocms-i18n';
+import { Icon } from 'nocms-atoms';
+import { dictionary, I } from 'nocms-i18n';
 import CreatePage from '../dialogs/CreatePage';
 import PageList from '../dialogs/PageList';
 import AdminMenuDialog from '../AdminMenuDialog';
@@ -24,15 +24,7 @@ const logout = (e) => {
 export default class AdminPanel extends Component {
   constructor(props) {
     super(props);
-    this.onAdminDropdown = this.onAdminDropdown.bind(this);
     this.onAddSection = this.onAddSection.bind(this);
-    this.state = {
-      adminDropdownOpen: false,
-    };
-  }
-
-  onAdminDropdown() {
-    this.setState({ adminDropdownOpen: !this.state.adminDropdownOpen });
   }
 
   onAddSection(type) {
@@ -75,7 +67,16 @@ export default class AdminPanel extends Component {
     if (claims.admin) {
       roles.push(dictionary(i18n, 'administrator', lang));
     }
-    return roles.join(', ');
+    if (claims.developer) {
+      roles.push(dictionary(i18n, 'utvikler', lang));
+    }
+    if (claims.employee) {
+      roles.push(dictionary(i18n, 'ansatt', lang));
+    }
+    if (claims.milesCampAdmin) {
+      roles.push(dictionary(i18n, 'camp-admin', lang));
+    }
+    return roles;
   }
 
   render() {
@@ -87,27 +88,6 @@ export default class AdminPanel extends Component {
     });
     return (
       <div className="admin-menu">
-        <div className="admin-menu__header">
-          <div className="admin-menu__publisher">
-            <img className="admin-menu__header-avatar" src={publisherInfo.photo} alt="" />
-            <div>
-              <span className="admin-menu__publisher-name">
-                <span>{publisherInfo.name}</span>
-                {this.state.adminDropdownOpen ?
-                  <IconButton iconOnly noBorder iconType="keyboard_arrow_up" onClick={this.onAdminDropdown} ariaHaspopup ariaControls="adminDropdown" ariaExpanded />
-                  : <IconButton iconOnly noBorder iconType="keyboard_arrow_down" onClick={this.onAdminDropdown} ariaHaspopup ariaControls="adminDropdown" ariaExpanded={false} />}
-              </span>
-              <span className="admin-menu__publisher-role">{this.getAdminRoles(publisherInfo)}</span>
-            </div>
-            <nav id="adminDropdown" aria-hidden="true" className="admin-menu__admin-dropdown">
-              {this.state.adminDropdownOpen ?
-                <ul className="unstyled-list">
-                  <li className="admin-menu__admin-dropdown-item">Språk: Norsk</li>
-                  <li className="admin-menu__admin-dropdown-item"><a href="#" onClick={logout}>{dictionary(i18n, 'Logg ut', adminLang)}</a></li>
-                </ul> : null}
-            </nav>
-          </div>
-        </div>
         <div className="admin-menu__toolbar-top">
           <div className="button-container button-container--center">
             <AdminMenuDialog
@@ -151,6 +131,24 @@ export default class AdminPanel extends Component {
         </MenuSectionWrapper>
         {applications && applications.length !== 0 ? <Applications claims={publisherInfo.claims} applications={applications} /> : null }
         <AdvancedFunctions claims={publisherInfo.claims} />
+        <MenuSectionWrapper folderName={<img className="admin-menu__header-avatar" src={publisherInfo.photo} alt="profile" />}>
+          <dl className="admin-menu__publisher-info">
+            <dt><I>Innlogget som</I></dt>
+            <dd>{publisherInfo.name}</dd>
+            <dt><I>Rolle</I></dt>
+            {this.getAdminRoles(publisherInfo).map((role) => {
+              return <dd key={role} className="admin-menu__publisher-role">{role}</dd>;
+            })}
+          </dl>
+          <ul className="unstyled-list admin-menu__actions">
+            <li>
+              <a href="#" onClick={logout} className="flex-container--centered admin-menu__log-out admin-button admin-button--transparent admin-button__text-icon admin-button--noBorder">
+                <Icon type="power_settings_new" />
+                {dictionary(i18n, 'Logg ut', adminLang)}
+              </a>
+            </li>
+          </ul>
+        </MenuSectionWrapper>
         <NotificationArea />
       </div>
     );

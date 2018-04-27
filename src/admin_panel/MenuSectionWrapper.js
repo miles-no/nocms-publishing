@@ -32,6 +32,9 @@ export default class MenuSectionWrapper extends Component {
 
 MenuSectionWrapper.propTypes = {
   children: PropTypes.node,
-  folderName: PropTypes.string,
+  folderName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   startOpen: PropTypes.bool,
 };
