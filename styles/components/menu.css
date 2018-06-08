@@ -158,6 +158,11 @@ button.admin-panel__open {
   & i {
     display: block;
   }
+  &:visited,
+  &:hover,
+  &:active {
+    color: #95989A;
+  }
 }
 
 .admin-menu__header-avatar {

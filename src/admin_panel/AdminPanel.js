@@ -89,7 +89,7 @@ export default class AdminPanel extends Component {
     return (
       <div className="admin-menu">
         <div className="admin-menu__toolbar-top">
-          <div className="button-container button-container--center">
+          <div className="button-container button-container--center" style={{ justifyContent: 'space-evenly' }}>
             <AdminMenuDialog
               vertical
               iconSize="large"
