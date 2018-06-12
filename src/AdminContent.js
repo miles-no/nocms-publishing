@@ -38,6 +38,7 @@ export default class AdminContent extends Component {
       config,
       adminConfig,
       adminLang: adminConfig.lang,
+      unpublish: adminConfig.unpublish || false, // temp. unpublish
     };
 
     listenToGlobal('edit-mode-changed', (editMode) => {

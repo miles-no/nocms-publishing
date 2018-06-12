@@ -6,12 +6,13 @@ import AdminMenuDialog from '../AdminMenuDialog';
 import PublishPage from '../dialogs/PublishPage';
 import PageSettings from '../dialogs/PageSettings';
 import DeletePage from '../dialogs/DeletePage';
+import UnpublishPage from '../dialogs/UnpublishPage';
 import MovePage from '../dialogs/MovePage';
 // import smoothscroll from 'smoothscroll';
 
 const EditPage = (props, context) => {
   const { pageData, languages } = props;
-  const { adminLang, i18n } = context;
+  const { adminLang, i18n, adminConfig } = context;
   const menuItemClass = 'admin-menu__item';
   const hasChanges = pageData.changed && pageData.changed.time;
   return (
@@ -63,6 +64,17 @@ const EditPage = (props, context) => {
               <MovePage {...pageData} />
             </AdminMenuDialog>
           </li>
+          { adminConfig.unpublish ?
+            <li className={menuItemClass}>
+              <AdminMenuDialog
+                title={dictionary(i18n, 'Jeg ønsker å avpublisere siden', adminLang)}
+                text={dictionary(i18n, 'Avpubliser side', adminLang)} icon="vertical_align_bottom"
+                centered
+                widthConstrained
+              >
+                <UnpublishPage {...pageData} />
+              </AdminMenuDialog>
+            </li> : null }
           <li className={menuItemClass}>
             <AdminMenuDialog
               title={dictionary(i18n, 'Jeg ønsker å slette siden', adminLang)}
@@ -88,6 +100,7 @@ EditPage.contextTypes = {
   adminLang: PropTypes.string,
   editPage: PropTypes.object,
   i18n: PropTypes.object,
+  adminConfig: PropTypes.object,
 };
 
 export default EditPage;
