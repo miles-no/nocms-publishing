@@ -51,7 +51,7 @@ export default class PageHistory extends Component {
                 <tr key={page.revision}>
                   <td>{page.revision}</td>
                   <td>{ page.published.time ? moment(page.published.time).format('DD.MM.YYYY [kl] HH:mm:ss') : '-'}</td>
-                  <td>{page.published.user || '-'}</td>
+                  <td>{page.published.publishedBy || '-'}</td>
                   <td><a href={`/?pageId=${page.pageId}`}><I>Åpne</I></a></td>
                 </tr>
               );

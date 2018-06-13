@@ -7,7 +7,7 @@ import { dictionary } from 'nocms-i18n';
 
 const PageListItem = (props, context) => {
   const { page, iconSize, onItemClick } = props;
-  const isPublished = page.firstPublished;
+  const isPublished = page.firstPublished && typeof page.pageUnpublishData === 'undefined';
   const { adminLang, i18n } = context;
   const notificationIconType = isPublished ? 'notifications' : 'notifications_none';
   let iconClass = '';
@@ -41,6 +41,11 @@ const PageListItem = (props, context) => {
           <span className="admin-pagelist__item__content--sub">
             {`${dictionary(i18n, 'Publisert første gang den', adminLang)} ${moment(page.firstPublished.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
             ${page.firstPublished.publishedBy || '-'}`}
+          </span> : null}
+        { page.pageUnpublishData === 'undefined' ?
+          <span className="admin-pagelist__item__content--sub">
+            {`${dictionary(i18n, 'Avpublisert den', adminLang)} ${moment(page.pageUnpublishData.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
+            ${page.pageUnpublishData.user || '-'}`}
           </span> : null}
       </div>
       <div className="admin-pagelist__item__page-status">
