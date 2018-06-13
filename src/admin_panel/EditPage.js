@@ -64,7 +64,7 @@ const EditPage = (props, context) => {
               <MovePage {...pageData} />
             </AdminMenuDialog>
           </li>
-          { adminConfig.unpublish ?
+          { adminConfig.unpublish && typeof pageData.pageUnpublishData === 'undefined' && typeof pageData.firstPublished === typeof {} ?
             <li className={menuItemClass}>
               <AdminMenuDialog
                 title={dictionary(i18n, 'Jeg ønsker å avpublisere siden', adminLang)}
