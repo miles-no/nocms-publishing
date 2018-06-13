@@ -8,7 +8,7 @@ import Form from '../atoms/Form';
 import Message from '../admin_panel/Message';
 import getErrorMsgForStatusCode from '../utils/get_error_message';
 
-export default class DeletePage extends Component {
+export default class UnpublishPage extends Component {
   constructor(props) {
     super(props);
     this.handleUnpublishPage = this.handleUnpublishPage.bind(this);
@@ -26,7 +26,7 @@ export default class DeletePage extends Component {
     const options = {
       responseRequired: true,
     };
-    ajax.post(this.context.config.messageApi, messageObj, options, (err) => {
+    ajax.post(this.context.config.messageApi, messageObj, options, (err, res) => {
       if (err) {
         this.setState({
           error: {
@@ -42,8 +42,8 @@ export default class DeletePage extends Component {
       }
 
       triggerGlobal('notify', `Siden på ${this.props.uri} ble avpublisert`);
-      // triggerGlobal('navigate', '/');
-      cb();
+      triggerGlobal('nocms.new-page-version', res.pageData);
+      this.props.onClose();
     });
   }
 
@@ -82,18 +82,19 @@ export default class DeletePage extends Component {
   }
 }
 
-DeletePage.contextTypes = {
+UnpublishPage.contextTypes = {
   adminLang: PropTypes.string,
   config: PropTypes.object,
   i18n: PropTypes.object,
 };
 
-DeletePage.propTypes = {
+UnpublishPage.propTypes = {
   pageId: PropTypes.string,
   uri: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
-DeletePage.defaultProps = {
+UnpublishPage.defaultProps = {
   pageTitle: '',
   lang: 'no',
 };
