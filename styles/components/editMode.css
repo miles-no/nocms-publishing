@@ -21,7 +21,7 @@
   text-transform: uppercase;
   font-size: var(--font-size-smalltext);
   & .material-icons {
-    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -29,19 +29,19 @@
   z-index: 10;
   color: white;
   position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  height: 38px;
-  width: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: var(--admin-primary);
-  padding: 10px;
+  padding: 10px 30px;
   display: flex;
-  justify-content: space-between;
   opacity: 0.9;
+  cursor: pointer;
   z-index: 11;
+  align-items: center;
+  & .material-icons {
+    height: 24px;
+  }
 }
 
 .edit-mode--not-active:hover:after {
@@ -50,11 +50,12 @@
   z-index: 10;
   display: block;
   position: absolute;
-  height: 100%;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 0 2px var(--admin-green);
 }
 
 .edit-mode--active .edit-mode__widget-menu {

@@ -1,7 +1,6 @@
 /* eslint jsx-a11y/no-static-element-interactions: off */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'nocms-atoms';
 import SectionMenu from './SectionMenu';
 import i18n from './i18n/dictionary';
 
@@ -51,8 +50,8 @@ export default class EditableArea extends Component {
     return (
       <div className={className} onClick={this.onEditClick}>
         <div className="edit-mode__label">
+          <i className="material-icons">edit</i>
           <span>{label}</span>
-          <Icon type="edit" />
         </div>
         <SectionMenu sticky onEditAbortClick={this.onEditAbortClick} label={label} />
         {childWithProps}
