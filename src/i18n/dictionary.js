@@ -128,6 +128,14 @@ const i18n = {
     no: 'Skjul meny',
     en: 'Hide menu',
   },
+  'Info.Title': {
+    no: 'Sidetittel-tag blir brukt til å fortelle søkemotorer og besøkende hva en side på nettstedet ditt handler om på en mest mulig konsis og korrekt måte. Den vises blant annet som tittel på fanen i nettleseren og dukker opp i søkeresultater. Tittel-tag er veldig viktig for SEO (søkemotoroptimalisering), skal være unik for hver side og lengden bør være på maks 65 tegn.',
+    en: 'Title tags are used to tell search engines and visitors what any given page on your site is about in the most concise and accurate way possible. It\'s extremely important for SEO',
+  },
+  'Info.MetaDescription': {
+    no: 'En meta-description er en mer utfyllende beskrivelse av hvilket innhold som finnes på siden enn tittel-tagen. Den dukker opp i søkeresultater og når man deler siden i sosiale medier. Lag en beskrivende og representativ tekst på maks 160 tegn.',
+    en: '',
+  },
   409: {
     no: 'Det finnes allerede en side på uri. Velg annen eller avbryt',
     en: 'Uri taken, choose another one or abort',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { triggerGlobal } from 'nocms-events';
-import { dictionary } from 'nocms-i18n';
+import { dictionary, I } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
 
@@ -45,15 +45,21 @@ export default class PageSettings extends Component {
             <Field
               name="pageTitle"
               store={storeName}
-              label={dictionary(i18n, 'Sidetittel', adminLang)}
+              label={dictionary(i18n, 'Meta-tittel (<title>)', adminLang)}
               required
               errorText="Siden må ha en tittel"
             />
+            <div className="admin-form__field-info">
+              <I>Info.Title</I>
+            </div>
             <Field
               name="metaDescription"
               store={storeName}
               label={dictionary(i18n, 'Meta-beskrivelse', adminLang)}
             />
+            <div className="admin-form__field-info">
+              <I>Info.MetaDescription</I>
+            </div>
             <Field
               type="select"
               store={storeName}

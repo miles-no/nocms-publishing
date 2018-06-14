@@ -104,10 +104,13 @@ export default class CreatePage extends Component {
           <Field
             name="pageTitle"
             required
-            label={dictionary(i18n, 'Sidetittel', adminLang)}
+            label={dictionary(i18n, 'Meta-tittel (<title>)', adminLang)}
             errorText={dictionary(i18n, 'Du må gi siden en tittel', adminLang)}
             validate="notEmpty"
           />
+          <div className="admin-form__field-info">
+            <I>Info.Title</I>
+          </div>
           <Field
             name="uri"
             required

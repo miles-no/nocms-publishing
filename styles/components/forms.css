@@ -111,6 +111,11 @@
   }
 }
 
+.admin-form__field-info {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 @media (--breakpoint-md) {
   .admin-form {
     margin-top: var(--spacing-xlarge);

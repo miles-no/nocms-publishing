@@ -37,12 +37,12 @@ const PageListItem = (props, context) => {
             {`${dictionary(i18n, 'Denne versjonen opprettet', adminLang)} ${moment(page.created.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
           ${page.created.user}`}
           </span> : null}
-        { isPublished ?
+        { page.firstPublished ?
           <span className="admin-pagelist__item__content--sub">
             {`${dictionary(i18n, 'Publisert første gang den', adminLang)} ${moment(page.firstPublished.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
             ${page.firstPublished.publishedBy || '-'}`}
           </span> : null}
-        { page.pageUnpublishData === 'undefined' ?
+        { typeof page.pageUnpublishData !== 'undefined' ?
           <span className="admin-pagelist__item__content--sub">
             {`${dictionary(i18n, 'Avpublisert den', adminLang)} ${moment(page.pageUnpublishData.time).format('DD.MM.YYYY [kl] HH:mm:ss')} ${dictionary(i18n, 'av', adminLang)} 
             ${page.pageUnpublishData.user || '-'}`}
