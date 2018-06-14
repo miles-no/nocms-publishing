@@ -17,7 +17,8 @@ const EditPage = (props, context) => {
   const hasChanges = pageData.changed && pageData.changed.time;
   const publisherInfo = global.NoCMS.getNoCMSUserInfo();
   const isDeveloper = publisherInfo && publisherInfo.claims && publisherInfo.claims.developer;
-  const isDeprecated = typeof pageData.deprecatedBy !== 'undefined';
+  const isPublished = pageData.published && pageData.published.time;
+  const canEdit = typeof pageData.deprecatedBy === 'undefined' && !isPublished;
 
   return (
     <div className="admin-menu__edit">
@@ -26,7 +27,7 @@ const EditPage = (props, context) => {
           <span className="admin-menu__page-info">
             <div>{pageData.pageTitle}</div>
             <div className="admin-menu__page-info-uri">{pageData.uri}</div>
-            { !isDeprecated &&
+            { canEdit &&
               <div className="admin-menu__content-status">
                 {hasChanges ? <Icon size="small" type="notifications" /> : null }
                 {hasChanges ? 'Denne siden har upubliserte endringer' : null}
@@ -34,7 +35,7 @@ const EditPage = (props, context) => {
             }
           </span>
         </div>
-        { !isDeprecated &&
+        { canEdit &&
           <AdminMenuDialog
             icon="publish" title={dictionary(i18n, 'Publiser side', adminLang)}
             showTitle
@@ -51,7 +52,7 @@ const EditPage = (props, context) => {
       </div>
       <div className="admin-menu__actions">
         <ul className="unstyled-list">
-          { !isDeprecated &&
+          { canEdit &&
             <li className={menuItemClass}>
               <AdminMenuDialog
                 title={dictionary(i18n, 'Jeg ønsker å endre på sideinnstillingene', adminLang)}
@@ -63,7 +64,7 @@ const EditPage = (props, context) => {
               </AdminMenuDialog>
             </li>
           }
-          { !isDeprecated &&
+          { canEdit &&
             <li className={menuItemClass}>
               <AdminMenuDialog
                 title={dictionary(i18n, 'Jeg ønsker å flytte siden', adminLang)}
@@ -76,7 +77,7 @@ const EditPage = (props, context) => {
               </AdminMenuDialog>
             </li>
           }
-          { !isDeprecated && adminConfig.unpublish && typeof pageData.pageUnpublishData === 'undefined' && typeof pageData.firstPublished === typeof {} ?
+          { canEdit && adminConfig.unpublish && typeof pageData.pageUnpublishData === 'undefined' && typeof pageData.firstPublished === typeof {} ?
             <li className={menuItemClass}>
               <AdminMenuDialog
                 title={dictionary(i18n, 'Jeg ønsker å avpublisere siden', adminLang)}
