@@ -15,6 +15,10 @@ const EditPage = (props, context) => {
   const { adminLang, i18n, adminConfig } = context;
   const menuItemClass = 'admin-menu__item';
   const hasChanges = pageData.changed && pageData.changed.time;
+  const publisherInfo = global.NoCMS.getNoCMSUserInfo();
+  const isDeveloper = publisherInfo && publisherInfo.claims && publisherInfo.claims.developer;
+  const isDeprecated = typeof pageData.deprecatedBy !== 'undefined';
+
   return (
     <div className="admin-menu__edit">
       <div className="admin-menu__about-page">
@@ -22,49 +26,57 @@ const EditPage = (props, context) => {
           <span className="admin-menu__page-info">
             <div>{pageData.pageTitle}</div>
             <div className="admin-menu__page-info-uri">{pageData.uri}</div>
-            <div className="admin-menu__content-status">
-              {hasChanges ? <Icon size="small" type="notifications" /> : null }
-              {hasChanges ? 'Denne siden har upubliserte endringer' : null}
-            </div>
+            { !isDeprecated &&
+              <div className="admin-menu__content-status">
+                {hasChanges ? <Icon size="small" type="notifications" /> : null }
+                {hasChanges ? 'Denne siden har upubliserte endringer' : null}
+              </div>
+            }
           </span>
         </div>
-        <AdminMenuDialog
-          icon="publish" title={dictionary(i18n, 'Publiser side', adminLang)}
-          showTitle
-          vertical
-          noBorder
-          green
-          text={dictionary(i18n, 'Publiser', adminLang)}
-          centered
-          widthConstrained
-        >
-          <PublishPage {...pageData} />
-        </AdminMenuDialog>
+        { !isDeprecated &&
+          <AdminMenuDialog
+            icon="publish" title={dictionary(i18n, 'Publiser side', adminLang)}
+            showTitle
+            vertical
+            noBorder
+            green
+            text={dictionary(i18n, 'Publiser', adminLang)}
+            centered
+            widthConstrained
+          >
+            <PublishPage {...pageData} />
+          </AdminMenuDialog>
+        }
       </div>
       <div className="admin-menu__actions">
         <ul className="unstyled-list">
-          <li className={menuItemClass}>
-            <AdminMenuDialog
-              title={dictionary(i18n, 'Jeg ønsker å endre på sideinnstillingene', adminLang)}
-              text={dictionary(i18n, 'Sideinnstillinger', adminLang)} icon="settings"
-              centered
-              widthConstrained
-            >
-              <PageSettings {...pageData} languages={languages} />
-            </AdminMenuDialog>
-          </li>
-          <li className={menuItemClass}>
-            <AdminMenuDialog
-              title={dictionary(i18n, 'Jeg ønsker å flytte siden', adminLang)}
-              text={dictionary(i18n, 'Flytt side', adminLang)}
-              icon="trending_flat"
-              centered
-              widthConstrained
-            >
-              <MovePage {...pageData} />
-            </AdminMenuDialog>
-          </li>
-          { adminConfig.unpublish && typeof pageData.pageUnpublishData === 'undefined' && typeof pageData.firstPublished === typeof {} ?
+          { !isDeprecated &&
+            <li className={menuItemClass}>
+              <AdminMenuDialog
+                title={dictionary(i18n, 'Jeg ønsker å endre på sideinnstillingene', adminLang)}
+                text={dictionary(i18n, 'Sideinnstillinger', adminLang)} icon="settings"
+                centered
+                widthConstrained
+              >
+                <PageSettings {...pageData} languages={languages} />
+              </AdminMenuDialog>
+            </li>
+          }
+          { !isDeprecated &&
+            <li className={menuItemClass}>
+              <AdminMenuDialog
+                title={dictionary(i18n, 'Jeg ønsker å flytte siden', adminLang)}
+                text={dictionary(i18n, 'Flytt side', adminLang)}
+                icon="trending_flat"
+                centered
+                widthConstrained
+              >
+                <MovePage {...pageData} />
+              </AdminMenuDialog>
+            </li>
+          }
+          { !isDeprecated && adminConfig.unpublish && typeof pageData.pageUnpublishData === 'undefined' && typeof pageData.firstPublished === typeof {} ?
             <li className={menuItemClass}>
               <AdminMenuDialog
                 title={dictionary(i18n, 'Jeg ønsker å avpublisere siden', adminLang)}
@@ -75,16 +87,18 @@ const EditPage = (props, context) => {
                 <UnpublishPage {...pageData} />
               </AdminMenuDialog>
             </li> : null }
-          <li className={menuItemClass}>
-            <AdminMenuDialog
-              title={dictionary(i18n, 'Jeg ønsker å slette siden', adminLang)}
-              text={dictionary(i18n, 'Slett side', adminLang)} icon="delete"
-              centered
-              widthConstrained
-            >
-              <DeletePage {...pageData} />
-            </AdminMenuDialog>
-          </li>
+          { isDeveloper &&
+            <li className={menuItemClass}>
+              <AdminMenuDialog
+                title={dictionary(i18n, 'Jeg ønsker å slette siden', adminLang)}
+                text={dictionary(i18n, 'Slett side', adminLang)} icon="delete"
+                centered
+                widthConstrained
+              >
+                <DeletePage {...pageData} />
+              </AdminMenuDialog>
+            </li>
+          }
         </ul>
       </div>
     </div>
