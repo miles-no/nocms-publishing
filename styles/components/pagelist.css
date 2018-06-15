@@ -49,7 +49,8 @@
 }
 
 .admin-pagelist__filter,
-.admin-pagelist__filter-container button {
+.admin-pagelist__filter-container button,
+.admin-pagelist__filter-hits {
   margin-bottom: 2vw;
   margin-left: 2vw;
 }

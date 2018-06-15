@@ -55,6 +55,7 @@ export default class PageList extends Component {
   }
 
   render() {
+    let filterActive = false;
     const { pageListFilters } = this.props;
     let filteredPages = this.state.pages.filter((page) => {
       return !page.hasOwnProperty('movedTo'); // eslint-disable-line
@@ -74,6 +75,7 @@ export default class PageList extends Component {
       }
 
       filteredPages = filteredPages.filter((page) => {
+        filterActive = true;
         const handler = pageListFiltersMap[key].handler;
         return handler(filterValue, page);
       });
@@ -122,6 +124,10 @@ export default class PageList extends Component {
             { filterMarkup }
             <button onClick={this.resetFilters}>Nullstill filter</button>
           </div>
+        }
+        { filterActive ?
+          <h3 className="admin-pagelist__filter-hits">{ filteredPages.length > 0 ? `Antall treff: ${filteredPages.length}` : 'Ingen treff' }</h3>
+          : <h3 className="admin-pagelist__filter-hits">{ filteredPages.length > 0 ? `Antall sider: ${filteredPages.length}` : 'Ingen sider' }</h3>
         }
         {
           filteredPages.map((page) => {
