@@ -48,6 +48,12 @@
   opacity: 0.8;
 }
 
+.admin-pagelist__filter,
+.admin-pagelist__filter-container button {
+  margin-bottom: 2vw;
+  margin-left: 2vw;
+}
+
 @media(--breakpoint-sm) {
   .admin-pagelist__item__page-status-text {
     display: block;
@@ -61,6 +67,10 @@
 @media(--breakpoint-md) {
   .admin-pagelist__item__content {
     min-width: 60%;
+  }
+
+  .admin-pagelist__filter-container {
+    display: flex;
   }
 }
 
@@ -86,13 +96,4 @@
 
 .admin_pagelist__item__page-status-icon--success {
   color: var(--admin-green);
-}
-
-.admin-pagelist__filter-container {
-  display: flex;
-  margin-bottom: 2vw;
-}
-
-.admin-pagelist__filter {
-  margin-left: 2vw;
 }

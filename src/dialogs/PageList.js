@@ -12,6 +12,7 @@ export default class PageList extends Component {
   constructor(props) {
     super(props);
 
+    this.resetFilters = this.resetFilters.bind(this);
     this.onFilterChange = this.onFilterChange.bind(this);
 
     this.state = {
@@ -44,6 +45,12 @@ export default class PageList extends Component {
         ...this.state.filterValues,
         [name]: value,
       },
+    });
+  }
+
+  resetFilters() {
+    this.setState({
+      filterValues: {},
     });
   }
 
@@ -110,9 +117,12 @@ export default class PageList extends Component {
 
     return (
       <div className="admin-pagelist__wrapper">
-        <div className="admin-pagelist__filter-container">
-          { filterMarkup }
-        </div>
+        { pageListFilters.length > 0 &&
+          <div className="admin-pagelist__filter-container">
+            { filterMarkup }
+            <button onClick={this.resetFilters}>Nullstill filter</button>
+          </div>
+        }
         {
           filteredPages.map((page) => {
             return (
