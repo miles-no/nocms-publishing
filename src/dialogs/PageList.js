@@ -11,8 +11,12 @@ const handleItemClick = (page) => {
 export default class PageList extends Component {
   constructor(props) {
     super(props);
+
+    this.onFilterChange = this.onFilterChange.bind(this);
+
     this.state = {
       pages: [],
+      filterValues: {},
     };
   }
 
@@ -34,25 +38,81 @@ export default class PageList extends Component {
     }
   }
 
+  onFilterChange(name, value) {
+    this.setState({
+      filterValues: {
+        ...this.state.filterValues,
+        [name]: value,
+      },
+    });
+  }
 
   render() {
-    const filteredPages = this.state.pages
-      .filter((page) => {
-        return !page.hasOwnProperty('movedTo'); // eslint-disable-line
-      })
-      .sort((a, b) => {
-        const uriA = a.uri;
-        const uriB = b.uri;
-        if (uriA < uriB) {
-          return -1;
-        }
-        if (uriA > uriB) {
-          return 1;
-        }
-        return 0;
+    const { pageListFilters } = this.props;
+    let filteredPages = this.state.pages.filter((page) => {
+      return !page.hasOwnProperty('movedTo'); // eslint-disable-line
+    });
+
+    const pageListFiltersMap = pageListFilters.reduce((result, item) => {
+      return {
+        ...result,
+        [item.name]: item,
+      };
+    }, {});
+
+    Object.keys(this.state.filterValues).forEach((key) => {
+      const filterValue = this.state.filterValues[key];
+      if (!filterValue) {
+        return;
+      }
+
+      filteredPages = filteredPages.filter((page) => {
+        const handler = pageListFiltersMap[key].handler;
+        return handler(filterValue, page);
       });
+    });
+
+    filteredPages.sort((a, b) => {
+      const uriA = a.uri;
+      const uriB = b.uri;
+      if (uriA < uriB) {
+        return -1;
+      }
+      if (uriA > uriB) {
+        return 1;
+      }
+      return 0;
+    });
+
+    const filterMarkup = pageListFilters.map(({ name, options, type, placeholder }) => {
+      const selectedValue = this.state.filterValues[name] || '';
+      if (type === 'select') {
+        const optionsMarkup = options.map(({ label, value }) => {
+          return <option value={value} key={value}>{label}</option>;
+        });
+
+        return (
+          <select value={selectedValue} key={name} onChange={(e) => { this.onFilterChange(name, e.target.value); }}>
+            <option value="" key="empty">{placeholder}</option>
+            {optionsMarkup}
+          </select>
+        );
+      }
+
+      if (type === 'input') {
+        return (
+          <input value={selectedValue} key={name} placeholder={placeholder} onChange={(e) => { this.onFilterChange(name, e.target.value); }} />
+        );
+      }
+
+      return null;
+    });
+
     return (
       <div className="admin-pagelist__wrapper">
+        <div>
+          { filterMarkup }
+        </div>
         {
           filteredPages.map((page) => {
             return (
@@ -68,6 +128,10 @@ export default class PageList extends Component {
     );
   }
 }
+
+PageList.propTypes = {
+  pageListFilters: PropTypes.array,
+};
 
 PageList.contextTypes = {
   lang: PropTypes.string,

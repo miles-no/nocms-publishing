@@ -80,7 +80,7 @@ export default class AdminPanel extends Component {
   }
 
   render() {
-    const { templates, languages, pageData, folders, applications } = this.props;
+    const { templates, languages, pageData, folders, applications, pageListFilters } = this.props;
     const { adminLang, i18n } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
     const isPublished = pageData.published && pageData.published.time;
@@ -101,7 +101,7 @@ export default class AdminPanel extends Component {
               title={dictionary(i18n, 'Oversikt alle sider', adminLang)}
               centered
             >
-              <PageList />
+              <PageList pageListFilters={pageListFilters} />
             </AdminMenuDialog>
             <AdminMenuDialog
               vertical iconSize="large" text={dictionary(i18n, 'Ny side', adminLang)} icon="note_add" showTitle title="Opprett en ny side" centered widthConstrained
@@ -165,6 +165,7 @@ AdminPanel.propTypes = {
   languages: PropTypes.array,
   folders: PropTypes.array,
   applications: PropTypes.array,
+  pageListFilters: PropTypes.array,
 };
 
 AdminPanel.contextTypes = {
