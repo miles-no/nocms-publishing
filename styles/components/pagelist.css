@@ -87,3 +87,12 @@
 .admin_pagelist__item__page-status-icon--success {
   color: var(--admin-green);
 }
+
+.admin-pagelist__filter-container {
+  display: flex;
+  margin-bottom: 2vw;
+}
+
+.admin-pagelist__filter {
+  margin-left: 2vw;
+}

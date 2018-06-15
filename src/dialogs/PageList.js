@@ -92,7 +92,7 @@ export default class PageList extends Component {
         });
 
         return (
-          <select value={selectedValue} key={name} onChange={(e) => { this.onFilterChange(name, e.target.value); }}>
+          <select className="admin-pagelist__filter" value={selectedValue} key={name} onChange={(e) => { this.onFilterChange(name, e.target.value); }}>
             <option value="" key="empty">{placeholder}</option>
             {optionsMarkup}
           </select>
@@ -101,7 +101,7 @@ export default class PageList extends Component {
 
       if (type === 'input') {
         return (
-          <input value={selectedValue} key={name} placeholder={placeholder} onChange={(e) => { this.onFilterChange(name, e.target.value); }} />
+          <input className="admin-pagelist__filter" value={selectedValue} key={name} placeholder={placeholder} onChange={(e) => { this.onFilterChange(name, e.target.value); }} />
         );
       }
 
@@ -110,7 +110,7 @@ export default class PageList extends Component {
 
     return (
       <div className="admin-pagelist__wrapper">
-        <div>
+        <div className="admin-pagelist__filter-container">
           { filterMarkup }
         </div>
         {
