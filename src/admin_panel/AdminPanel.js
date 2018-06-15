@@ -83,6 +83,8 @@ export default class AdminPanel extends Component {
     const { templates, languages, pageData, folders, applications } = this.props;
     const { adminLang, i18n } = this.context;
     const publisherInfo = global.NoCMS.getNoCMSUserInfo();
+    const isPublished = pageData.published && pageData.published.time;
+    const canEdit = typeof pageData.deprecatedBy === 'undefined' && !isPublished;
     const template = templates.find((obj) => {
       return obj.id === pageData.templateId;
     });
@@ -112,7 +114,7 @@ export default class AdminPanel extends Component {
           <EditPage pageData={pageData} languages={languages} />
           <div className="button-container button-container--center">
             <div className="admin_menu__add-section-container">
-              {template.sections.length > 0 ?
+              { canEdit && template.sections.length > 0 ?
                 <AddSection
                   sections={template.sections}
                   onClick={this.onAddSection}
