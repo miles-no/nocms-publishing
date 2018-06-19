@@ -4,6 +4,7 @@ import ajax from 'nocms-ajax';
 import moment from 'moment';
 import { I, dictionary } from 'nocms-i18n';
 import Spinner from '../atoms/Spinner';
+import Message from '../admin_panel/Message';
 // import mockData from '../mock/pageHistory.json';
 
 // const mock = window.useMockData || false;
@@ -36,9 +37,13 @@ export default class PageHistory extends Component {
     if (!data) {
       return <Spinner />;
     }
-
+    const isMoved = data[data.length - 1].movedFrom || false;
     return (
       <div style={{ overflow: 'auto' }}>
+        {isMoved ? (
+          <Message type="info">
+            <I>Denne siden er flyttet fra</I> {data[data.length - 1].movedFrom}
+          </Message>) : null}
         <table className="admin-table">
           <thead>
             <tr>

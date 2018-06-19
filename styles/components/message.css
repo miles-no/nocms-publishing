@@ -9,6 +9,11 @@
   background-color: #FEEFB3;
 }
 
+.message__info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+
 .message__error {
   color: #D8000C;
   background-color: #FFBABA;

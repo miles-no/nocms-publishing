@@ -4,11 +4,18 @@ import { Icon } from 'nocms-atoms';
 
 const Message = ({ type, iconSize, children }) => {
   let className = 'message ';
-  className += type === 'warning' ? 'message__warning' : 'message__error';
-
+  if (type === 'warning') {
+    className += 'message__warning';
+  }
+  if (type === 'error') {
+    className += 'message__error';
+  }
+  if (type === 'info') {
+    className += 'message__info';
+  }
   return (
     <div className={className}>
-      <Icon type="warning" size={iconSize} />
+      <Icon type={type === 'info' ? 'info' : 'warning'} size={iconSize} />
       <div className="message__body">
         { children }
       </div>
@@ -23,7 +30,9 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  type: PropTypes.oneOf(['warning', 'error']),
+  type: PropTypes.oneOf([
+    'warning', 'error', 'info',
+  ]),
   iconSize: 'large',
 };
 
