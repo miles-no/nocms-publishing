@@ -1,0 +1,15 @@
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--admin-primary);
+  margin-top: 50px;
+  & thead tr {
+    height: 40px;
+    background-color: var(--admin-primary);  
+    color: var(--white);
+  }
+  & th,
+  & td {
+    padding: 10px;
+  }
+}

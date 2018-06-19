@@ -32,11 +32,9 @@ const SiteInfo = (props, context) => {
         <dd><I>{template.name}</I></dd>
       </dl>
       <AdminMenuDialog
-        title={dictionary(i18n, 'Jeg ønsker å se historikken til siden', adminLang)}
+        title={dictionary(i18n, `Jeg ønsker å se historikken til ${uri}`, adminLang)}
         text={dictionary(i18n, 'Sidehistorikk', adminLang)}
         icon="history"
-        centered
-        widthConstrained
       >
         <PageHistory uri={uri} site={site} />
       </AdminMenuDialog>
