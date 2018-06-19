@@ -4,15 +4,16 @@ import ajax from 'nocms-ajax';
 import moment from 'moment';
 import { I, dictionary } from 'nocms-i18n';
 import Spinner from '../atoms/Spinner';
-import mockData from '../mock/pageHistory.json';
+// import mockData from '../mock/pageHistory.json';
 
-const mock = window.useMockData || false;
+// const mock = window.useMockData || false;
+const mock = false;
 
 export default class PageHistory extends Component {
   constructor(props, context) {
     super(props);
     this.state = {
-      data: mock ? mockData : null,
+      data: mock ? mockData : null, // eslint-disable-line
       error: null,
     };
 
