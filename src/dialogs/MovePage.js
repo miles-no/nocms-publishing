@@ -67,7 +67,7 @@ export default class MovePage extends Component {
         return;
       }
       triggerGlobal('notify', { duration: 4, message: `Siden er flyttet fra ${originalUri} til ${newUri}` });
-      triggerGlobal('navigate', res.newPageUri);
+      triggerGlobal('navigate', res.pageData.uri, res.pageData);
       cb();
     });
   }
