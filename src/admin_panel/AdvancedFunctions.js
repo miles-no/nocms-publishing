@@ -5,6 +5,7 @@ import { IconButton } from 'nocms-atoms';
 import { dictionary } from 'nocms-i18n';
 import ImportPages from './advanced_functions/ImportPages';
 import PatchPageData from './advanced_functions/PatchPageData';
+import DeletePageData from './advanced_functions/DeletePageData';
 import MenuSectionWrapper from './MenuSectionWrapper';
 
 
@@ -48,6 +49,7 @@ export default class AdvancedFunctions extends Component {
             { developer &&
               <li className={menuItemClass}>
                 <PatchPageData />
+                <DeletePageData />
               </li>
             }
           </ul>
