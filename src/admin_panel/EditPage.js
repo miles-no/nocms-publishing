@@ -17,9 +17,9 @@ const EditPage = (props, context) => {
   const hasChanges = pageData.changed && pageData.changed.time;
   const publisherInfo = global.NoCMS.getNoCMSUserInfo();
   const isDeveloper = publisherInfo && publisherInfo.claims && publisherInfo.claims.developer;
-  // const isPublished = pageData.published && pageData.published.time;
-  // const canEdit = typeof pageData.deprecatedBy === 'undefined' && !isPublished;
-  const canEdit = true;
+  const isPublished = pageData.published && pageData.published.time;
+  const canEdit = typeof pageData.deprecatedBy === 'undefined' && !isPublished;
+
   return (
     <div className="admin-menu__edit">
       <div className="admin-menu__about-page">
