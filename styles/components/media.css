@@ -1,11 +1,11 @@
-.image-folder {
-  margin-bottom: var(--spacing-large);
-  &:last-child {
-    margin-bottom: 200px;
-  }
-}
-
 .image-folders {
+  & .folder {
+    margin-bottom: var(--spacing-large);
+    &:last-child {
+      margin-bottom: 200px;
+    }
+  }
+
   & .admin-button--transparent,
   & .admin-button__icon {
     color: var(--admin-button-text);
