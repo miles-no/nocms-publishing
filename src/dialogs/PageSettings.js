@@ -4,6 +4,7 @@ import { triggerGlobal } from 'nocms-events';
 import { dictionary, I } from 'nocms-i18n';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
+import FieldInfo from '../atoms/FieldInfo';
 
 const storeName = 'nocms-update-page-settings';
 
@@ -49,17 +50,13 @@ export default class PageSettings extends Component {
               required
               errorText="Siden må ha en tittel"
             />
-            <div className="admin-form__field-info">
-              <I>Info.Title</I>
-            </div>
+            <FieldInfo text={dictionary(i18n, 'Info.Title', adminLang)} />
             <Field
               name="metaDescription"
               store={storeName}
               label={dictionary(i18n, 'Meta-beskrivelse', adminLang)}
             />
-            <div className="admin-form__field-info">
-              <I>Info.MetaDescription</I>
-            </div>
+            <FieldInfo text={dictionary(i18n, 'Info.MetaDescription', adminLang)} />
             <Field
               type="select"
               store={storeName}
