@@ -7,6 +7,7 @@ import { urlify } from 'nocms-utils';
 import uuid from 'uuid';
 import Field from '../atoms/Field';
 import Form from '../atoms/Form';
+import FieldInfo from '../atoms/FieldInfo';
 import Message from '../admin_panel/Message';
 import getErrorMsgForStatusCode from '../utils/get_error_message';
 
@@ -108,9 +109,7 @@ export default class CreatePage extends Component {
             errorText={dictionary(i18n, 'Du må gi siden en tittel', adminLang)}
             validate="notEmpty"
           />
-          <div className="admin-form__field-info">
-            <I>Info.Title</I>
-          </div>
+          <FieldInfo text={dictionary(i18n, 'Info.Title', adminLang)} />
           <Field
             name="uri"
             required
